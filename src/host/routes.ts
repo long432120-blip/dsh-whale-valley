@@ -5,6 +5,7 @@
 import type { GameAction } from '../shared/gameplay-types.ts';
 import type { ActResult, PetView, SceneId } from '../shared/types.ts';
 import type { ChatReply } from '../shared/ai.ts';
+import { validSlot, type SlotInfo } from '../shared/save-slots.ts';
 
 /** service 需要提供的方法（WhalePetService 已經有；測試時可以換成假的） */
 export interface PetApi {
@@ -16,17 +17,23 @@ export interface PetApi {
   gameplay(): Promise<unknown>;
   /** V0.8：AI 對話（參數由 service 自己驗證） */
   chat?(req: unknown): Promise<ChatReply>;
+  /** V0.23：存檔格與開新遊戲 */
+  slotList?(): Promise<SlotInfo[]>;
+  slotSave?(n: number): Promise<SlotInfo[]>;
+  slotLoad?(n: number): Promise<PetView>;
+  slotRemove?(n: number): Promise<SlotInfo[]>;
+  newGame?(): Promise<PetView>;
 }
 
-export const BRIDGE_METHODS = ['visit', 'getView', 'setScene', 'poke', 'act', 'gameplay', 'chat'] as const;
+export const BRIDGE_METHODS = ['visit', 'getView', 'setScene', 'poke', 'act', 'gameplay', 'chat', 'slotList', 'slotSave', 'slotLoad', 'slotRemove', 'newGame'] as const;
 export type BridgeMethodName = (typeof BRIDGE_METHODS)[number];
 
 export class BadRequest extends Error {}
 
-/** 瀏覽器呼叫 host：只認這七個方法；參數只收 sceneId、GameAction（type 必須是字串）、ChatRequest */
+/** 瀏覽器呼叫 host：只認 BRIDGE_METHODS；參數只收 sceneId、GameAction（type 必須是字串）、ChatRequest、slot（1～3） */
 export async function handleBridgeCall(api: PetApi, method: string, body: unknown): Promise<unknown> {
   if (!(BRIDGE_METHODS as readonly string[]).includes(method)) throw new BadRequest(`unknown method: ${method}`);
-  const b = (body && typeof body === 'object' ? body : {}) as { sceneId?: unknown; action?: unknown; request?: unknown };
+  const b = (body && typeof body === 'object' ? body : {}) as { sceneId?: unknown; action?: unknown; request?: unknown; slot?: unknown };
   switch (method as BridgeMethodName) {
     case 'visit':
       return api.visit();
@@ -42,6 +49,30 @@ export async function handleBridgeCall(api: PetApi, method: string, body: unknow
     case 'chat':
       // 沒有 AI 的 host（舊版、或測試用的假 api）：回傳 disabled，畫面會用 JSON 台詞
       return api.chat ? api.chat(b.request) : ({ ok: false, reason: 'disabled' } satisfies ChatReply);
+    case 'slotList':
+      if (!api.slotList) throw new BadRequest('slots not supported');
+      return api.slotList();
+    case 'newGame':
+      if (!api.newGame) throw new BadRequest('slots not supported');
+      return api.newGame();
+    case 'slotSave':
+    case 'slotLoad':
+    case 'slotRemove': {
+      if (!validSlot(b.slot)) throw new BadRequest('slot must be 1-3');
+      const slot = b.slot;
+      const run =
+        method === 'slotSave' ? api.slotSave && (() => api.slotSave!(slot))
+        : method === 'slotLoad' ? api.slotLoad && (() => api.slotLoad!(slot))
+        : api.slotRemove && (() => api.slotRemove!(slot));
+      if (!run) throw new BadRequest('slots not supported');
+      try {
+        return await run();
+      } catch (err) {
+        // 空的格子、壞掉的格子：算是使用者的請求有問題，不是 host 內部錯誤
+        if (err instanceof Error && /empty|bad slot/.test(err.message)) throw new BadRequest(err.message);
+        throw err;
+      }
+    }
     case 'act': {
       const a = b.action as { type?: unknown } | undefined;
       if (!a || typeof a !== 'object' || typeof a.type !== 'string') throw new BadRequest('action.type must be a string');

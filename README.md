@@ -44,16 +44,18 @@
 | 💬 **AI 對話**（選用） | 接 DeepSeek，她會看著時間、天氣、體力、心情說話；記得最近 3 輪對話 |
 | 🏡 **串門** | ⚙️ 設定產生「邀請碼」貼給朋友，朋友就能來你的農場逛逛、幫你澆水、留一封信 |
 | 🏪 **交易所** | 今日市集；把東西擺上自己的攤位、傳攤位碼給朋友買；寵物也能用領養碼送給朋友 |
-| 🗨️ **聊天室** | 目前是本地模擬（鎮上的居民和旅人會回你），之後可以接伺服器；有髒話過濾 |
+| 🗨️ **聊天室** | 預設是本地模擬（鎮上的居民和旅人會回你）；附一個聊天伺服器（`npm run chat:server`），架起來就能和同一個網路的朋友即時聊天（目前要在網址加 `?dev&chat=ws://…` 連線）；有髒話過濾 |
 | 🌏 **繁體／简体** | ⚙️ 設定切換，連用語一起換（存檔→存档、網路→网络） |
+| ☰ **遊戲選單** | 左上角 ☰ 或 Esc，在畫面正中央：繼續、💾 3 格存檔／讀檔、✨ 開新遊戲、⚙️ 設定、🚪 結束遊戲 |
+| 📴 **不用連外網** | 不載 Google Fonts、CDN、Firebase、GA；斷網也能玩（只有 AI 對話要連 DeepSeek）。`npm run check:offline` 自動檢查 |
 
 ## 🚀 開始玩
 
 ### 🎮 直接玩（免安裝）
 
-1. 到 [Releases](https://github.com/long432120-blip/dsh-whale-valley/releases) 下載 `鯨魚谷物語-試玩版-v0.22.zip`
-2. **整包解壓縮**（直接在壓縮檔裡打開會沒有音樂）
-3. 雙擊 `鯨魚谷物語.html`，用 Chrome 或 Edge 開
+1. 自己打一包（需要 Node.js 22+）：`npm install` 然後 `npm run demo:standalone`
+2. 雙擊 `demo/pixel-standalone.html`，用 Chrome 或 Edge 開
+3. 打包好的 zip 之後會放上 [Releases](https://github.com/long432120-blip/dsh-whale-valley/releases)（目前還沒有）
 
 存檔在你自己的瀏覽器裡，每個動作都會自動存檔。玩法說明在 `怎麼玩.txt`。
 
@@ -61,13 +63,25 @@
 
 ```sh
 # 方法 A：Release 的套件檔
-dsh plugin --profile web add ./dsh-whale-valley-0.22.0.tgz
+dsh plugin --profile web add ./dsh-whale-valley-0.25.0.tgz
 
-# 方法 B：直接從 GitHub（repo 已附編譯好的 lib/，不用另外建置）
+# 方法 B：直接從 GitHub（repo 已附編譯好的 lib/，不用另外建置；需要電腦有裝 git）
 dsh plugin --profile web add github:long432120-blip/dsh-whale-valley
+
+# 沒有 git 的話，改用 GitHub 的壓縮檔地址
+dsh plugin --profile web add https://github.com/long432120-blip/dsh-whale-valley/archive/refs/heads/main.tar.gz
 ```
 
-裝好後重開 `dsh web`，她會出現在 DSH 視窗的浮層裡。DSH 的模型可以用兩個工具：
+> ⚠️ **不要用「本機資料夾」安裝**（`dsh plugin add <你的原始碼資料夾>`）。曾經發生過：移除或改裝這種 link 安裝的插件時，DSH 把整個原始碼資料夾的內容一起刪掉。只用上面兩種方法。
+
+裝好後重開 `dsh web`，**左側欄會多一個「鯨魚谷物語」**（跟「插件」「自動化任務」排在一起）。
+
+**點它，遊戲會在另一個視窗打開**：Windows 上用 Chrome／Edge 的「應用程式模式」（沒有網址列、沒有分頁列，1280×900，看起來就是一個獨立的小程式），**DSH 的畫面完全不會被遮住**。關掉那個視窗就結束遊戲。
+
+- 第一次按如果沒看到視窗，卡片上會寫原因（例如找不到 Chrome／Edge），按「🪟 打開遊戲視窗」再試一次
+- 存檔跟 DSH 共用（`~/.dsh/storages/dsh-whale-valley`）；遊戲裡的 ☰ 選單按「🚪 結束遊戲」也會關掉視窗
+- 這個視窗是插件請 host 用系統瀏覽器開的：DSH 桌面版（Electron）會拒絕網頁自己 `window.open`（只放行 `https:`），所以不能走瀏覽器彈窗那條路
+DSH 的模型可以用兩個工具：
 `whale_pet_status`（看她的狀態，唯讀）和 `whale_pet_act`（只開放餵食、澆水、收成）。
 
 - 支援的 DSH 版本：`>=0.2.1-rc.5 <0.3.0`（DSH 還在 Developer Preview，介面可能變動）
@@ -190,7 +204,9 @@ AI 是**選用**的：沒有 Key、斷網、10 秒沒回應、Key 錯了，她�
 | `npm test` | 單元測試 |
 | `npx tsx scripts/check-pixel.ts` | 檢查角色包 JSON 與地圖 |
 | `npm run sim -- --days 60` | 數值模擬（金幣、好感曲線） |
+| `npm run chat:server` | 聊天室伺服器（`ws://127.0.0.1:8790`）；遊戲網址加 `?dev&chat=ws://127.0.0.1:8790` 就會連上 |
 | `npm run check:secrets` | 發布前檢查有沒有 Key、Token、個人 email、本機路徑 |
+| `npm run check:offline` | 檢查出貨檔案沒有 Google Fonts、CDN、Firebase、GA 這些外部依賴 |
 | `npm run build` | 打包 DSH 插件（`lib/`） |
 | `npm run demo:standalone` | 產生單一檔案的試玩版 `demo/pixel-standalone.html` |
 | `npm pack` | 產生 DSH 插件套件檔 `dsh-whale-valley-<版本>.tgz` |

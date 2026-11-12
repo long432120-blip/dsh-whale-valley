@@ -3,7 +3,7 @@
 // 已在 DSH 0.2.2-rc.1 實機驗證：typecheck 通過（有裝 @deepseek-ai/cordis），插件在桌面版正常載入、服務註冊成功。
 import { Service, type Context } from '@deepseek-ai/cordis';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import { readdir, readFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, rename, unlink, writeFile } from 'node:fs/promises';
 import { homedir } from 'node:os';
 import { join } from 'node:path';
 import { defaultStorageDir } from './storage-dir.ts';
@@ -29,6 +29,7 @@ import { assembleGameplay, type AnimalsPart, type FishingPart, type PetsPart } f
 import { buildDefs, mergeGameplay } from '../shared/gameplay.ts';
 import type { GameAction, GameplayDefs, GameplayFile, GameplayMod, FurnitureShopFile, LeisureFile, QuestFile, StatsFile, TavernFile, WeatherFile } from '../shared/gameplay-types.ts';
 import * as rules from '../shared/state.ts';
+import { SLOT_COUNT, makeSlotFile, parseSlotFile, slotInfo, validSlot, type SlotInfo } from '../shared/save-slots.ts';
 import type { ActResult, PetSave, PetView, SceneId } from '../shared/types.ts';
 import { JsonStore } from './store.ts';
 import { parseChatRequest, snapshotFromView, type AiFile, type ChatMessage, type ChatReply } from '../shared/ai.ts';
@@ -251,6 +252,83 @@ export class WhalePetService extends Service {
       console.warn('[whale-pet] AI 對話失敗：', (err as Error)?.message);
       return { ok: false, reason: 'bad_response' };
     }
+  }
+
+  // ── V0.23：存檔格（存檔資料夾的 slots/slot-1～3.json）與開新遊戲 ──
+  private slotPath(n: number): string {
+    return join(this.dir, 'slots', `slot-${n}.json`);
+  }
+  private async readSlot(n: number): Promise<{ text: string | null }> {
+    try {
+      return { text: await readFile(this.slotPath(n), 'utf8') };
+    } catch {
+      return { text: null };
+    }
+  }
+  /** 讀檔、開新遊戲前：目前進度先備份一份（save.backup.json），按錯了還救得回來 */
+  private async backupCurrent(raw: unknown): Promise<void> {
+    if (raw == null) return;
+    try {
+      await mkdir(this.dir, { recursive: true });
+      await writeFile(join(this.dir, 'save.backup.json'), JSON.stringify(raw, null, 2), 'utf8');
+    } catch (err) {
+      console.warn('[whale-pet] 備份目前進度失敗', err);
+    }
+  }
+  async slotList(): Promise<SlotInfo[]> {
+    const { defs } = await this.loadDefs();
+    const now = this.clock();
+    const out: SlotInfo[] = [];
+    for (let n = 1; n <= SLOT_COUNT; n++) {
+      const { text } = await this.readSlot(n);
+      const file = text == null ? null : parseSlotFile(text);
+      let view: PetView | null = null;
+      try {
+        if (file) view = rules.toView(this.load(file.save, now, defs), now, 0, defs);
+      } catch {
+        view = null;
+      }
+      out.push(slotInfo(n, file, view, text != null && !view));
+    }
+    return out;
+  }
+  async slotSave(n: number): Promise<SlotInfo[]> {
+    if (!validSlot(n)) throw new Error('bad slot');
+    const { defs } = await this.loadDefs();
+    const now = this.clock();
+    const cur = rules.tick(this.load(await this.store.read(), now, defs), now, defs);
+    const path = this.slotPath(n);
+    await mkdir(join(this.dir, 'slots'), { recursive: true });
+    await writeFile(`${path}.tmp`, JSON.stringify(makeSlotFile(cur, now), null, 2), 'utf8');
+    await rename(`${path}.tmp`, path);
+    return this.slotList();
+  }
+  async slotLoad(n: number): Promise<PetView> {
+    if (!validSlot(n)) throw new Error('bad slot');
+    const file = parseSlotFile((await this.readSlot(n)).text);
+    if (!file) throw new Error('empty slot');
+    const { defs } = await this.loadDefs();
+    const now = this.clock();
+    await this.backupCurrent(await this.store.read());
+    return this.store.update(() => {
+      // 從「現在」開始算，不會一口氣補算存檔之後經過的時間
+      const next: PetSave = { ...this.load(file.save, now, defs), lastTickAt: now, lastSeenAt: now };
+      return { next, result: rules.toView(next, now, 0, defs) };
+    });
+  }
+  async slotRemove(n: number): Promise<SlotInfo[]> {
+    if (!validSlot(n)) throw new Error('bad slot');
+    await unlink(this.slotPath(n)).catch(() => {});
+    return this.slotList();
+  }
+  async newGame(): Promise<PetView> {
+    const { defs } = await this.loadDefs();
+    const now = this.clock();
+    await this.backupCurrent(await this.store.read());
+    return this.store.update(() => {
+      const next = this.load(null, now, defs);
+      return { next, result: rules.toView(next, now, 0, defs) };
+    });
   }
 
   /** V0.2：合併好 mods 的玩法定義，給前端顯示名稱與 emoji */

@@ -1,6 +1,6 @@
 {
   "name": "dsh-whale-valley",
-  "version": "0.22.0",
+  "version": "0.25.0",
   "description": "鯨魚谷物語：和鯨魚娘一起過日子的像素小鎮（釣魚、種田、牧場、居民、酒館、四季、AI 日記）。DeepSeek Harness 插件，也能單機開瀏覽器玩。",
   "license": "MIT",
   "author": "long432120-blip",
@@ -55,6 +55,7 @@
     "demo:build": "esbuild demo=demo/main.ts pixel=demo/pixel-main.ts --bundle --format=esm --target=es2022 --loader:.tmj=json --loader:.tsj=json --outdir=demo",
     "demo:standalone": "tsx scripts/build-standalone.ts",
     "demo:ai": "tsx scripts/ai-dev-server.ts",
+    "chat:server": "tsx scripts/chat-server.ts",
     "build:host": "esbuild src/host/index.ts --bundle --platform=node --format=esm --target=node22 --packages=external --outfile=lib/index.js",
     "build:client": "tsx scripts/build-client.ts",
     "build": "npm run build:host && npm run build:client",
@@ -63,7 +64,8 @@
     "check:pack": "tsx scripts/check-pack.ts",
     "check:pixel": "tsx scripts/check-pixel.ts",
     "sim": "tsx scripts/sim-week.ts",
-    "check:secrets": "node scripts/check-secrets.mjs"
+    "check:secrets": "node scripts/check-secrets.mjs",
+    "check:offline": "node scripts/check-offline.mjs"
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "*",

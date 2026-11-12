@@ -1,3 +1,77 @@
+> 📌 **2026-11-12 晚上新增待辦**：專案已到 V0.25（DSH 左側欄入口＋遊戲開在獨立視窗），但 **GitHub `main` 還停在 0.22.0、npm 還沒發、市場還沒上架**。
+> 要做的事與逐步指令都寫在 [`交接-給Claude-上架v0.25.md`](交接-給Claude-上架v0.25.md)；程式改動摘要看 [`V0.24-設計書.md`](V0.24-設計書.md)、[`V0.25-設計書.md`](V0.25-設計書.md)。
+
+## 回報：V0.22 實機驗收（2026-11-12 19:05–19:45）
+
+環境：DSH **0.2.2-rc.1**（desktop runtime，`@deepseek-ai/dsh-desktop-runtime` 0.2.2-rc.1）｜Node **v24.21.0**（DSH 內建 runtime；這台機器 PATH 上沒有 node／npm／npx）｜Windows 11 家用版 10.0.26200｜安裝方式：**tgz**（`file:...\release\dsh-whale-valley-0.22.0.tgz`），profile = `desktop`。
+
+> ⚠ 先看 [`docs/事故-20261112-專案資料夾被清空.md`](事故-20261112-專案資料夾被清空.md)：驗收一開始我用 `add <本機資料夾>`（link）安裝、後來按「移除」時，**整個專案資料夾的內容被清空**（19:06:34）。已由 Claude 從自己的完整副本補回（417 檔，含 `assets/source/`）。**這件事本身就是 P0 的結論之一**，見下面第 1 點。
+>
+> 驗收方式：我沒有動你開著的 Electron 視窗，而是用同一台 DSH 的**第二個瀏覽器 client**（`http://127.0.0.1:58563`）操作（同一個 profile、同一份存檔、同一套外掛）。截圖都在 `default-workspace/output/capture/`。
+
+### P0 安裝與相容性
+
+- **環境**：`npx @deepseek-ai/dsh --version` 跑不了（這台沒有 npm），我改用 DSH 內建的 `plugin_manager` 工具（跟 `dsh plugin` 同一套 service）讀到版本 0.2.2-rc.1。
+- **移除舊插件**：✅ `remove_bundle dsh-whale-pet` 成功（舊的是 `link:C:/Users/<使用者>/Desktop/dsh-whale-pet`）。
+- **安裝方式**：
+  1. **本機資料夾**：✅ 安裝成功（pnpm 記成 `link:`，`whale_pet_status` 可呼叫）——但**之後 remove／改裝時把資料夾內容清空**（事故報告）。**不要再用這種方式測**；要嘛給 `file:<絕對路徑的 tgz>`，要嘛別 remove。
+  2. **tgz**：✅ 成功。`dsh-whale-valley 0.22.0`，enabled、host 載入、`POST /api/dsh-whale-valley/*` 200、兩個 tool 出現在工具清單。
+     （中間那次 `install_bundle <tgz>` 回 `failed to import: ENOENT ...\lib\index.js` 是假警報——當時資料夾剛被清空，`lib/` 不存在；資料夾補回後同一個 tgz 安裝是好的。）
+  3. **github:**：❌ 這台沒有 `git`。pnpm 原文：
+     `[ERR_PNPM_GIT_RESOLVE_FAILED] Failed to resolve git dependency "github:long432120-blip/dsh-whale-valley": git ls-remote failed: 'git' 不是內部或外部命令、可執行的程式或批次檔。`
+     不是插件的問題。沒有 git 的機器可以改裝 tarball URL（pnpm 走 HTTPS）：`install_bundle https://github.com/long432120-blip/dsh-whale-valley/archive/refs/heads/main.tar.gz`。
+- **`engines.dsh`：不用改，維持 `>=0.2.1-rc.5 <0.3.0`。** DSH 0.2.2-rc.1 **直接接受**，沒有警告、沒有拒絕。依據：`@deepseek-ai/dsh-app-boot` README 的 profiles 一節寫「Prereleases participate in range matching」，DSH 比對 range 時把預覽版算進去，所以 `0.2.2-rc.1` 落在 `<0.3.0` 裡面（一般 npm 語意會排除它，DSH 不會）。只有被拒時才需要改成 `<0.3.0-0`。
+- **API 變動：沒有。** 你 V0.9 的實測寫法在 0.2.2-rc.1 全部照跑：
+  - host：`Schemastery` 設定、`ctx.webServer.register({ kind:'prefix', path, handler })`（node:http handler）→ 路由 200；`ctx.tools.register({ name, description, parameters, output, execute })` → `whale_pet_status`／`whale_pet_act` 正常註冊（我這邊真的呼叫得到）；`llm` 服務 → AI 對話有回應。
+  - client：`slots.inject('shell.overlay', …)` + `dsh.client.inject: @deepseek-ai/dsh-client-ui-layout` → 浮層有畫出來；`window.__ModuleLoader__.load({ id, factory })` 格式 → 6.7 MB 的 `lib/client.js` 載入正常。
+- **型別檢查**：`tsc --noEmit -p .` → **0 錯誤**（TypeScript 5.9.3；含 `src/host/index.ts`、`src/host/service.ts`、`src/client/dsh-entry.tsx`）。
+- **測試**：`node --import tsx --test test/*.test.ts` → **215 個全過、0 失敗**。
+
+### P1 驗收清單
+
+| # | 結果 | 證據／說明 |
+|---|---|---|
+| 1 | ✅（有但書） | 浮層在 DSH 視窗左上出現，房間／花園、木牌時鐘、鯨魚娘、狀態列、側邊欄都在（`output/capture/p1-02-gui.png`、`p1-03-overlay-zoom.png`）。視窗縮到 300px 時 canvas 等比縮成 276×166（92vw），不變形。**⚠ 浮層只有 200px 高**：側邊欄第二、三排按鈕（🛠️🎁📔🐾🕹️🏪📮💬⚙️）要先把側邊欄往下捲才看得到、點得到（`.px-side-inner` 是 `overflow-y:auto`）。實際 Electron 視窗裡大概也一樣。 |
+| 2 | ✅ | 沿用舊存檔：`~/.dsh/storages/` 只有 `dsh-whale-pet`（新名字 `dsh-whale-valley` 不存在），`storage-dir.ts` 的邏輯照走。舊存檔讀進來後 `save.json` 2207→2364 bytes，`normalizeGame` 自動補了 `trade`、`mailbox`（V0.22 新欄位）。 |
+| 3 | ⚠ 部分 | 點她說話 ✅（走 AI，回「咕嚕……主人初次見面，我餓到」）；點地面她會走過去 ✅（`__pxDebug()` 的 tile 8,7→9,7）。**連點三下摸頭 ❌ 沒觸發**：她會自己走動，我三次點擊很難都落在她身上，打到旁邊就變成走路（`stage.dataset.headpat` 一直沒有值）——不確定是自動化打不準，還是浮層的點擊被別的東西吃掉，**建議人手在 Electron 視窗試一次**。種田／澆水／釣魚沒測（舊存檔金幣 0、飽食 0、田裡沒東西）。 |
+| 4 | ✅ | `whale_pet_status` 只讀、回傳狀態摘要；`whale_pet_act`（water, `garden/plot-1`）回「沒有成功（plot_empty）」＝有走白名單、被規則層擋下。兩者都只能餵食／澆水／收成，沒有其他動作。 |
+| 5 | ✅ | 沒設 Key（`ai.apiKey` 留空），點她 → 走 DSH 的 `llm` 服務，有回話；`storages/dsh-whale-pet/ai-memory.json` 有記錄；**沒有** `ai-error.log`。 |
+| 6 | ❌ 未測 | 要在晚上讓她上床睡著、再立刻停用插件／關 DSH。我沒有在真實 Electron 視窗操作，怕中斷你正在跑的 session，這項留給你或下一輪。 |
+| 7 | ❌ 讀不到（只是安靜） | client 去 `GET /music/farm-day.mp3` → **404**（DSH 沒有這條路由）。檔案在 `packs/whale-girl-pixel/music/`（5 首、約 10 MB）裡，但 client 用 `/music/...` 絕對路徑抓不到。結果：**不會壞，就是沒聲音**。要修得給 host 一條讀檔通道（或內嵌，`client.js` 會多約 13 MB）。 |
+| 8 | ⚠ 可用，但會整頁重載 | ⚙️設定→简体中文 → 寫 `localStorage['whale-pet:locale']='zh-CN'` → `location.reload()`。重載後**只有插件自己的區塊變簡體**（`鲸鱼娘`、`初次见面`、`生成邀请码`、`本地模拟`…，截圖 `p1-14-simplified.png`）；**DSH 自己的介面沒有被轉**（同一頁的 DSH 側邊欄字串，切換前後都是「新会话／工作区／默认工作区／上下文洞察」）。<br>關於「會不會中斷 DSH 正在跑的任務」：**host 端不會**。頁面重載期間我這個 session 的工具呼叫照樣跑完；只有瀏覽器端重載、重新連上，聊天紀錄由 DSH 自己保管。<br>補充：`document.documentElement.lang` 是 `zh-CN`，那是 DSH 自己的 index.html 帶的（插件只有在 root 是 `document.body` 時才改 lang，DSH 版不是）。 |
+| 9 | ✅ | 機制正確：切到簡體後 `CanvasRenderingContext2D.prototype.fillText` **仍是原生函式**（沒有全頁被改掉），只有插件自己的 context 有覆寫（`instanceHasOwnFillText=true`）。所以只轉插件 canvas，DSH 其他 canvas 不受影響。 |
+| 10 | ⚠ 部分 | ⚙️設定→🏡生成邀請碼 ✅：`POST /api/dsh-whale-valley/act` 200，彈出「共 321 個字元・30 天內有效」的邀請碼（截圖 `p1-15-invite.png`），走 host 的 `visit_snapshot`。「去朋友家→澆水→留信→回家」沒測（要第二份存檔）；剪貼簿這台沒測。 |
+| 11 | ❌ 未測 | 需要金幣（舊存檔 0）＋第二份存檔才能跑「上架→買→收款」。按鈕（🏪）在，但沒有實際交易。 |
+| 12 | ❌ 未測 | 需要第二份存檔。 |
+| 13 | ✅ | 💬 聊天室預設「📡 本地模拟：还没连上服务器…」寫在畫面上方，沒有打 host（那段網路只有 music 404）。 |
+| 14 | ✅ | DSH 網址加 `?dev` 有效：`location.search='?dev'`，DSH 照常載入（側邊欄、對話都正常），插件照常運作。`isDevMode()` 讀整頁網址的寫法在 DSH 裡成立。 |
+| 15 | ⚠ 沒看到錯誤，但沒做停用／重啟測試 | 全程沒有未處理錯誤（沒有紅字、沒有 500；唯一的失敗請求是 music 404）。插件停用→重新啟用後有沒有殘留計時器／重複畫面，這輪沒測。 |
+
+### 我改了什麼
+
+| 檔案 | 行數 | 改了什麼 | 為什麼 |
+|---|---|---|---|
+| （專案原始碼） | 0 | **沒有改任何一個字** | 這輪只做驗收；發現的問題都寫在上面 |
+| DSH profile `desktop` 的 `package.json` / `dsh.profile.bundles` | — | 移除舊的 `dsh-whale-pet@link:…`，改成 `dsh-whale-valley@file:...\release\dsh-whale-valley-0.22.0.tgz`，現在 **enabled** | 實機安裝與驗收 |
+| `~/.dsh/profiles/desktop/.backup-whale-acceptance-20261112-190546/` | — | 動 profile 前的 `package.json`／`cordis.patch.yml`／`pnpm-lock.yaml` 備份 | 出事可以還原 |
+
+其他副作用（不是檔案修改）：驗收過程點了她幾次（存檔 `pokes`/`ai-memory` 有動）、生成了一張邀請碼（`trade` 那張 30 天有效）、繁體／簡體切換過（最後已切回**繁體**）。
+
+### 給擁有者的結論
+
+**可以上架，但先把三件事處理掉／寫進說明：**
+
+1. **🔴 最重要：不要用「本機資料夾」安裝。** 用 `link:` 裝進去、之後 remove／改裝，**會把那個資料夾的內容刪掉**（這次真的發生在你身上，見事故報告）。上架說明請寫：「請裝 `.tgz` 或 `github:`，**不要** `dsh plugin add <你的原始碼資料夾>`；要測開發版請複製一份再裝」。順便建議這個資料夾 `git init`＋本機 commit。
+2. **🟡 `github:` 安裝需要 `git`。** 這台沒有，所以第三種方式沒能驗完。DSH 官方市場的使用者如果有 git 就沒問題；沒有的話要引導他們用 tarball URL。
+3. **🟡 三個小問題（不擋上架，但玩家會遇到）**：
+   - **背景音樂在 DSH 裡沒聲音**（`/music/*.mp3` 404）。要嘛 host 加一條唯讀路由給 `packs/.../music/`，要嘛明講「DSH 版沒音樂」。
+   - **浮層只有 200px 高**，側邊欄要捲才看得到第二、三排按鈕（⚙️設定、🏪交易所、💬聊天室、🐾寵物…）。建議浮層裡的側邊欄改用「兩欄／收合」或把高度撐開。
+   - **繁簡切換會整頁重載**（`location.reload()`）。host 端不會中斷，但使用者的畫面會閃一下、要重新連線；如果在意，可以改成不重載、只重建插件區塊。
+
+**還沒驗的（需要你決定要不要我補）**：P1 第 6（夜間日記 dispose）、10 的完整串門流程、11（交易所）、12（寵物領養）——這三項都需要「第二份存檔」（另一個 profile，或單機版 `release/鯨魚谷物語-試玩版-v0.22/鯨魚谷物語.html`）跟我能自由操作的時間。
+
+---
+
 # 交接文件：給 Claude（來自 DSH agent）
 
 > 回報時間：2026-11-11 13:30

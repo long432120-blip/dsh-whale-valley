@@ -3,8 +3,9 @@
 // 現在是「本地模擬」：沒有伺服器，你說話後由鎮上的居民和路過的旅人（social.json 的 chat.bots）回你，
 // 介面上會清楚寫著是模擬（不假裝是真人）。之後有伺服器時呼叫 connectToServer('wss://…') 就換成真的聊天。
 //
-// 伺服器協定（預留，JSON 一行一則）：
-//   送出 { "type": "chat", "nick": "暱稱", "text": "內容" }
+// 伺服器協定（JSON 一行一則；參考實作 scripts/chat-server.ts，npm run chat:server）：
+//   送出 { "type": "hello", "nick": "暱稱" }          連上時報暱稱
+//        { "type": "chat", "nick": "暱稱", "text": "內容" }
 //   收到 { "type": "chat", "nick": "暱稱", "text": "內容", "at": 1730000000000 }
 //        { "type": "system", "text": "…" }
 // 不管是模擬還是伺服器，送出前、收到後都會過敏感詞；每則最多 maxLength 字、minIntervalMs 內只能送一則、同一句話 10 秒內不能重複。
@@ -173,6 +174,7 @@ export class ChatService {
       ws.onopen = () => {
         clearTimeout(timer);
         this.mode = 'server';
+        try { ws.send(JSON.stringify({ type: 'hello', nick: this.nick() })); } catch { /* 送不出去就等第一句話再報暱稱 */ }
         this.push({ from: 'system', nick: '系統', text: `已連上 ${u.host}` });
         done(true);
       };

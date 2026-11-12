@@ -31,6 +31,7 @@ export class I18nManager {
   private readonly terms: [RegExp, Record<string, string>] | null;
   private readonly cache = new Map<string, string>();
   private observer: MutationObserver | null = null;
+  private readonly roots = new WeakSet<Node>();
 
   constructor(private readonly data: LocaleData, locale?: Locale) {
     this.locale = locale ?? 'zh-TW';
@@ -88,10 +89,17 @@ export class I18nManager {
    * 單機版 root = 整個 body（頁面都是我們的）；DSH 版只轉插件自己的區塊，不動 DSH 的介面。
    */
   install(doc: Document = document, root: HTMLElement = doc.body, opts: { title?: boolean } = { title: true }): void {
-    if (this.locale === 'zh-TW' || this.observer) return;
+    if (this.locale === 'zh-TW') return;
+    // V0.23：可以裝在好幾個區塊（DSH 浮層的啟動卡＋全螢幕遊戲）；同一個區塊只裝一次
+    if (this.roots.has(root)) return;
+    this.roots.add(root);
     if (root === doc.body) doc.documentElement.lang = 'zh-CN';
     this.convertTree(root);
     const Obs = doc.defaultView?.MutationObserver ?? globalThis.MutationObserver;
+    if (this.observer) {
+      this.observer.observe(root, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS });
+      return;
+    }
     this.observer = new Obs((list) => {
       for (const m of list) {
         if (m.type === 'characterData') this.convertText(m.target as Text);

@@ -70,7 +70,7 @@ GitHub 從 2021 年 8 月起**不接受帳號密碼推送**，「Password」那�
 
 ```powershell
 npm run build
-npm pack                          # 產生 dsh-whale-valley-0.22.0.tgz
+npm pack                          # 產生 dsh-whale-valley-0.22.1.tgz
 npm run demo:standalone           # 產生 demo/pixel-standalone.html 和 demo/music/
 ```
 
@@ -81,14 +81,14 @@ npm run demo:standalone           # 產生 demo/pixel-standalone.html 和 demo/m
 
 先確認手上有這兩個檔（都在 `release\` 資料夾裡）：
 
-- `release\dsh-whale-valley-0.22.0.tgz`（DSH 插件）
+- `release\dsh-whale-valley-0.22.1.tgz`（DSH 插件）
 - `release\鯨魚谷物語-試玩版-v0.22.zip`（免安裝試玩版）
 
 然後在 GitHub 網頁上：
 
 1. 打開倉庫首頁 → 右邊欄「**Releases**」→「**Create a new release**」（或「Draft a new release」）
-2. 「**Choose a tag**」輸入 `v0.22.0` → 按「**Create new tag: v0.22.0 on publish**」；Target 保持 `main`
-3. **Release title**：`鯨魚谷物語 v0.22.0`
+2. 「**Choose a tag**」輸入 `v0.22.1` → 按「**Create new tag: v0.22.1 on publish**」；Target 保持 `main`
+3. **Release title**：`鯨魚谷物語 v0.22.1`
 4. 說明欄貼上（可以自己改）：
 
    ```
@@ -96,8 +96,8 @@ npm run demo:standalone           # 產生 demo/pixel-standalone.html 和 demo/m
 
    ## 下載
    - 🎮 只想玩：下載「鯨魚谷物語-試玩版-v0.22.zip」→ 整包解壓縮 → 雙擊「鯨魚谷物語.html」（Chrome / Edge）
-   - 🧩 DSH 使用者：下載 dsh-whale-valley-0.22.0.tgz，然後
-     dsh plugin --profile web add ./dsh-whale-valley-0.22.0.tgz
+   - 🧩 DSH 使用者：下載 dsh-whale-valley-0.22.1.tgz，然後
+     dsh plugin --profile web add ./dsh-whale-valley-0.22.1.tgz
      或直接 dsh plugin --profile web add github:long432120-blip/dsh-whale-valley
 
    ## 這一版有什麼

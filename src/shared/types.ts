@@ -177,6 +177,8 @@ export interface HostBridge {
    * V0.20：玩家自己的 API Key 設定（只有單機版有；DSH 版的 Key 在 host，瀏覽器碰不到）。
    * 有這個，側邊欄才會出現 🔑 按鈕。
    */
+  /** V0.23：存檔格（3 格）與開新遊戲；朋友家（VisitBridge）沒有 */
+  readonly slots?: import('./save-slots.ts').SlotApi;
   readonly aiSettings?: {
     readonly hasKey: boolean;
     masked(): string;

@@ -11,6 +11,12 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import Schema from '@deepseek-ai/schemastery';
 import { BadRequest, handleBridgeCall, whalePetTools, type PetApi, type ToolDef } from './routes.ts';
 import { WhalePetService, type WhalePetConfig } from './service.ts';
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { musicWhitelist, serveFile, serveMusic } from './music-route.ts';
+import { BOOT_JS, WINDOW_HTML } from './window-page.ts';
+import { launchGameWindow } from './open-window.ts';
+import musicJson from '../../packs/whale-girl-pixel/music.json';
 
 export const name = 'dsh-whale-valley';
 
@@ -41,6 +47,8 @@ interface WebServerService {
     path: string;
     handler: (req: IncomingMessage, res: ServerResponse) => void;
   }): () => void;
+  /** 這個部署對外的位址（V0.25：開獨立視窗時用它組網址，不信任瀏覽器送來的 Host） */
+  getOrigin?(): string;
 }
 
 interface DshToolDefinition {
@@ -109,7 +117,90 @@ function readJsonBody(req: IncomingMessage): Promise<unknown> {
 }
 
 /** POST /api/dsh-whale-valley/<method> → handleBridgeCall */
+// V0.22：背景音樂（GET /api/dsh-whale-valley/music/<檔名>）。打包後這個檔案在 lib/index.js，音樂在 ../packs/…
+const MUSIC_OK = musicWhitelist(musicJson);
+const MUSIC_DIR = (() => {
+  for (const rel of ['../packs/whale-girl-pixel/music/', '../../packs/whale-girl-pixel/music/']) {
+    try {
+      const dir = fileURLToPath(new URL(rel, import.meta.url));
+      if (existsSync(dir)) return dir;
+    } catch { /* 試下一個 */ }
+  }
+  return null;
+})();
+
+// V0.23 模式 B：獨立視窗的遊戲頁用的 client.js（就是這個資料夾旁邊的 lib/client.js）
+const CLIENT_JS = (() => {
+  try {
+    const p = fileURLToPath(new URL('./client.js', import.meta.url));
+    return existsSync(p) ? p : null;
+  } catch {
+    return null;
+  }
+})();
+
+/** 最近一次「遊戲畫面」呼叫 host 通道的時間；用來判斷獨立視窗是不是還開著 */
+let lastClientAt = 0;
+/** 這個部署對外的位址（apply() 時從 webServer.getOrigin() 拿） */
+let originOverride: string | null = null;
+
 async function handleBridgeRoute(api: PetApi, req: IncomingMessage, res: ServerResponse): Promise<void> {
+  const musicPrefix = `${ROUTE_PREFIX}/music/`;
+  const path = new URL(req.url ?? '/', 'http://127.0.0.1').pathname;
+
+  // V0.25：請 host 用系統瀏覽器開一個獨立視窗（DSH 桌面版會擋 window.open）
+  if (path === `${ROUTE_PREFIX}/open-window`) {
+    if (req.method !== 'POST') {
+      sendJson(res, 405, { error: '只接受 POST' });
+      return;
+    }
+    let force = false;
+    try {
+      const body = (await readJsonBody(req)) as { force?: unknown } | null;
+      force = body?.force === true;
+    } catch { /* 沒有 body 或不是 JSON → 當作不強制 */ }
+    // 最近 40 秒內有遊戲畫面在呼叫通道 → 視窗應該還開著，不重複開（強制時照開）
+    if (!force && lastClientAt > 0 && Date.now() - lastClientAt < 40_000) {
+      sendJson(res, 200, { ok: true, alreadyOpen: true, mode: 'app' });
+      return;
+    }
+    const origin = originOverride ?? `http://${req.headers.host ?? '127.0.0.1'}`;
+    const url = `${origin.replace(/\/+$/, '')}${ROUTE_PREFIX}/play`;
+    const result = launchGameWindow(url);
+    sendJson(res, 200, { ...result, alreadyOpen: false, url: result.ok ? undefined : url });
+    return;
+  }
+
+  // V0.23 模式 B：🪟 開新視窗玩
+  if (req.method === 'GET' || req.method === 'HEAD') {
+    const head = { 'cache-control': 'no-cache', 'x-content-type-options': 'nosniff' };
+    if (path === `${ROUTE_PREFIX}/play`) {
+      res.writeHead(200, { ...head, 'content-type': 'text/html; charset=utf-8' }).end(req.method === 'HEAD' ? undefined : WINDOW_HTML);
+      return;
+    }
+    if (path === `${ROUTE_PREFIX}/play/boot.js`) {
+      res.writeHead(200, { ...head, 'content-type': 'text/javascript; charset=utf-8' }).end(req.method === 'HEAD' ? undefined : BOOT_JS);
+      return;
+    }
+    if (path === `${ROUTE_PREFIX}/play/client.js`) {
+      if (!CLIENT_JS) {
+        res.writeHead(404).end();
+        return;
+      }
+      await serveFile(req, res, CLIENT_JS, 'text/javascript; charset=utf-8', 'no-cache').catch(() => { if (!res.headersSent) res.writeHead(500).end(); else res.destroy(); });
+      return;
+    }
+  }
+  if (path.startsWith(musicPrefix)) {
+    let name = '';
+    try { name = decodeURIComponent(path.slice(musicPrefix.length)); } catch { /* 壞掉的網址 → 404 */ }
+    if (!MUSIC_DIR || !name) {
+      res.writeHead(404).end();
+      return;
+    }
+    await serveMusic(req, res, MUSIC_DIR, MUSIC_OK, name).catch(() => { if (!res.headersSent) res.writeHead(500).end(); else res.destroy(); });
+    return;
+  }
   if (req.method !== 'POST') {
     sendJson(res, 405, { error: '只接受 POST' });
     return;
@@ -120,6 +211,7 @@ async function handleBridgeRoute(api: PetApi, req: IncomingMessage, res: ServerR
     return;
   }
   const method = decodeURIComponent(url.pathname.slice(ROUTE_PREFIX.length + 1));
+  lastClientAt = Date.now(); // 有遊戲畫面在跑（DSH 裡或獨立視窗）
   try {
     const body = await readJsonBody(req);
     sendJson(res, 200, await handleBridgeCall(api, method, body));
@@ -156,6 +248,12 @@ export function apply(ctx: Context, config: Config) {
     const api = ctx.whalePet;
     const webServer = (ctx as unknown as { webServer: WebServerService }).webServer;
     const tools = (ctx as unknown as { tools: ToolsService }).tools;
+    // V0.25：開獨立視窗時用 DSH 自己的對外位址，不讀瀏覽器送來的 Host
+    try {
+      originOverride = typeof webServer.getOrigin === 'function' ? webServer.getOrigin() : null;
+    } catch {
+      originOverride = null;
+    }
 
     // 1. 瀏覽器 → host：POST /api/dsh-whale-valley/<方法>（對應 bridge-dsh.ts 的 fetchTransport）
     //    webServer 是 node:http 載體，handler 自己讀 body、自己寫 response；
@@ -171,7 +269,7 @@ export function apply(ctx: Context, config: Config) {
         }),
       'dsh-whale-valley: bridge route',
     );
-    console.info(`[whale-pet] 通道已註冊：POST ${ROUTE_PREFIX}/<visit|getView|setScene|poke|act|gameplay|chat>`);
+    console.info(`[whale-pet] 通道已註冊：POST ${ROUTE_PREFIX}/<visit|getView|setScene|poke|act|gameplay|chat>、GET ${ROUTE_PREFIX}/music/<檔名>、GET ${ROUTE_PREFIX}/play（獨立視窗）${MUSIC_DIR ? '' : '（找不到音樂資料夾，DSH 裡不會有背景音樂）'}`);
 
     // 2. tool：讓模型查狀態、幫忙餵她／澆水／收成
     for (const t of whalePetTools(api)) {

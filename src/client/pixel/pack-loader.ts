@@ -41,7 +41,12 @@ export interface LoadedPixelPack {
   musicUrls(src: string): string[];
 }
 
-export async function loadPixelPack(src: PackSource): Promise<LoadedPixelPack> {
+export interface LoadPackOptions {
+  /** V0.22：音樂檔的網址前綴（DSH 版：'/api/dsh-whale-valley/music/'，由 host 提供檔案） */
+  musicBase?: string;
+}
+
+export async function loadPixelPack(src: PackSource, opts: LoadPackOptions = {}): Promise<LoadedPixelPack> {
   const world = (await src.json('scenes.json')) as PixelWorldFile;
   const character = (await src.json('character.json')) as PixelCharacterFile;
   const maps: Record<string, MapModel> = {};
@@ -105,6 +110,8 @@ export async function loadPixelPack(src: PackSource): Promise<LoadedPixelPack> {
     music,
     musicUrls(p) {
       const out: string[] = [];
+      const file = p.split('/').pop();
+      if (opts.musicBase && file) out.push(opts.musicBase + encodeURIComponent(file));
       try {
         out.push(src.asset(p));
       } catch {

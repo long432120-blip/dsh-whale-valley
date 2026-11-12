@@ -6,10 +6,11 @@
 import type { GameAction, GameplayFile } from '../shared/gameplay-types.ts';
 import type { ActResult, HostBridge, PetView, SceneId } from '../shared/types.ts';
 import type { ChatReply, ChatRequest } from '../shared/ai.ts';
+import { SLOT_COUNT, type SlotInfo } from '../shared/save-slots.ts';
 
-export type BridgeMethod = 'visit' | 'getView' | 'setScene' | 'poke' | 'act' | 'gameplay' | 'chat';
+export type BridgeMethod = 'visit' | 'getView' | 'setScene' | 'poke' | 'act' | 'gameplay' | 'chat' | 'slotList' | 'slotSave' | 'slotLoad' | 'slotRemove' | 'newGame';
 /** 呼叫 host 的某個方法；回傳值依方法不同（PetView / ActResult / GameplayFile） */
-export type Transport = (method: BridgeMethod, args?: { sceneId?: SceneId; action?: GameAction; request?: ChatRequest }) => Promise<unknown>;
+export type Transport = (method: BridgeMethod, args?: { sceneId?: SceneId; action?: GameAction; request?: ChatRequest; slot?: number }) => Promise<unknown>;
 
 export function createDshBridge(call: Transport): HostBridge {
   return {
@@ -24,6 +25,15 @@ export function createDshBridge(call: Transport): HostBridge {
     chat: (req) => {
       const { snapshot: _drop, ...request } = req;
       return (call('chat', { request }) as Promise<ChatReply>).catch(() => ({ ok: false, reason: 'network' }) as ChatReply);
+    },
+    // V0.23：存檔格放在 host 的存檔資料夾（slots/）
+    slots: {
+      count: SLOT_COUNT,
+      list: () => call('slotList') as Promise<SlotInfo[]>,
+      save: (slot) => call('slotSave', { slot }) as Promise<SlotInfo[]>,
+      load: (slot) => call('slotLoad', { slot }) as Promise<PetView>,
+      remove: (slot) => call('slotRemove', { slot }) as Promise<SlotInfo[]>,
+      newGame: () => call('newGame') as Promise<PetView>,
     },
   };
 }

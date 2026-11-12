@@ -232,8 +232,8 @@ export const PIXEL_CSS = /* css */ `
 .px-side-toggle{border:2px solid #6b3f22;background:#fff3d6;color:#4a2b17;border-radius:6px;padding:0 .5em;font:inherit;font-size:13px;line-height:1.6;cursor:pointer}
 .px-side-toggle:hover{background:#fff}
 .px-side .px-hud{position:static;min-width:0;font-size:13px;background:#fff3d6}
-.px-side .px-hud-btns{position:static;display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px;flex-direction:row}
-.px-side .px-bag-btn{position:static;width:100%;max-width:48px;justify-self:center;font-size:21px}
+.px-side .px-hud-btns{position:static;display:grid;grid-template-columns:repeat(auto-fill,minmax(34px,1fr));gap:5px;flex-direction:row}
+.px-side .px-bag-btn{position:static;width:100%;max-width:44px;justify-self:center;font-size:19px}
 .px-side .px-quest{position:static;max-width:none;width:100%;font-size:13px;white-space:normal}
 .px-side-status{display:grid;gap:5px}
 .px-side-status:empty{display:none}
@@ -264,7 +264,8 @@ export const PIXEL_CSS = /* css */ `
 /* 收合時提示還是要看得到：浮在側邊欄左邊 */
 .px-side-collapsed .px-toasts{position:absolute;right:calc(100% + 8px);bottom:8px;width:max-content;max-width:300px;margin:0;z-index:5}
 /* 窄的時候：側邊欄排到地圖下面 */
-@container (max-width: 620px){
+/* V0.22：860px 以下就排上下（之前是 620px）。620～860px 並排時地圖只能 1 倍（320×192），側邊欄也只剩 200px 高、按鈕要捲才看得到 */
+@container (max-width: 860px){
   .px-shell{flex-direction:column}
   .px-shell>.px-stage{width:100%}
   .px-side{flex:0 0 auto;height:300px;max-width:none}
@@ -465,6 +466,37 @@ export const PIXEL_CSS = /* css */ `
   animation:px-fadein .15s ease-out;transition:opacity .35s}
 .px-modal-toast.err{background:#8a2a2a;border-color:#5a1414}
 .px-modal-toast.hide{opacity:0}
+/* V0.23：遊戲選單（畫面正中央）、存檔格、結束畫面 */
+.px-menu-open{position:absolute;left:1.2%;top:2%;z-index:2;width:clamp(28px,4.2cqw,40px);aspect-ratio:1;border:3px solid #6b3f22;border-radius:8px;
+  background:rgba(255,243,214,.92);color:#4a2b17;font:700 clamp(15px,2.2cqw,21px)/1 system-ui,sans-serif;cursor:pointer;box-shadow:0 3px 0 rgba(0,0,0,.3);padding:0}
+.px-menu-open:hover{background:#fff}
+.px-menu-open:active{translate:0 2px;box-shadow:0 1px 0 rgba(0,0,0,.3)}
+.px-menu{position:relative}
+.px-menu-status{text-align:center;font-weight:700;color:#6b3f22;margin-bottom:.4em}
+.px-menu-list{display:flex;flex-direction:column;gap:9px;max-width:340px;margin:.4em auto}
+.px-menu-btn-row{width:100%;text-align:center}
+.px-big-btn.primary{background:#ffd86b;color:#2a1a10}
+.px-big-btn.danger{background:#f6c4bf;color:#6d1a14}
+.px-menu-tip{text-align:center;margin-top:.6em}
+.px-menu-msg{margin:.2em auto .6em;max-width:420px;padding:.35em .7em;border-radius:6px;font-weight:700;text-align:center}
+.px-menu-msg.ok{background:#e3f6dd;border:2px solid #4c9a3f;color:#25551d}
+.px-menu-msg.err{background:#ffecec;border:2px solid #e5484d;color:#a82326}
+.px-menu-confirm{font-size:1.1em;font-weight:800;text-align:center;margin:.6em 0 .4em}
+.px-slot-list{display:grid;gap:8px}
+.px-slot{border:3px solid #d9b98a;border-radius:8px;background:#fffaf0;padding:.45em .6em;display:grid;gap:.3em}
+.px-slot.empty{opacity:.85;background:#fff6e2}
+.px-slot.broken{border-color:#e5484d}
+.px-slot-head{display:flex;align-items:baseline;gap:.6em}
+.px-slot-time{color:#8a6a4a;font-size:.92em}
+.px-slot-line{font-size:.95em}
+.px-slot-btns{display:flex;gap:6px;flex-wrap:wrap}
+.px-slot-btns .px-trade-btn,.px-slot-btns button{flex:1 1 auto}
+.px-slot-del{flex:0 0 auto !important}
+.px-goodbye{display:grid;justify-items:center;gap:.8em;padding:3em 1.5em;margin:1em auto;max-width:520px;background:#fff3d6;border:4px solid #6b3f22;
+  border-radius:12px;box-shadow:inset 0 0 0 3px #e9c48a,0 6px 0 rgba(0,0,0,.35);color:#4a2b17;text-align:center;font-family:system-ui,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif}
+.px-goodbye-whale{font-size:56px;line-height:1}
+.px-goodbye-title{font-size:1.4em;font-weight:800}
+.px-goodbye-text{max-width:30em;line-height:1.6}
 .px-copy-btn{white-space:nowrap}
 .px-chat-banner{font-size:.85em;padding:.35em .55em;border-radius:6px;background:#fff1c9;border:2px dashed #c99a6a;margin-bottom:.4em}
 .px-chat-banner.server{background:#e4f7dd;border-style:solid;border-color:#7cb36a}

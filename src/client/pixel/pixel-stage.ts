@@ -32,6 +32,8 @@ import { devLog, isDevMode } from '../dev-flag.ts';
 import { i18n, I18nManager, t, type Locale } from '../i18n.ts';
 import type { ShellApi } from '../game-shell.ts';
 import { encodeInvite, type VisitBridge } from '../visit.ts';
+import { buildGameMenu, type MenuView } from './ui-menu.ts';
+import type { SlotInfo } from '../../shared/save-slots.ts';
 import { buildAdoption, buildChat, buildLetterComposer, buildMailbox, buildMarket, buildSettings, buildVisitModal, copyToClipboard, modalToast, type MarketTab, type VisitTab } from './ui-social.ts';
 import { SeasonFx } from './season-fx.ts';
 import { lateNightDue, parseLateNight } from '../../shared/late-night.ts';
@@ -50,6 +52,10 @@ export interface PixelStageOptions {
   onView?: (view: PetView) => void;
   /** V0.22：外殼（串門切換、聊天室）；沒有就沒有這些功能 */
   shell?: ShellApi;
+  /** V0.23：畫面開好後顯示一次的提示（例如「讀取了第 2 格」） */
+  toast?: string;
+  /** V0.23：按「🚪 結束遊戲」時要做的事（DSH 全螢幕：關掉；獨立視窗：關視窗）；沒給就顯示「可以關掉分頁了」 */
+  onExit?: () => void;
 }
 
 export interface PixelStageHandle {
@@ -236,12 +242,21 @@ export async function mountPixelStage(root: HTMLElement, opts: PixelStageOptions
   const clockHud = gdefs && world.hud?.clock ? new ClockHud(stage, world.hud.clock, (p) => pack.asset(p), canvas) : null;
   const outdoor = new Set(world.scenes.filter((s) => s.outdoor).map((s) => s.id));
   stage.append(dialog.el); // 對話框疊在狀態列上面
+  // V0.23：畫面左上角的 ☰（遊戲選單：存檔／讀檔、開新遊戲、結束遊戲）；Esc 也能打開
+  const menuOpenBtn = doc.createElement('button');
+  menuOpenBtn.type = 'button';
+  menuOpenBtn.className = 'px-menu-open';
+  menuOpenBtn.textContent = '☰';
+  menuOpenBtn.title = t('menu.open');
+  menuOpenBtn.setAttribute('aria-label', t('menu.open'));
+  menuOpenBtn.addEventListener('click', () => toggleMenu());
+  stage.append(menuOpenBtn);
   const modeHost = el('px-side-status'); // 戰鬥血量、裝修模式的提示放這裡（任務框在它前面）
   sideInner.append(modeHost);
   // V0.6.2：系統面板（揹包、圖鑑、寵物、地圖、禮物碼）在側邊欄；
   // 跟地圖上的東西互動（商店、機器、動物、礦洞、送禮、睡覺、捕捉…）用畫面中央的模態視窗
   // 世界地圖也用大視窗：側邊欄太窄，地點會擠在一起
-  const MODAL_KINDS = new Set(['shop', 'sell', 'unlock', 'machine', 'animals', 'mine', 'report', 'sleep', 'catch', 'gift', 'worldmap', 'arcade', 'cards', 'catalog', 'meal', 'diary', 'aikey', 'market', 'visit']);
+  const MODAL_KINDS = new Set(['shop', 'sell', 'unlock', 'machine', 'animals', 'mine', 'report', 'sleep', 'catch', 'gift', 'worldmap', 'arcade', 'cards', 'catalog', 'meal', 'diary', 'aikey', 'market', 'visit', 'menu']);
   const sidePanel = new Panel(sideInner);
   const modal = new Modal(shell);
   /** 兩個面板合起來的介面：其他程式只要說「開哪一種」，這裡決定開在側邊欄還是模態視窗 */
@@ -4414,6 +4429,76 @@ export async function mountPixelStage(root: HTMLElement, opts: PixelStageOptions
     }));
   }
 
+  // ☰ 遊戲選單（畫面正中央）：繼續、存檔／讀檔、開新遊戲、設定、結束遊戲（V0.23）
+  let pendingToast: string | null = opts.toast ?? null;
+  let menuView: MenuView = 'main';
+  let menuSlots: SlotInfo[] | null = null;
+  let menuBusy = false;
+  let menuMsg: { text: string; kind: 'ok' | 'err' } | null = null;
+  function toggleMenu() {
+    if (modal.kind === 'menu') return modal.close();
+    menuView = 'main';
+    menuMsg = null;
+    showPanel('menu', renderMenu, () => { menuMsg = null; });
+  }
+  async function menuRun<T>(job: () => Promise<T>, okText: string | null): Promise<T | undefined> {
+    if (menuBusy) return undefined;
+    menuBusy = true;
+    menuMsg = null;
+    renderMenu();
+    try {
+      const r = await job();
+      if (okText) menuMsg = { text: okText, kind: 'ok' };
+      return r;
+    } catch (err) {
+      warn('menu')(err);
+      menuMsg = { text: t('menu.fail'), kind: 'err' };
+      return undefined;
+    } finally {
+      menuBusy = false;
+      if (!disposed && modal.kind === 'menu') renderMenu();
+    }
+  }
+  function menuSetView(v: MenuView) {
+    menuView = v;
+    menuMsg = null;
+    if (v === 'slots' && bridge.slots) void menuRun(async () => { menuSlots = await bridge.slots!.list(); }, null);
+    else renderMenu();
+  }
+  /** 讀檔、開新遊戲後：整個畫面用新的存檔重新開（地圖、她的位置、面板都重來） */
+  async function afterSwitch(toast: string) {
+    modal.close();
+    if (opts.shell) await opts.shell.reload(toast);
+    else {
+      toasts.show(toast);
+      await refresh();
+    }
+  }
+  function renderMenu() {
+    const g = view?.game;
+    const status = g ? [g.season ? `${g.season.emoji} ${g.season.name} ${t('menu.day', { n: g.season.day })}` : '', `🪙 ${g.coins.toLocaleString()}`, `❤ ${g.affection}`].filter(Boolean).join('・') : '';
+    const content = buildGameMenu(doc, {
+      view: menuView,
+      visiting: visiting ? { nick: visiting.visiting.nick } : null,
+      hasSlots: !!bridge.slots,
+      slots: menuSlots,
+      busy: menuBusy,
+      status,
+      message: menuMsg,
+      canSettings: !!social && !visiting,
+      onView: menuSetView,
+      onContinue: () => modal.close(),
+      onSave: (n) => void menuRun(async () => { menuSlots = await bridge.slots!.save(n); menuView = 'slots'; }, t('menu.saved', { n })),
+      onLoad: (n) => void menuRun(async () => { await bridge.slots!.load(n); await afterSwitch(t('menu.loaded', { n })); }, null),
+      onRemove: (n) => void menuRun(async () => { menuSlots = await bridge.slots!.remove(n); menuView = 'slots'; }, t('menu.removed', { n })),
+      onNewGame: () => void menuRun(async () => { await bridge.slots!.newGame(); await afterSwitch(t('menu.newDone')); }, null),
+      onSettings: () => { modal.close(); toggleSettings(); },
+      onHome: () => { modal.close(); void opts.shell?.goHome(); },
+      onExit: () => { modal.close(); opts.shell?.exit(); },
+    });
+    openPanel('menu', t('menu.title'), content);
+  }
+
   // 🏡 串門視窗（畫面正中央，半透明黑幕）：生成我的邀請碼／輸入朋友的邀請碼
   function openVisit(tab: VisitTab) {
     if (!social || visiting) return;
@@ -4770,7 +4855,8 @@ export async function mountPixelStage(root: HTMLElement, opts: PixelStageOptions
     } else if (e.key === 'Escape') {
       if (panel.isOpen) panel.close();
       else if (decorMode) setDecorMode(false);
-      else dialog.close();
+      else if (dialog.open) dialog.close();
+      else toggleMenu(); // V0.23：什麼都沒開時，Esc 打開遊戲選單
     } else if ((e.key === 'b' || e.key === 'B') && gdefs) toggleBag();
     else if ((e.key === 'c' || e.key === 'C') && gdefs) toggleCodex();
     else if ((e.key === 'r' || e.key === 'R') && gdefs) toggleDecorMode();
@@ -4841,6 +4927,7 @@ export async function mountPixelStage(root: HTMLElement, opts: PixelStageOptions
     if (gdefs) onQuestView(v);
     const notice = bridge.takeNotice?.(); // V0.21：存檔壞掉自動重開時，跟玩家說一聲
     if (notice) toasts.show(notice, 8000);
+    if (pendingToast) { toasts.show(pendingToast, 4000); pendingToast = null; } // V0.23：讀檔、開新遊戲後的提示
     if (gdefs && v.game) onWishView(v.game); // V0.18
     if (v.game) onStatView(v.game.stats);
     if (v.game?.farmReport) showFarmReport(v.game.farmReport);

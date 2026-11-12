@@ -6,6 +6,7 @@ import * as rules from '../shared/state.ts';
 import type { ActResult, HostBridge, PetSave, PetView, SceneId } from '../shared/types.ts';
 import type { AiFile, ChatReply, ChatRequest } from '../shared/ai.ts';
 import { AIChatService, type AIChatServiceOptions, type PlayerAiSettings } from './ai-browser.ts';
+import { SLOT_COUNT, makeSlotFile, parseSlotFile, slotInfo, validSlot, type SlotApi, type SlotInfo } from '../shared/save-slots.ts';
 
 export class LocalBridge implements HostBridge {
   private readonly defs?: GameplayDefs;
@@ -145,6 +146,68 @@ export class LocalBridge implements HostBridge {
     }
   }
 
+  // ── V0.23：存檔格（localStorage 的 <key>:slot:1～3）與開新遊戲 ──
+  readonly slots: SlotApi = {
+    count: SLOT_COUNT,
+    list: async () => this.listSlots(),
+    save: async (slot) => {
+      if (!validSlot(slot)) throw new Error('bad slot');
+      const now = this.now();
+      const cur = rules.tick(this.load(now), now, this.defs);
+      if (!safeSet(`${this.key}:slot:${slot}`, JSON.stringify(makeSlotFile(cur, now)))) throw new Error('storage');
+      return this.listSlots();
+    },
+    load: async (slot) => {
+      if (!validSlot(slot)) throw new Error('bad slot');
+      const file = parseSlotFile(safeGet(`${this.key}:slot:${slot}`));
+      if (!file) throw new Error('empty');
+      const now = this.now();
+      this.backupCurrent();
+      // 讀進來的存檔從「現在」開始算，不會一口氣補算存檔之後經過的時間
+      const loaded = rules.migrate(file.save, now, this.initialScene, this.defs);
+      const fresh: PetSave = { ...loaded, lastTickAt: now, lastSeenAt: now };
+      this.save(fresh);
+      return rules.toView(fresh, now, 0, this.defs);
+    },
+    remove: async (slot) => {
+      if (!validSlot(slot)) throw new Error('bad slot');
+      safeRemove(`${this.key}:slot:${slot}`);
+      return this.listSlots();
+    },
+    newGame: async () => {
+      this.backupCurrent();
+      safeRemove(this.key);
+      safeRemove(`${this.key}:offset`);
+      const now = this.now();
+      const fresh = rules.migrate(null, now, this.initialScene, this.defs);
+      this.save(fresh);
+      return rules.toView(fresh, now, 0, this.defs);
+    },
+  };
+  private listSlots(): SlotInfo[] {
+    const now = this.now();
+    const out: SlotInfo[] = [];
+    for (let slot = 1; slot <= SLOT_COUNT; slot++) {
+      const text = safeGet(`${this.key}:slot:${slot}`);
+      const file = text == null ? null : parseSlotFile(text);
+      let view: PetView | null = null;
+      try {
+        if (file) view = rules.toView(rules.migrate(file.save, now, this.initialScene, this.defs), now, 0, this.defs);
+      } catch {
+        view = null;
+      }
+      out.push(slotInfo(slot, file, view, text != null && !view));
+    }
+    return out;
+  }
+  /** 讀檔、開新遊戲前：目前進度先備份一份到 <key>:backup */
+  private backupCurrent(): void {
+    const text = safeGet(this.key);
+    if (!text) return;
+    safeSet(`${this.key}:backup`, text);
+    safeSet(`${this.key}:backup-at`, new Date().toISOString());
+  }
+
   // ── 以下是開發者用的（頁面網址加 ?dev 才看得到按鈕）；重置存檔玩家也能用 ──
   debugAdvance(ms: number): void {
     safeSet(`${this.key}:offset`, String(this.offset + ms));
@@ -179,8 +242,9 @@ function aiEndpoint(): string | null {
 function safeGet(k: string): string | null {
   try { return localStorage.getItem(k); } catch { return null; }
 }
-function safeSet(k: string, v: string): void {
-  try { localStorage.setItem(k, v); } catch { /* ignore */ }
+/** 存不下（容量滿了、無痕模式）回傳 false */
+function safeSet(k: string, v: string): boolean {
+  try { localStorage.setItem(k, v); return true; } catch { return false; }
 }
 function safeRemove(k: string): void {
   try { localStorage.removeItem(k); } catch { /* ignore */ }
