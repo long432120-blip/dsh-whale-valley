@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "maxChars": 50,
+  "keep": 60,
+  "facts": {
+    "married": "我們結婚了",
+    "wish": "主人幫我實現了願望",
+    "legendary": "主人釣到傳說中的{item}",
+    "firstFish": "第一次釣到{item}",
+    "levelUp": "跟主人變成「{level}」了",
+    "petCaught": "家裡多了新朋友{name}",
+    "fish": "釣到{n}條魚，有{item}",
+    "harvested": "收成了{n}個{item}",
+    "planted": "種了{n}顆{item}",
+    "fed": "主人餵我吃了{item}",
+    "gifted": "送禮物給{npc}",
+    "mine": "去礦洞探險到{floor}樓",
+    "tavernWin": "在酒館贏了{n}次",
+    "played": "玩了{n}分鐘{item}",
+    "headpat": "被主人摸摸頭了",
+    "bathed": "泡了暖呼呼的澡",
+    "snacked": "偷吃了{n}份零食",
+    "fridge": "在冰箱找到{item}",
+    "foraged": "撿到{item}",
+    "animals": "照顧了牧場的動物",
+    "furniture": "家裡多了{item}",
+    "sold": "賣東西賺了{n}金幣",
+    "watered": "幫田澆了{n}次水",
+    "talked": "跟{npc}聊天"
+  },
+  "weather": {
+    "sunny": "天氣很好。",
+    "rainy": "下雨了。",
+    "storm": "打雷了，好可怕。",
+    "snowy": "下雪了，外面白白的。"
+  },
+  "openers": [
+    "今天{weather}",
+    "{weather}"
+  ],
+  "closers": [
+    "好開心～",
+    "明天也要跟主人一起！",
+    "噗嚕～好睏，晚安。",
+    "最喜歡主人了。"
+  ],
+  "empty": [
+    "今天黏在主人身邊發呆，也很好～",
+    "今天好安靜，靠著主人睡午覺。"
+  ]
+}

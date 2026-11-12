@@ -1,0 +1,21 @@
+{
+  "_note": "V0.14 背景音樂。rules 由上往下，第一條符合的就播那首；條件沒寫 = 不限。scenes 場景 id、outdoor 是不是戶外、weather 天氣 id、phases 時段（morning／afternoon／evening／night）。音樂檔放在角色包的 music/ 資料夾（單機版放在 html 旁邊的 music/）。",
+  "version": 1,
+  "volume": 0.45,
+  "fadeMs": 1500,
+  "tracks": {
+    "farm-day": {"src": "music/farm-day.mp3", "name": "農場白天"},
+    "night-room": {"src": "music/night-room.mp3", "name": "夜晚房間"},
+    "rain": {"src": "music/rain.mp3", "name": "下雨"},
+    "mine": {"src": "music/mine.mp3", "name": "礦洞冒險"},
+    "tavern": {"src": "music/tavern.mp3", "name": "酒館"}
+  },
+  "rules": [
+    {"track": "tavern", "scenes": ["tavern"]},
+    {"track": "mine", "scenes": ["mine"]},
+    {"track": "rain", "weather": ["rainy", "storm"], "outdoor": true},
+    {"track": "night-room", "phases": ["evening", "night"], "outdoor": false},
+    {"track": "night-room", "phases": ["night"]},
+    {"track": "farm-day"}
+  ]
+}

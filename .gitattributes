@@ -1,0 +1,13 @@
+# 文字檔一律用 LF 存進 Git（Windows 上 checkout 會自動轉回 CRLF，不會每次都整份變動）
+* text=auto eol=lf
+# 二進位檔不要動
+*.png binary
+*.webp binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.mp3 binary
+*.zip binary
+*.tgz binary
+# 編譯產物：GitHub 上不顯示 diff、不算進語言統計
+lib/** linguist-generated=true -diff

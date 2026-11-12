@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "bath": {"stamina": 30, "affection": 3, "cooldownHours": 6, "swimSeconds": 15},
+  "play": {
+    "games": {"console": {"name": "電視遊樂器", "emoji": "🎮"}, "arcade": {"name": "街機", "emoji": "🕹️"}},
+    "affectionPerHour": 4,
+    "maxAffectionPerSession": 10,
+    "staminaPerHour": 8,
+    "maxHours": 8,
+    "levelsPerHour": 6,
+    "afkMinutes": 3
+  },
+  "lines": {
+    "bathIn": ["呼～熱水好舒服……", "泡完澡全身都暖呼呼的！", "小鯨魚玩具在水上漂來漂去～", "泡溫泉最棒了，累都不見了！"],
+    "bathCooldown": ["剛剛才泡過，再泡會頭暈啦～", "手指都泡皺了，晚點再來！"],
+    "playStart": ["好耶！來玩{game}！", "這一關今天一定要破！", "主人要一起玩嗎？我先開始囉～"],
+    "playing": ["再一關就好……", "哇，差一點！", "這個魔王好強！", "衝衝衝～", "嘿嘿，破紀錄了！", "存檔、存檔……", "左、左、右、跳！"],
+    "playEnd": ["我玩了 {minutes} 分鐘，打到第 {level} 關！", "主人回來了！我剛剛打到第 {level} 關喔～", "玩了 {minutes} 分鐘，眼睛有點酸，但好開心！"],
+    "playQuit": ["欸？才剛開始耶……好吧，不玩了～", "好啦好啦，存個檔就不玩了！"],
+    "afkGo": ["主人好像在忙……那我去遊戲室玩一下喔！", "沒人陪我，我自己去打電動囉～", "主人不理我，我去破關了！"],
+    "swim": ["嘩啦嘩啦～", "水溫剛剛好！", "看我的鯨魚泳！", "咕嚕咕嚕…吐泡泡～", "主人也要一起游嗎？"]
+  },
+  "snacks": {
+    "snack": {
+      "name": "零食桌",
+      "emoji": "🍪",
+      "perDay": 3,
+      "satiety": 12,
+      "stamina": 6,
+      "affection": 1,
+      "lines": ["喀滋喀滋～洋芋片最配電動了！", "餅乾一片……再一片就好！", "啊嗚！巧克力融在嘴巴裡了～", "零食時間！主人也吃一口？"]
+    }
+  },
+  "fridge": {
+    "perDay": 1,
+    "finds": [
+      {"item": "food_cheese", "weight": 3},
+      {"item": "food_jam", "weight": 2},
+      {"item": "crop_tomato", "weight": 3, "count": 2},
+      {"item": "crop_carrot", "weight": 3, "count": 2},
+      {"item": "forage_berry", "weight": 3, "count": 3},
+      {"item": "food_pickle", "weight": 2},
+      {"item": "drink_soda", "weight": 2},
+      {"item": "food_pancake", "weight": 1}
+    ],
+    "lines": {
+      "found": ["冰箱裡有{item}！冰冰涼涼的～", "哇，找到{item}了！今天的運氣不錯～", "咦，冰箱深處還藏著{item}！"],
+      "empty": ["冰箱嗡嗡嗡……今天的寶藏已經被我找到了啦。", "好冰！關起來關起來～明天再來找找看。", "冰箱說：明天再來吧。"]
+    }
+  },
+  "headpat": {
+    "clicks": 3,
+    "windowMs": 1500,
+    "affection": 1,
+    "perDay": 3,
+    "lines": ["欸嘿嘿……被摸頭了～", "主人的手好溫暖……再一下下就好。", "咕嚕咕嚕……好舒服喔～", "頭、頭髮會亂掉啦……不過可以喔。", "噗嚕～最喜歡主人摸摸頭了！", "再摸下去，我會變成一灘水母喔……"]
+  }
+}

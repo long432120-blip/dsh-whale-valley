@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "id": "whale-girl",
+  "name": "鯨魚娘",
+  "sprites": {
+    "idle": { "src": "assets/whale-girl-idle.webp", "frames": 12, "fps": 8 }
+  },
+  "facing": "front",
+  "heightPct": 42,
+  "speed": 6,
+  "idleMs": [1800, 4500],
+  "walkBob": true,
+  "bubble": { "durationMs": 2600 },
+  "lines": [
+    { "text": "咕嚕咕嚕～", "weight": 2 },
+    { "text": "主人今天想吃魚嗎？" },
+    { "text": "噗嚕…吐個泡泡給你看！" },
+    { "text": "摸頭要輕一點喔～" },
+    { "text": "房間好溫暖，想睡午覺了…", "scenes": ["room"] },
+    { "text": "池塘裡的小魚是我的朋友！", "scenes": ["garden"] },
+    { "text": "花開了耶，主人快看！", "scenes": ["garden"] },
+    { "text": "早安，主人！今天也要元氣滿滿～", "phases": ["morning"] },
+    { "text": "呼啊…該睡覺了嗎？", "phases": ["night"], "weight": 2 },
+
+    { "text": "外面的空氣好好～", "on": ["enter"], "scenes": ["garden"] },
+    { "text": "晚上的池塘會發光喔…", "on": ["enter"], "scenes": ["garden"], "phases": ["night"], "weight": 3 },
+    { "text": "回家囉！", "on": ["enter"], "scenes": ["room"] },
+
+    { "text": "主人終於回來了！我等好久了～", "on": ["welcome"] }
+  ]
+}

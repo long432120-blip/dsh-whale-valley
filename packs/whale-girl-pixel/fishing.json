@@ -1,0 +1,324 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "fish_shrimp",
+      "name": "小蝦",
+      "emoji": "🦐",
+      "category": "fish",
+      "description": "池塘裡最常見的小傢伙。",
+      "food": {"satiety": 8, "affection": 2},
+      "price": 15
+    },
+    {
+      "id": "fish_bass",
+      "name": "鱸魚",
+      "emoji": "🐟",
+      "category": "fish",
+      "description": "肉很結實，鯨魚娘的日常主食。",
+      "food": {"satiety": 25, "affection": 3},
+      "price": 40
+    },
+    {
+      "id": "fish_carp",
+      "name": "錦鯉",
+      "emoji": "🎏",
+      "category": "fish",
+      "description": "顏色很漂亮，據說會帶來好運。",
+      "food": {"satiety": 20, "affection": 3},
+      "price": 50
+    },
+    {
+      "id": "fish_puffer",
+      "name": "河豚",
+      "emoji": "🐡",
+      "category": "fish",
+      "description": "傍晚以後才會出現。鯨魚娘的最愛！",
+      "food": {"satiety": 15, "affection": 5},
+      "price": 120,
+      "rarity": "epic"
+    },
+    {
+      "id": "fish_tropical",
+      "name": "熱帶魚",
+      "emoji": "🐠",
+      "category": "fish",
+      "description": "只有夏天會游到池塘來。",
+      "food": {"satiety": 18, "affection": 4},
+      "price": 80
+    },
+    {
+      "id": "fish_crab",
+      "name": "螃蟹",
+      "emoji": "🦀",
+      "category": "fish",
+      "description": "下雨天才會爬出來。",
+      "food": {"satiety": 22, "affection": 4},
+      "price": 70
+    },
+    {
+      "id": "fish_octopus",
+      "name": "章魚",
+      "emoji": "🐙",
+      "category": "fish",
+      "description": "晚上才出沒，滑溜溜的。",
+      "food": {"satiety": 28, "affection": 4},
+      "price": 90,
+      "rarity": "epic"
+    },
+    {
+      "id": "fish_squid",
+      "name": "魷魚",
+      "emoji": "🦑",
+      "category": "fish",
+      "description": "冬天限定。",
+      "food": {"satiety": 24, "affection": 4},
+      "price": 75
+    },
+    {
+      "id": "fish_mackerel",
+      "name": "鯖魚",
+      "emoji": "🐟",
+      "category": "fish",
+      "description": "海邊最常見的魚。",
+      "food": {"satiety": 20, "affection": 3},
+      "price": 60
+    },
+    {
+      "id": "fish_lobster",
+      "name": "龍蝦",
+      "emoji": "🦞",
+      "category": "fish",
+      "description": "海邊的高級貨，老陳最愛。",
+      "food": {"satiety": 30, "affection": 6},
+      "price": 220,
+      "rarity": "epic"
+    },
+    {
+      "id": "fish_jellyfish",
+      "name": "水母",
+      "emoji": "🪼",
+      "category": "fish",
+      "description": "夏天晚上的海邊才有。",
+      "food": {"satiety": 5, "affection": 2},
+      "price": 150,
+      "rarity": "epic"
+    },
+    {
+      "id": "fish_shark",
+      "name": "鯊魚",
+      "emoji": "🦈",
+      "category": "fish",
+      "description": "夏天的海邊偶爾會出現。",
+      "food": {"satiety": 40, "affection": 6},
+      "price": 400,
+      "rarity": "legendary"
+    },
+    {
+      "id": "fish_trout",
+      "name": "鱒魚",
+      "emoji": "🐟",
+      "category": "fish",
+      "description": "河邊常見。",
+      "food": {"satiety": 20, "affection": 3},
+      "price": 55
+    },
+    {
+      "id": "fish_salmon",
+      "name": "鮭魚",
+      "emoji": "🍣",
+      "category": "fish",
+      "description": "秋天逆流而上。",
+      "food": {"satiety": 28, "affection": 5},
+      "price": 120,
+      "rarity": "epic"
+    },
+    {
+      "id": "fish_eel",
+      "name": "鰻魚",
+      "emoji": "🐍",
+      "category": "fish",
+      "description": "雨天或晚上的河邊。",
+      "food": {"satiety": 30, "affection": 5},
+      "price": 160,
+      "rarity": "epic"
+    },
+    {
+      "id": "fish_goldfish",
+      "name": "金魚",
+      "emoji": "🐠",
+      "category": "fish",
+      "description": "自己蓋的魚塘裡才有。",
+      "food": {"satiety": 8, "affection": 3},
+      "price": 90
+    },
+    {
+      "id": "fish_sunfish",
+      "name": "翻車魚",
+      "emoji": "🐡",
+      "category": "fish",
+      "description": "海灘祭當天限定。",
+      "food": {"satiety": 35, "affection": 8},
+      "price": 600,
+      "rarity": "legendary"
+    },
+    {
+      "id": "fish_icefish",
+      "name": "冰魚",
+      "emoji": "🧊",
+      "category": "fish",
+      "description": "冰釣大會當天限定。",
+      "food": {"satiety": 20, "affection": 8},
+      "price": 600,
+      "rarity": "legendary"
+    },
+    {
+      "id": "fish_koi_king",
+      "name": "錦鯉王",
+      "emoji": "🎏",
+      "category": "fish",
+      "rarity": "legendary",
+      "description": "傳說住在池塘最深處的金色鯉魚。",
+      "food": {"satiety": 40, "affection": 10},
+      "price": 1500
+    },
+    {
+      "id": "fish_oarfish",
+      "name": "皇帶魚",
+      "emoji": "🐉",
+      "category": "fish",
+      "rarity": "legendary",
+      "description": "只在雷雨的海上浮上來。",
+      "food": {"satiety": 50, "affection": 10},
+      "price": 2000
+    },
+    {
+      "id": "fish_golden_trout",
+      "name": "黃金鱒魚",
+      "emoji": "🐟",
+      "category": "fish",
+      "rarity": "legendary",
+      "description": "河口偶爾會閃過一道金光。",
+      "food": {"satiety": 35, "affection": 10},
+      "price": 1200
+    },
+    {
+      "id": "rod_bamboo",
+      "name": "竹釣竿",
+      "emoji": "🎣",
+      "category": "gear",
+      "description": "最普通的釣竿。",
+      "gear": {"kind": "rod", "bite": 1},
+      "price": 50
+    },
+    {
+      "id": "rod_fiberglass",
+      "name": "玻璃纖維竿",
+      "emoji": "🎣",
+      "category": "gear",
+      "description": "魚咬得比較快；史詩魚 ×1.3、傳說魚 ×1.2。",
+      "gear": {"kind": "rod", "bite": 0.85, "rare": {"epic": 1.3, "legendary": 1.2}},
+      "price": 400
+    },
+    {
+      "id": "rod_iridium",
+      "name": "銥金釣竿",
+      "emoji": "🎣",
+      "category": "gear",
+      "description": "頂級釣竿；史詩魚 ×1.6、傳說魚 ×1.8。",
+      "gear": {"kind": "rod", "bite": 0.7, "rare": {"epic": 1.6, "legendary": 1.8}},
+      "price": 1500
+    },
+    {
+      "id": "bait_worm",
+      "name": "蚯蚓",
+      "emoji": "🪱",
+      "category": "bait",
+      "description": "魚咬得快很多（等待時間 ×0.6）。每拋一次竿用掉一個。",
+      "gear": {"kind": "bait", "bite": 0.6},
+      "price": 2
+    },
+    {
+      "id": "bait_ball",
+      "name": "魚餌球",
+      "emoji": "🟤",
+      "category": "bait",
+      "description": "史詩魚 ×1.4。每拋一次竿用掉一個。",
+      "gear": {"kind": "bait", "bite": 0.8, "rare": {"epic": 1.4}},
+      "price": 5
+    },
+    {
+      "id": "bait_magic",
+      "name": "魔法魚餌",
+      "emoji": "✨",
+      "category": "bait",
+      "description": "傳說魚 ×2.5、史詩魚 ×1.5。每拋一次竿用掉一個。",
+      "gear": {"kind": "bait", "bite": 0.9, "rare": {"epic": 1.5, "legendary": 2.5}},
+      "price": 40
+    }
+  ],
+  "fishing": {
+    "staminaCost": 10,
+    "durationMs": 3000,
+    "cooldownMs": 1500,
+    "tables": {
+      "pond": [
+        {"item": "fish_shrimp", "weight": 35},
+        {"item": "fish_bass", "weight": 30},
+        {"item": "fish_carp", "weight": 12},
+        {"item": "fish_puffer", "weight": 8, "phases": ["evening", "night"]},
+        {"item": "fish_puffer", "weight": 4, "minAffection": 150},
+        {"item": "fish_tropical", "weight": 14, "seasons": ["summer"]},
+        {"item": "fish_squid", "weight": 14, "seasons": ["winter"]},
+        {"item": "fish_crab", "weight": 16, "weather": ["rainy"]},
+        {"item": "fish_octopus", "weight": 10, "phases": ["night"]},
+        {"item": "junk_boot", "weight": 8},
+        {"item": "junk_can", "weight": 7},
+        {"item": "fish_icefish", "weight": 30, "festival": "icefish"},
+        {"item": "fish_koi_king", "weight": 1}
+      ],
+      "sea": [
+        {"item": "fish_mackerel", "weight": 35},
+        {"item": "fish_lobster", "weight": 10},
+        {"item": "fish_crab", "weight": 14, "weather": ["rainy"]},
+        {"item": "fish_jellyfish", "weight": 12, "seasons": ["summer"], "phases": ["evening", "night"]},
+        {"item": "fish_shark", "weight": 4, "seasons": ["summer"]},
+        {"item": "fish_squid", "weight": 12, "seasons": ["winter"]},
+        {"item": "item_blue_shell", "weight": 2},
+        {"item": "junk_can", "weight": 8},
+        {"item": "fish_sunfish", "weight": 30, "festival": "beach"},
+        {"item": "fish_oarfish", "weight": 2, "weather": ["storm"]}
+      ],
+      "river": [
+        {"item": "fish_trout", "weight": 35},
+        {"item": "fish_bass", "weight": 15},
+        {"item": "fish_salmon", "weight": 20, "seasons": ["autumn"]},
+        {"item": "fish_eel", "weight": 14, "weather": ["rainy"]},
+        {"item": "fish_eel", "weight": 8, "phases": ["night"]},
+        {"item": "junk_boot", "weight": 10},
+        {"item": "fish_golden_trout", "weight": 1}
+      ],
+      "fishpond": [
+        {"item": "fish_carp", "weight": 40},
+        {"item": "fish_goldfish", "weight": 30},
+        {"item": "fish_puffer", "weight": 10},
+        {"item": "fish_koi_king", "weight": 2}
+      ]
+    },
+    "minigame": {"zone": 0.3, "perfectZone": 0.08, "speed": 0.85, "doubleChance": 0.5},
+    "rarities": {
+      "common": {"name": "普通", "color": "#7a6a5c"},
+      "epic": {"name": "史詩", "color": "#9b4fd0"},
+      "legendary": {"name": "傳說", "color": "#d89a10"}
+    },
+    "goddess": {
+      "name": "湖中女神",
+      "chance": 0.01,
+      "luck": {"epic": 2, "legendary": 3},
+      "goodProduct": 1.5,
+      "untilHour": 6,
+      "image": "assets/npc/goddess-big.png",
+      "lines": ["你掉的是這條金色的魚，還是這條銀色的魚呢？", "……呵呵，開玩笑的。你和那位鯨魚少女，都是誠實又溫柔的人。", "賜予你湖的祝福吧——直到明天早上，稀有的寶物都會更願意靠近你。"]
+    }
+  }
+}

@@ -1,0 +1,1180 @@
+{
+  "version": 1,
+  "stamina": {"max": 100, "regenPerHour": 20},
+  "satiety": {"max": 100, "start": 60, "decayPerHour": 6},
+  "affection": {
+    "dailyCap": 20,
+    "levels": [
+      {"min": 0, "name": "初次見面"},
+      {"min": 50, "name": "熟悉"},
+      {"min": 150, "name": "好朋友"},
+      {"min": 330, "name": "家人"},
+      {"min": 500, "name": "戀人"}
+    ],
+    "likes": ["fish_puffer", "crop_strawberry", "food_jam", "food_sushi", "fish_lobster", "food_omelette"],
+    "dislikes": ["crop_pepper"]
+  },
+  "calendar": {
+    "seasonDays": 7,
+    "seasons": [
+      {"id": "spring", "name": "春", "emoji": "🌸", "rainChance": 0.3},
+      {"id": "summer", "name": "夏", "emoji": "🌻", "rainChance": 0.25},
+      {"id": "autumn", "name": "秋", "emoji": "🍁", "rainChance": 0.3},
+      {"id": "winter", "name": "冬", "emoji": "❄️", "rainChance": 0.15}
+    ],
+    "festivals": [
+      {"id": "flower", "name": "花祭", "emoji": "🌸", "season": "spring", "day": 4, "description": "商人帶來櫻花盆栽。"},
+      {"id": "beach", "name": "海灘祭", "emoji": "🏖️", "season": "summer", "day": 4, "description": "海邊釣得到翻車魚。"},
+      {"id": "harvest", "name": "豐收祭", "emoji": "🎃", "season": "autumn", "day": 4, "description": "南瓜可以換稻草人。"},
+      {"id": "icefish", "name": "冰釣大會", "emoji": "🎣", "season": "winter", "day": 4, "description": "池塘釣得到冰魚。"}
+    ]
+  },
+  "farming": {
+    "waterHours": 12,
+    "waterStaminaCost": 2,
+    "dryGrowthRate": 0.25,
+    "sprinklerItem": "tool_sprinkler",
+    "greenhouseScenes": ["greenhouse"],
+    "crows": {"chance": 0.12, "minCrops": 6, "setbackHours": 6}
+  },
+  "sleep": {"scenes": ["room"], "wakeHour": 6},
+  "items": [
+    {"id": "junk_boot", "name": "舊靴子", "emoji": "👢", "category": "junk", "description": "不能吃……但商人好像會收。", "price": 5},
+    {"id": "junk_can", "name": "空罐子", "emoji": "🥫", "category": "junk", "description": "撿起來丟進回收，池塘會更乾淨。", "price": 3},
+    {
+      "id": "seed_carrot",
+      "name": "胡蘿蔔種子",
+      "emoji": "🌰",
+      "category": "seed",
+      "plants": "carrot",
+      "description": "春、秋播種，3 小時成熟。",
+      "price": 10
+    },
+    {
+      "id": "seed_strawberry",
+      "name": "草莓種子",
+      "emoji": "🌰",
+      "category": "seed",
+      "plants": "strawberry",
+      "description": "春天播種，6 小時成熟。",
+      "price": 20
+    },
+    {
+      "id": "seed_pepper",
+      "name": "辣椒種子",
+      "emoji": "🌰",
+      "category": "seed",
+      "plants": "pepper",
+      "description": "夏天播種，2.5 小時成熟。",
+      "price": 10
+    },
+    {
+      "id": "seed_tomato",
+      "name": "番茄種子",
+      "emoji": "🌰",
+      "category": "seed",
+      "plants": "tomato",
+      "description": "夏天播種，4 小時成熟。",
+      "price": 15
+    },
+    {
+      "id": "seed_pumpkin",
+      "name": "南瓜種子",
+      "emoji": "🌰",
+      "category": "seed",
+      "plants": "pumpkin",
+      "description": "秋天播種，8 小時成熟。",
+      "price": 40
+    },
+    {
+      "id": "seed_cabbage",
+      "name": "白菜種子",
+      "emoji": "🌰",
+      "category": "seed",
+      "plants": "cabbage",
+      "description": "冬天播種，5 小時成熟。",
+      "price": 15
+    },
+    {
+      "id": "seed_corn",
+      "name": "玉米種子",
+      "emoji": "🌰",
+      "category": "seed",
+      "plants": "corn",
+      "description": "夏天、秋天都能播種，6 小時成熟。",
+      "price": 25
+    },
+    {
+      "id": "seed_sunflower",
+      "name": "向日葵種子",
+      "emoji": "🌰",
+      "category": "seed",
+      "plants": "sunflower",
+      "description": "夏天播種，5 小時開花。",
+      "price": 20
+    },
+    {
+      "id": "crop_carrot",
+      "name": "胡蘿蔔",
+      "emoji": "🥕",
+      "category": "crop",
+      "food": {"satiety": 12, "affection": 2},
+      "price": 35
+    },
+    {
+      "id": "crop_strawberry",
+      "name": "草莓",
+      "emoji": "🍓",
+      "category": "crop",
+      "food": {"satiety": 10, "affection": 4},
+      "price": 60
+    },
+    {
+      "id": "crop_pepper",
+      "name": "辣椒",
+      "emoji": "🌶️",
+      "category": "crop",
+      "food": {"satiety": 6, "affection": 1},
+      "price": 30
+    },
+    {
+      "id": "crop_tomato",
+      "name": "番茄",
+      "emoji": "🍅",
+      "category": "crop",
+      "food": {"satiety": 10, "affection": 2},
+      "price": 45
+    },
+    {
+      "id": "crop_pumpkin",
+      "name": "南瓜",
+      "emoji": "🎃",
+      "category": "crop",
+      "food": {"satiety": 20, "affection": 3},
+      "price": 160
+    },
+    {
+      "id": "crop_cabbage",
+      "name": "白菜",
+      "emoji": "🥬",
+      "category": "crop",
+      "food": {"satiety": 12, "affection": 2},
+      "price": 70
+    },
+    {
+      "id": "crop_corn",
+      "name": "玉米",
+      "emoji": "🌽",
+      "category": "crop",
+      "food": {"satiety": 14, "affection": 2},
+      "price": 60
+    },
+    {
+      "id": "crop_sunflower",
+      "name": "向日葵",
+      "emoji": "🌻",
+      "category": "crop",
+      "description": "送她會很開心的花。",
+      "food": {"satiety": 4, "affection": 4},
+      "price": 70
+    },
+    {
+      "id": "drink_soda",
+      "name": "蜂蜜氣泡飲",
+      "emoji": "🥤",
+      "category": "dish",
+      "description": "酒館老吳特調，不含酒精。",
+      "food": {"satiety": 15, "affection": 3},
+      "price": 20
+    },
+    {
+      "id": "drink_cocoa",
+      "name": "熱可可",
+      "emoji": "☕",
+      "category": "dish",
+      "description": "酒館的熱可可，上面有棉花糖。",
+      "food": {"satiety": 12, "affection": 4},
+      "price": 25
+    },
+    {
+      "id": "food_paella",
+      "name": "海鮮燉飯",
+      "emoji": "🥘",
+      "category": "dish",
+      "description": "酒館的招牌料理，滿滿的海鮮。",
+      "food": {"satiety": 50, "affection": 7},
+      "price": 90
+    },
+    {
+      "id": "food_roast",
+      "name": "烤雞大餐",
+      "emoji": "🍗",
+      "category": "dish",
+      "description": "酒館的烤雞，外皮酥脆。",
+      "food": {"satiety": 55, "affection": 6},
+      "price": 85
+    },
+    {
+      "id": "food_pancake",
+      "name": "蜂蜜鬆餅",
+      "emoji": "🥞",
+      "category": "dish",
+      "description": "酒館的甜點，淋了滿滿的蜂蜜。",
+      "food": {"satiety": 30, "affection": 6},
+      "price": 60
+    },
+    {
+      "id": "food_sushi",
+      "name": "壽司",
+      "emoji": "🍣",
+      "category": "dish",
+      "description": "料理台做的。她超愛。",
+      "food": {"satiety": 35, "affection": 6},
+      "price": 150
+    },
+    {
+      "id": "food_jam",
+      "name": "草莓果醬",
+      "emoji": "🍯",
+      "category": "dish",
+      "description": "甜甜的，可以放很久。",
+      "food": {"satiety": 20, "affection": 7},
+      "price": 220
+    },
+    {
+      "id": "food_salad",
+      "name": "沙拉",
+      "emoji": "🥗",
+      "category": "dish",
+      "description": "清爽的蔬菜沙拉。",
+      "food": {"satiety": 28, "affection": 5},
+      "price": 130
+    },
+    {
+      "id": "food_soup",
+      "name": "蔬菜湯",
+      "emoji": "🍲",
+      "category": "dish",
+      "description": "冬天喝最暖。",
+      "food": {"satiety": 40, "affection": 6},
+      "price": 140
+    },
+    {
+      "id": "food_pie",
+      "name": "南瓜派",
+      "emoji": "🥧",
+      "category": "dish",
+      "description": "秋天的味道。",
+      "food": {"satiety": 45, "affection": 8},
+      "price": 300
+    },
+    {
+      "id": "tool_sprinkler",
+      "name": "灑水器",
+      "emoji": "⛲",
+      "category": "tool",
+      "description": "在揹包點一下，再點一塊田：那格以後不用澆水。",
+      "price": 50
+    },
+    {"id": "coin", "name": "金幣", "emoji": "🪙", "category": "coin", "description": "賣東西賺來的。可以買種子、家具、解鎖設施。"},
+    {
+      "id": "item_blue_shell",
+      "name": "藍色貝殼",
+      "emoji": "🐚",
+      "category": "gift",
+      "description": "傳說送給喜歡的人，就會永遠在一起。",
+      "price": 500
+    },
+    {
+      "id": "food_pickle",
+      "name": "醃蘿蔔",
+      "emoji": "🫙",
+      "category": "dish",
+      "description": "果醬機做的。",
+      "food": {"satiety": 12, "affection": 3},
+      "price": 100
+    },
+    {
+      "id": "food_kimchi",
+      "name": "泡菜",
+      "emoji": "🥬",
+      "category": "dish",
+      "description": "果醬機做的。",
+      "food": {"satiety": 20, "affection": 4},
+      "price": 180
+    },
+    {"id": "food_ketchup", "name": "番茄醬", "emoji": "🍅", "category": "dish", "description": "果醬機做的。", "price": 140},
+    {
+      "id": "food_smoked_fish",
+      "name": "燻魚",
+      "emoji": "🐟",
+      "category": "dish",
+      "description": "燻魚爐做的。",
+      "food": {"satiety": 30, "affection": 5},
+      "price": 200
+    },
+    {"id": "food_mayo", "name": "美乃滋", "emoji": "🥫", "category": "dish", "description": "工坊做的。", "price": 190},
+    {
+      "id": "food_cheese",
+      "name": "起司",
+      "emoji": "🧀",
+      "category": "dish",
+      "description": "工坊做的。",
+      "food": {"satiety": 25, "affection": 4},
+      "price": 230
+    },
+    {
+      "id": "food_omelette",
+      "name": "歐姆蛋",
+      "emoji": "🍳",
+      "category": "dish",
+      "description": "料理台做的。",
+      "food": {"satiety": 30, "affection": 6},
+      "price": 200
+    },
+    {"id": "cloth", "name": "布", "emoji": "🧵", "category": "craft", "description": "工坊做的，花店小葵很喜歡。", "price": 470},
+    {"id": "ore_copper", "name": "銅礦", "emoji": "🟠", "category": "ore", "price": 10},
+    {"id": "ore_iron", "name": "鐵礦", "emoji": "⚪", "category": "ore", "price": 25},
+    {"id": "ore_gold", "name": "金礦", "emoji": "🟡", "category": "ore", "price": 60, "rarity": "epic"},
+    {"id": "bar_copper", "name": "銅錠", "emoji": "🟧", "category": "ore", "description": "熔爐做的。", "price": 80},
+    {"id": "bar_iron", "name": "鐵錠", "emoji": "⬜", "category": "ore", "description": "熔爐做的。", "price": 180},
+    {"id": "bar_gold", "name": "金錠", "emoji": "🟨", "category": "ore", "description": "熔爐做的。", "price": 400},
+    {"id": "gem_quartz", "name": "石英", "emoji": "🔹", "category": "gem", "price": 50},
+    {"id": "gem_amethyst", "name": "紫水晶", "emoji": "🔮", "category": "gem", "price": 120, "rarity": "epic"},
+    {"id": "gem_diamond", "name": "鑽石", "emoji": "💎", "category": "gem", "price": 600, "rarity": "legendary"},
+    {"id": "gem_ruby", "name": "紅寶石", "emoji": "♦️", "category": "gem", "price": 400, "rarity": "epic"},
+    {"id": "drop_slime", "name": "史萊姆凝膠", "emoji": "🟩", "category": "monster", "price": 5},
+    {"id": "drop_wing", "name": "蝙蝠翅膀", "emoji": "🪽", "category": "monster", "price": 15},
+    {"id": "drop_bone", "name": "骨頭", "emoji": "🦴", "category": "monster", "price": 20},
+    {"id": "drop_ecto", "name": "靈質", "emoji": "🫧", "category": "monster", "price": 60},
+    {
+      "id": "pickaxe_basic",
+      "name": "舊鎬子",
+      "emoji": "⛏️",
+      "category": "equip",
+      "description": "能挖 1～5 樓。",
+      "equip": {"slot": "pickaxe", "power": 1},
+      "price": 10
+    },
+    {
+      "id": "pickaxe_copper",
+      "name": "銅鎬子",
+      "emoji": "⛏️",
+      "category": "equip",
+      "description": "能挖到 10 樓。",
+      "equip": {"slot": "pickaxe", "power": 2},
+      "price": 100
+    },
+    {
+      "id": "pickaxe_iron",
+      "name": "鐵鎬子",
+      "emoji": "⛏️",
+      "category": "equip",
+      "description": "能挖到 15 樓。",
+      "equip": {"slot": "pickaxe", "power": 3},
+      "price": 300
+    },
+    {
+      "id": "pickaxe_gold",
+      "name": "金鎬子",
+      "emoji": "⛏️",
+      "category": "equip",
+      "description": "能挖到 20 樓。",
+      "equip": {"slot": "pickaxe", "power": 4},
+      "price": 800
+    },
+    {
+      "id": "sword_wood",
+      "name": "木劍",
+      "emoji": "🗡️",
+      "category": "equip",
+      "description": "攻擊 +3",
+      "equip": {"slot": "weapon", "power": 3},
+      "price": 20
+    },
+    {
+      "id": "sword_copper",
+      "name": "銅劍",
+      "emoji": "🗡️",
+      "category": "equip",
+      "description": "攻擊 +6",
+      "equip": {"slot": "weapon", "power": 6},
+      "price": 120
+    },
+    {
+      "id": "sword_iron",
+      "name": "鐵劍",
+      "emoji": "⚔️",
+      "category": "equip",
+      "description": "攻擊 +10",
+      "equip": {"slot": "weapon", "power": 10},
+      "price": 300
+    },
+    {
+      "id": "sword_crystal",
+      "name": "水晶劍",
+      "emoji": "🔱",
+      "category": "equip",
+      "description": "深層才找得到。攻擊 +16",
+      "equip": {"slot": "weapon", "power": 16},
+      "price": 900,
+      "rarity": "epic"
+    },
+    {
+      "id": "armor_leather",
+      "name": "皮甲",
+      "emoji": "🦺",
+      "category": "equip",
+      "description": "防禦 +2",
+      "equip": {"slot": "armor", "power": 2},
+      "price": 60
+    },
+    {
+      "id": "armor_iron",
+      "name": "鐵甲",
+      "emoji": "🛡️",
+      "category": "equip",
+      "description": "防禦 +5",
+      "equip": {"slot": "armor", "power": 5},
+      "price": 250
+    },
+    {
+      "id": "armor_crystal",
+      "name": "水晶鎧",
+      "emoji": "💠",
+      "category": "equip",
+      "description": "深層才找得到。防禦 +8",
+      "equip": {"slot": "armor", "power": 8},
+      "price": 900,
+      "rarity": "epic"
+    },
+    {
+      "id": "furn_chair",
+      "name": "木椅",
+      "emoji": "🪑",
+      "category": "furniture",
+      "description": "擺在房間裡。",
+      "place": {"blocking": true, "where": "indoor"},
+      "price": 40
+    },
+    {
+      "id": "furn_sofa",
+      "name": "沙發",
+      "emoji": "🛋️",
+      "category": "furniture",
+      "place": {"blocking": true, "where": "indoor"},
+      "price": 150
+    },
+    {
+      "id": "furn_plant",
+      "name": "盆栽",
+      "emoji": "🪴",
+      "category": "furniture",
+      "place": {"blocking": true, "where": "any"},
+      "price": 30
+    },
+    {
+      "id": "furn_teddy",
+      "name": "泰迪熊",
+      "emoji": "🧸",
+      "category": "furniture",
+      "description": "她很喜歡。",
+      "place": {"blocking": true, "where": "indoor"},
+      "price": 60
+    },
+    {
+      "id": "furn_books",
+      "name": "書架",
+      "emoji": "📚",
+      "category": "furniture",
+      "place": {"blocking": true, "where": "indoor"},
+      "price": 100
+    },
+    {
+      "id": "furn_lamp",
+      "name": "燈籠",
+      "emoji": "🏮",
+      "category": "furniture",
+      "place": {"blocking": true, "where": "any"},
+      "price": 50
+    },
+    {
+      "id": "furn_aquarium",
+      "name": "水族箱",
+      "emoji": "🐠",
+      "category": "furniture",
+      "description": "集滿海魚的獎勵。",
+      "place": {"blocking": true, "where": "indoor"},
+      "price": 500
+    },
+    {
+      "id": "furn_trophy",
+      "name": "釣魚獎盃",
+      "emoji": "🏆",
+      "category": "furniture",
+      "description": "集滿節慶魚的獎勵。",
+      "place": {"blocking": true, "where": "any"},
+      "price": 800
+    },
+    {
+      "id": "furn_sakura",
+      "name": "櫻花盆栽",
+      "emoji": "🌸",
+      "category": "furniture",
+      "description": "花祭限定。",
+      "place": {"blocking": true, "where": "any"},
+      "price": 250
+    },
+    {
+      "id": "furn_scarecrow",
+      "name": "稻草人",
+      "emoji": "🎃",
+      "category": "furniture",
+      "description": "豐收祭限定。",
+      "place": {"blocking": true, "where": "outdoor"},
+      "price": 250
+    },
+    {
+      "id": "furn_xmas",
+      "name": "冬季樹",
+      "emoji": "🎄",
+      "category": "furniture",
+      "description": "冰釣大會限定。",
+      "place": {"blocking": true, "where": "any"},
+      "price": 250
+    },
+    {
+      "id": "deco_flower",
+      "name": "花圃",
+      "emoji": "🌷",
+      "category": "furniture",
+      "description": "戶外裝飾，可以走過去。",
+      "place": {"blocking": false, "where": "outdoor"},
+      "price": 20
+    },
+    {
+      "id": "deco_stone",
+      "name": "石板路",
+      "emoji": "🪨",
+      "category": "furniture",
+      "description": "戶外裝飾，可以走過去。",
+      "place": {"blocking": false, "where": "outdoor"},
+      "price": 5
+    },
+    {
+      "id": "plot_kit",
+      "name": "田地套組",
+      "emoji": "🟫",
+      "category": "furniture",
+      "description": "擺在戶外就多一塊田。",
+      "place": {"blocking": false, "plot": true, "where": "outdoor"},
+      "price": 50
+    },
+    {
+      "id": "floor_blue",
+      "name": "藍色地板",
+      "emoji": "🟦",
+      "category": "decor",
+      "description": "換掉房間的地板。",
+      "decor": {"kind": "floor", "replace": {"floor0": "floorB0", "floor1": "floorB1"}},
+      "price": 100
+    },
+    {
+      "id": "floor_check",
+      "name": "格子地板",
+      "emoji": "🏁",
+      "category": "decor",
+      "description": "換掉房間的地板。",
+      "decor": {"kind": "floor", "replace": {"floor0": "floorC0", "floor1": "floorC1"}},
+      "price": 100
+    },
+    {
+      "id": "wall_mint",
+      "name": "薄荷壁紙",
+      "emoji": "🟩",
+      "category": "decor",
+      "description": "換掉房間的壁紙。",
+      "decor": {"kind": "wall", "replace": {"wall_up": "wall_up_mint"}},
+      "price": 100
+    },
+    {
+      "id": "wall_star",
+      "name": "星星壁紙",
+      "emoji": "⭐",
+      "category": "decor",
+      "description": "換掉房間的壁紙。",
+      "decor": {"kind": "wall", "replace": {"wall_up": "wall_up_star"}},
+      "price": 100
+    },
+    {
+      "id": "forage_berry",
+      "name": "野莓",
+      "emoji": "🫐",
+      "category": "forage",
+      "description": "花園草叢裡長的小果子。她很愛吃。",
+      "food": {"satiety": 6, "affection": 2},
+      "price": 20
+    },
+    {
+      "id": "forage_mushroom",
+      "name": "野菇",
+      "emoji": "🍄",
+      "category": "forage",
+      "description": "下雨過後特別多。鼴鼠的最愛。",
+      "food": {"satiety": 10, "affection": 2},
+      "price": 35
+    },
+    {
+      "id": "forage_flower",
+      "name": "野花",
+      "emoji": "🌼",
+      "category": "forage",
+      "description": "路邊的小花。小精靈喜歡吃花蜜。",
+      "price": 15
+    },
+    {
+      "id": "forage_driftwood",
+      "name": "漂流木",
+      "emoji": "🪵",
+      "category": "forage",
+      "description": "從海上漂來的木頭。",
+      "price": 10
+    },
+    {
+      "id": "forage_seaglass",
+      "name": "海玻璃",
+      "emoji": "🔹",
+      "category": "forage",
+      "description": "被海浪磨圓的玻璃，很漂亮。",
+      "price": 60
+    }
+  ],
+  "crops": [
+    {
+      "id": "carrot",
+      "seed": "seed_carrot",
+      "seasons": ["spring", "autumn"],
+      "staminaCost": 5,
+      "stages": [
+        {"name": "剛播種", "emoji": "🟫", "atMinutes": 0},
+        {"name": "發芽", "emoji": "🌱", "atMinutes": 60},
+        {"name": "成熟", "emoji": "🥕", "atMinutes": 180}
+      ],
+      "harvest": {"item": "crop_carrot", "min": 1, "max": 3}
+    },
+    {
+      "id": "strawberry",
+      "seed": "seed_strawberry",
+      "seasons": ["spring"],
+      "staminaCost": 5,
+      "stages": [
+        {"name": "剛播種", "emoji": "🟫", "atMinutes": 0},
+        {"name": "發芽", "emoji": "🌱", "atMinutes": 90},
+        {"name": "長葉子", "emoji": "🌿", "atMinutes": 240},
+        {"name": "成熟", "emoji": "🍓", "atMinutes": 360}
+      ],
+      "harvest": {"item": "crop_strawberry", "min": 2, "max": 4}
+    },
+    {
+      "id": "pepper",
+      "seed": "seed_pepper",
+      "seasons": ["summer"],
+      "staminaCost": 5,
+      "stages": [
+        {"name": "剛播種", "emoji": "🟫", "atMinutes": 0},
+        {"name": "發芽", "emoji": "🌱", "atMinutes": 60},
+        {"name": "開花", "emoji": "🌿", "atMinutes": 100},
+        {"name": "成熟", "emoji": "🌶️", "atMinutes": 150}
+      ],
+      "harvest": {"item": "crop_pepper", "min": 1, "max": 2}
+    },
+    {
+      "id": "tomato",
+      "seed": "seed_tomato",
+      "seasons": ["summer"],
+      "staminaCost": 5,
+      "stages": [
+        {"name": "剛播種", "emoji": "🟫", "atMinutes": 0},
+        {"name": "發芽", "emoji": "🌱", "atMinutes": 60},
+        {"name": "長葉子", "emoji": "🌿", "atMinutes": 150},
+        {"name": "成熟", "emoji": "🍅", "atMinutes": 240}
+      ],
+      "harvest": {"item": "crop_tomato", "min": 2, "max": 4}
+    },
+    {
+      "id": "pumpkin",
+      "seed": "seed_pumpkin",
+      "seasons": ["autumn"],
+      "staminaCost": 5,
+      "stages": [
+        {"name": "剛播種", "emoji": "🟫", "atMinutes": 0},
+        {"name": "發芽", "emoji": "🌱", "atMinutes": 120},
+        {"name": "長葉子", "emoji": "🌿", "atMinutes": 300},
+        {"name": "成熟", "emoji": "🎃", "atMinutes": 480}
+      ],
+      "harvest": {"item": "crop_pumpkin", "min": 1, "max": 2}
+    },
+    {
+      "id": "cabbage",
+      "seed": "seed_cabbage",
+      "seasons": ["winter"],
+      "staminaCost": 5,
+      "stages": [
+        {"name": "剛播種", "emoji": "🟫", "atMinutes": 0},
+        {"name": "發芽", "emoji": "🌱", "atMinutes": 90},
+        {"name": "長葉子", "emoji": "🌿", "atMinutes": 190},
+        {"name": "成熟", "emoji": "🥬", "atMinutes": 300}
+      ],
+      "harvest": {"item": "crop_cabbage", "min": 1, "max": 3}
+    },
+    {
+      "id": "corn",
+      "seed": "seed_corn",
+      "seasons": ["summer", "autumn"],
+      "staminaCost": 5,
+      "stages": [
+        {"name": "剛播種", "emoji": "🟫", "atMinutes": 0},
+        {"name": "發芽", "emoji": "🌱", "atMinutes": 60},
+        {"name": "長葉子", "emoji": "🌿", "atMinutes": 150},
+        {"name": "抽穗", "emoji": "🌾", "atMinutes": 270},
+        {"name": "成熟", "emoji": "🌽", "atMinutes": 360}
+      ],
+      "harvest": {"item": "crop_corn", "min": 2, "max": 3}
+    },
+    {
+      "id": "sunflower",
+      "seed": "seed_sunflower",
+      "seasons": ["summer"],
+      "staminaCost": 5,
+      "stages": [
+        {"name": "剛播種", "emoji": "🟫", "atMinutes": 0},
+        {"name": "發芽", "emoji": "🌱", "atMinutes": 60},
+        {"name": "長葉子", "emoji": "🌿", "atMinutes": 150},
+        {"name": "開花", "emoji": "🌻", "atMinutes": 300}
+      ],
+      "harvest": {"item": "crop_sunflower", "min": 1, "max": 2}
+    }
+  ],
+  "shops": {
+    "merchant": {
+      "name": "旅行商人",
+      "emoji": "🧳",
+      "greeting": "歡迎歡迎～用金幣或你釣到的東西跟我換吧！",
+      "trades": [
+        {"id": "shrimp-carrot", "give": {"fish_shrimp": 2}, "get": {"seed_carrot": 2}},
+        {"id": "bass-carrot", "give": {"fish_bass": 1}, "get": {"seed_carrot": 3}},
+        {"id": "carp-strawberry", "give": {"fish_carp": 1}, "get": {"seed_strawberry": 2}},
+        {"id": "bass-strawberry", "give": {"fish_bass": 2}, "get": {"seed_strawberry": 2}},
+        {"id": "boot-pepper", "give": {"junk_boot": 1}, "get": {"seed_pepper": 2}},
+        {"id": "can-carrot", "give": {"junk_can": 1}, "get": {"seed_carrot": 1}},
+        {"id": "shrimp-tomato", "give": {"fish_shrimp": 3}, "get": {"seed_tomato": 2}},
+        {"id": "carp-pumpkin", "give": {"fish_carp": 1}, "get": {"seed_pumpkin": 1}},
+        {"id": "bass-cabbage", "give": {"fish_bass": 1}, "get": {"seed_cabbage": 2}},
+        {"id": "junk-sprinkler", "give": {"junk_can": 2, "junk_boot": 1}, "get": {"tool_sprinkler": 1}},
+        {"id": "buy-carrot", "give": {"coin": 40}, "get": {"seed_carrot": 2}},
+        {"id": "buy-strawberry", "give": {"coin": 80}, "get": {"seed_strawberry": 2}},
+        {"id": "buy-pepper", "give": {"coin": 40}, "get": {"seed_pepper": 2}},
+        {"id": "buy-tomato", "give": {"coin": 60}, "get": {"seed_tomato": 2}},
+        {"id": "buy-pumpkin", "give": {"coin": 100}, "get": {"seed_pumpkin": 1}},
+        {"id": "buy-cabbage", "give": {"coin": 60}, "get": {"seed_cabbage": 2}},
+        {"id": "buy-hay", "give": {"coin": 50}, "get": {"hay": 5}},
+        {"id": "buy-sprinkler", "give": {"coin": 400}, "get": {"tool_sprinkler": 1}, "dailyLimit": 2},
+        {"id": "fest-sakura", "give": {"coin": 500}, "get": {"furn_sakura": 1}, "festival": "flower"},
+        {"id": "fest-scarecrow", "give": {"crop_pumpkin": 2}, "get": {"furn_scarecrow": 1}, "festival": "harvest"},
+        {"id": "fest-xmas", "give": {"coin": 500}, "get": {"furn_xmas": 1}, "festival": "icefish"}
+      ]
+    },
+    "tavern": {
+      "name": "老吳的酒館",
+      "emoji": "🍺",
+      "greeting": "歡迎光臨！今天想吃點什麼？飲料都不含酒精，放心給你家那位喝。",
+      "verb": "點",
+      "trades": [
+        {"id": "soda", "give": {"coin": 40}, "get": {"drink_soda": 1}},
+        {"id": "cocoa", "give": {"coin": 50}, "get": {"drink_cocoa": 1}},
+        {"id": "pancake", "give": {"coin": 120}, "get": {"food_pancake": 1}},
+        {"id": "roast", "give": {"coin": 170}, "get": {"food_roast": 1}, "dailyLimit": 3},
+        {"id": "paella", "give": {"coin": 180}, "get": {"food_paella": 1}, "dailyLimit": 3}
+      ]
+    },
+    "kitchen": {
+      "name": "料理台",
+      "emoji": "🍳",
+      "greeting": "把魚和作物加工成料理：更飽、好感也加更多。",
+      "verb": "製作",
+      "trades": [
+        {"id": "sushi", "give": {"fish_bass": 1, "fish_shrimp": 1}, "get": {"food_sushi": 1}},
+        {"id": "jam", "give": {"crop_strawberry": 3}, "get": {"food_jam": 1}},
+        {"id": "salad", "give": {"crop_carrot": 1, "crop_tomato": 1}, "get": {"food_salad": 1}},
+        {"id": "soup", "give": {"crop_cabbage": 1, "crop_carrot": 1}, "get": {"food_soup": 1}},
+        {"id": "pie", "give": {"crop_pumpkin": 1}, "get": {"food_pie": 1}},
+        {"id": "omelette", "give": {"egg": 1, "milk": 1}, "get": {"food_omelette": 1}}
+      ]
+    },
+    "shipping": {"name": "出貨箱", "emoji": "📦", "greeting": "放進來的東西會換成金幣。", "mode": "sell", "trades": []},
+    "florist": {
+      "name": "小葵的花店",
+      "emoji": "💐",
+      "greeting": "歡迎光臨！當季的種子都在這裡～家具請看「🪑 家具目錄」喔！",
+      "trades": [
+        {"id": "seed-carrot", "give": {"coin": 20}, "get": {"seed_carrot": 1}, "seasons": ["spring", "autumn"]},
+        {"id": "seed-strawberry", "give": {"coin": 40}, "get": {"seed_strawberry": 1}, "seasons": ["spring"]},
+        {"id": "seed-pepper", "give": {"coin": 20}, "get": {"seed_pepper": 1}, "seasons": ["summer"]},
+        {"id": "seed-tomato", "give": {"coin": 30}, "get": {"seed_tomato": 1}, "seasons": ["summer"]},
+        {"id": "seed-pumpkin", "give": {"coin": 80}, "get": {"seed_pumpkin": 1}, "seasons": ["autumn"]},
+        {"id": "seed-cabbage", "give": {"coin": 30}, "get": {"seed_cabbage": 1}, "seasons": ["winter"]},
+        {"id": "seed-corn", "give": {"coin": 35}, "get": {"seed_corn": 1}, "seasons": ["summer", "autumn"]},
+        {"id": "seed-sunflower", "give": {"coin": 30}, "get": {"seed_sunflower": 1}, "seasons": ["summer"]}
+      ]
+    },
+    "smith": {
+      "name": "阿綱的鐵匠舖",
+      "emoji": "⚒️",
+      "greeting": "要下礦？先把傢伙準備好。",
+      "trades": [
+        {"id": "pick-basic", "give": {"coin": 100}, "get": {"pickaxe_basic": 1}},
+        {"id": "pick-copper", "give": {"bar_copper": 5, "coin": 500}, "get": {"pickaxe_copper": 1}},
+        {"id": "pick-iron", "give": {"bar_iron": 5, "coin": 2000}, "get": {"pickaxe_iron": 1}},
+        {"id": "pick-gold", "give": {"bar_gold": 5, "coin": 5000}, "get": {"pickaxe_gold": 1}},
+        {"id": "sword-wood", "give": {"coin": 200}, "get": {"sword_wood": 1}},
+        {"id": "sword-copper", "give": {"bar_copper": 3, "coin": 400}, "get": {"sword_copper": 1}},
+        {"id": "sword-iron", "give": {"bar_iron": 3, "coin": 1200}, "get": {"sword_iron": 1}},
+        {"id": "armor-leather", "give": {"coin": 300}, "get": {"armor_leather": 1}},
+        {"id": "armor-iron", "give": {"bar_iron": 4, "coin": 1500}, "get": {"armor_iron": 1}}
+      ]
+    },
+    "fisher": {
+      "name": "老陳的漁具店",
+      "emoji": "🎣",
+      "greeting": "魚竿和魚餌，好的工具釣到好的魚。",
+      "trades": [
+        {"id": "worm", "give": {"coin": 10}, "get": {"bait_worm": 5}},
+        {"id": "ball", "give": {"coin": 50}, "get": {"bait_ball": 5}},
+        {"id": "magic", "give": {"coin": 200}, "get": {"bait_magic": 2}, "dailyLimit": 10},
+        {"id": "rod-bamboo", "give": {"coin": 100}, "get": {"rod_bamboo": 1}},
+        {"id": "rod-fiberglass", "give": {"coin": 1500}, "get": {"rod_fiberglass": 1}},
+        {"id": "rod-iridium", "give": {"coin": 5000, "bar_gold": 2}, "get": {"rod_iridium": 1}},
+        {"id": "shell", "give": {"coin": 3000}, "get": {"item_blue_shell": 1}, "dailyLimit": 1},
+        {"id": "aquarium", "give": {"coin": 1500}, "get": {"furn_aquarium": 1}},
+        {"id": "hay", "give": {"coin": 50}, "get": {"hay": 5}}
+      ]
+    },
+    "fishmonger": {"name": "老陳的魚攤", "emoji": "🐟", "greeting": "新鮮的魚，老頭子我都收！", "mode": "sell", "buys": ["fish"], "trades": []},
+    "petshop": {
+      "name": "小葵的寵物角",
+      "emoji": "🐾",
+      "greeting": "狗狗和貓咪都在等新主人喔！捕捉網和飼料也在這裡買～",
+      "trades": [
+        {"id": "pet_food", "give": {"coin": 20}, "get": {"pet_food": 1}},
+        {"id": "pet_food5", "give": {"coin": 90}, "get": {"pet_food": 5}},
+        {"id": "pet_treat", "give": {"coin": 30}, "get": {"pet_treat": 1}},
+        {"id": "net_basic", "give": {"coin": 25}, "get": {"net_basic": 1}},
+        {"id": "net_basic5", "give": {"coin": 110}, "get": {"net_basic": 5}},
+        {"id": "net_silk", "give": {"coin": 80}, "get": {"net_silk": 1}, "dailyLimit": 3}
+      ]
+    }
+  },
+  "starter": {"rod_bamboo": 1},
+  "unlocks": {
+    "ranch_field_a": {"name": "開墾牧場田地 A", "emoji": "🟫", "description": "牧場左邊多 4 塊田。", "cost": {"coin": 300}},
+    "ranch_field_b": {
+      "name": "開墾牧場田地 B",
+      "emoji": "🟫",
+      "description": "牧場左邊再多 4 塊田。",
+      "cost": {"coin": 800},
+      "requires": "ranch_field_a"
+    },
+    "preserves": {"name": "果醬機", "emoji": "🫙", "description": "把作物做成果醬、醃菜。", "cost": {"coin": 500}},
+    "smoker": {"name": "燻魚爐", "emoji": "♨️", "description": "把魚燻成燻魚。", "cost": {"coin": 600}},
+    "artisan": {"name": "工坊", "emoji": "🧀", "description": "雞蛋、牛奶、羊毛的加工。", "cost": {"coin": 1200}, "requires": "coop"},
+    "furnace": {"name": "熔爐", "emoji": "🔥", "description": "把礦石煉成金屬錠。", "cost": {"coin": 400}},
+    "coop": {"name": "雞舍", "emoji": "🐔", "description": "可以養雞和鴨。", "cost": {"coin": 1000}},
+    "barn": {"name": "畜棚", "emoji": "🐄", "description": "可以養牛、羊、豬。", "cost": {"coin": 2500}, "requires": "coop"},
+    "house_upgrade": {"name": "房屋擴建", "emoji": "🏠", "description": "房間多一扇門，通往閣樓。", "cost": {"coin": 3000}},
+    "greenhouse": {
+      "name": "溫室",
+      "emoji": "🌿",
+      "description": "裡面的田不分季節、不用澆水。",
+      "cost": {"coin": 4000},
+      "requires": "ranch_field_a"
+    },
+    "fishpond": {"name": "魚塘", "emoji": "🐠", "description": "牧場裡的私人魚塘，有金魚。", "cost": {"coin": 1500}},
+    "stable": {"name": "馬廄", "emoji": "🐴", "description": "有馬之後，她在戶外走路變快。", "cost": {"coin": 2000}}
+  },
+  "machines": {
+    "preserves": {
+      "name": "果醬機",
+      "emoji": "🫙",
+      "recipes": [
+        {"id": "jam", "give": {"crop_strawberry": 1}, "get": {"food_jam": 1}, "minutes": 90},
+        {"id": "pickle", "give": {"crop_carrot": 1}, "get": {"food_pickle": 1}, "minutes": 60},
+        {"id": "ketchup", "give": {"crop_tomato": 1}, "get": {"food_ketchup": 1}, "minutes": 60},
+        {"id": "kimchi", "give": {"crop_cabbage": 1, "crop_pepper": 1}, "get": {"food_kimchi": 1}, "minutes": 120}
+      ]
+    },
+    "smoker": {
+      "name": "燻魚爐",
+      "emoji": "♨️",
+      "recipes": [
+        {"id": "smoke-bass", "give": {"fish_bass": 1}, "get": {"food_smoked_fish": 1}, "minutes": 120},
+        {"id": "smoke-mackerel", "give": {"fish_mackerel": 1}, "get": {"food_smoked_fish": 1}, "minutes": 120},
+        {"id": "smoke-trout", "give": {"fish_trout": 1}, "get": {"food_smoked_fish": 1}, "minutes": 120},
+        {"id": "smoke-salmon", "give": {"fish_salmon": 1}, "get": {"food_smoked_fish": 1}, "minutes": 120}
+      ]
+    },
+    "artisan": {
+      "name": "工坊",
+      "emoji": "🧀",
+      "recipes": [
+        {"id": "mayo", "give": {"egg": 1}, "get": {"food_mayo": 1}, "minutes": 60},
+        {"id": "mayo-large", "give": {"egg_large": 1}, "get": {"food_mayo": 2}, "minutes": 60},
+        {"id": "cheese", "give": {"milk": 1}, "get": {"food_cheese": 1}, "minutes": 180},
+        {"id": "cheese-large", "give": {"milk_large": 1}, "get": {"food_cheese": 2}, "minutes": 180},
+        {"id": "cloth", "give": {"wool": 1}, "get": {"cloth": 1}, "minutes": 240}
+      ]
+    },
+    "furnace": {
+      "name": "熔爐",
+      "emoji": "🔥",
+      "recipes": [
+        {"id": "copper", "give": {"ore_copper": 5}, "get": {"bar_copper": 1}, "minutes": 30},
+        {"id": "iron", "give": {"ore_iron": 5}, "get": {"bar_iron": 1}, "minutes": 60},
+        {"id": "gold", "give": {"ore_gold": 5}, "get": {"bar_gold": 1}, "minutes": 120}
+      ]
+    }
+  },
+  "collections": [
+    {
+      "id": "pond",
+      "name": "池塘之友",
+      "items": ["fish_shrimp", "fish_bass", "fish_carp", "fish_puffer"],
+      "reward": {"coin": 300, "tool_sprinkler": 1}
+    },
+    {
+      "id": "seasons",
+      "name": "四季的魚",
+      "items": ["fish_tropical", "fish_squid", "fish_crab", "fish_octopus"],
+      "reward": {"coin": 600}
+    },
+    {
+      "id": "sea",
+      "name": "大海的禮物",
+      "items": ["fish_mackerel", "fish_lobster", "fish_jellyfish", "fish_shark"],
+      "reward": {"furn_aquarium": 1, "coin": 500}
+    },
+    {"id": "river", "name": "河流的旅人", "items": ["fish_trout", "fish_salmon", "fish_eel"], "reward": {"coin": 500}},
+    {"id": "festival", "name": "節慶限定", "items": ["fish_sunfish", "fish_icefish"], "reward": {"furn_trophy": 1}}
+  ],
+  "npcs": {
+    "barkeep": {
+      "name": "老吳",
+      "emoji": "🧔",
+      "title": "酒館老闆",
+      "shop": "tavern",
+      "loves": ["food_paella", "fish_lobster", "food_cheese"],
+      "likes": ["crop_tomato", "crop_corn", "fish_salmon", "egg"],
+      "dislikes": ["junk_can", "junk_boot"],
+      "lines": [
+        {"text": "來來來，坐！今天的燉飯特別好吃。"},
+        {"text": "晚上八點以後，鎮上的人都會來這裡喝一杯。"},
+        {"text": "街機猜硬幣？十個金幣一次，猜中拿二十。別玩太多喔～"},
+        {"text": "牌桌那邊可以跟大家比大小，贏了大家會更喜歡你。"},
+        {"text": "老陳那傢伙每晚都坐同一張高腳椅。", "phases": ["night"]},
+        {"text": "你家那位每次來都盯著鬆餅看，哈哈。", "minFriendship": 100},
+        {"text": "年輕時我在船上當廚師，跑遍了整片海。後來還是覺得開間小店比較適合我。", "minFriendship": 300}
+      ],
+      "sprite": "assets/npc/barkeep.png",
+      "portrait": "assets/npc/barkeep-big.png"
+    },
+    "fisher": {
+      "name": "老陳",
+      "emoji": "🧔",
+      "title": "漁夫",
+      "loves": ["fish_lobster", "fish_shark", "food_smoked_fish"],
+      "likes": ["fish_mackerel", "fish_bass", "fish_salmon", "fish_trout"],
+      "dislikes": ["junk_can", "junk_boot"],
+      "lines": [
+        {"text": "釣魚啊，最重要的是耐心。"},
+        {"text": "下雨天去海邊看看，螃蟹會爬出來。"},
+        {"text": "晚上的河邊有鰻魚，滑溜溜的，很難抓。", "phases": ["evening", "night"]},
+        {"text": "你家那個鯨魚丫頭啊，釣魚的時候眼睛都會發亮。", "minFriendship": 200},
+        {"text": "有空常來坐坐，老頭子我一個人也挺悶的。", "minFriendship": 500},
+        {"text": "用蚯蚓釣魚，魚咬得比較快；想釣稀有的魚，就用魔法魚餌。"},
+        {"text": "傳說湖裡住著一位女神……老頭子我年輕時見過一次。", "minFriendship": 100},
+        {"text": "藍色貝殼？那可是求婚用的。海邊偶爾撿得到，我店裡也有一個。", "minFriendship": 300}
+      ],
+      "events": [
+        {
+          "id": "fisher-1",
+          "minFriendship": 200,
+          "lines": ["……你知道這片海為什麼這麼平靜嗎？", "很久以前，有一隻大鯨魚每天晚上在這裡唱歌。", "後來牠變成了人，住進了岸邊的小房子。", "……哈哈，老頭子胡說的。不過，你家那位，跟傳說還真像。"]
+        },
+        {"id": "fisher-2", "minFriendship": 500, "lines": ["這個給你。", "是我年輕時用的魚線，現在用不到了。", "好好照顧那個丫頭，也照顧好自己。"]}
+      ],
+      "shops": ["fishmonger", "fisher"],
+      "sprite": "assets/npc/fisher.png",
+      "portrait": "assets/npc/fisher-big.png"
+    },
+    "florist": {
+      "name": "小葵",
+      "emoji": "👧",
+      "title": "花店",
+      "shop": "florist",
+      "loves": ["crop_strawberry", "food_jam", "cloth"],
+      "likes": ["crop_carrot", "crop_tomato", "crop_pumpkin", "crop_cabbage", "egg"],
+      "dislikes": ["fish_squid", "drop_slime"],
+      "lines": [
+        {"text": "今天的花開得好漂亮！"},
+        {"text": "房間換個壁紙，心情也會跟著變喔。"},
+        {"text": "早安！要不要買一盆花回去？", "phases": ["morning"]},
+        {"text": "你送的果醬，我每天早上都塗在吐司上！", "minFriendship": 200},
+        {"text": "鯨魚娘說她最喜歡你了，我都聽到了喔～", "minFriendship": 400}
+      ],
+      "events": [
+        {"id": "florist-1", "minFriendship": 200, "lines": ["那個……我可以問你一件事嗎？", "鯨魚娘上次來買花，說是要送給「最重要的人」。", "嘻嘻，你猜是誰？"]},
+        {
+          "id": "florist-2",
+          "minFriendship": 500,
+          "lines": ["謝謝你一直來看我。", "以前這條街很冷清，你們搬來之後熱鬧多了。", "這是花店的會員卡！……雖然只有你一個會員。"]
+        }
+      ],
+      "sprite": "assets/npc/florist.png",
+      "portrait": "assets/npc/florist-big.png",
+      "shops": ["petshop"]
+    },
+    "smith": {
+      "name": "阿綱",
+      "emoji": "👨‍🔧",
+      "title": "鐵匠",
+      "shop": "smith",
+      "loves": ["gem_diamond", "gem_ruby", "bar_gold"],
+      "likes": ["ore_copper", "ore_iron", "ore_gold", "gem_quartz", "gem_amethyst"],
+      "dislikes": ["crop_strawberry", "food_jam"],
+      "lines": [
+        {"text": "礦洞越深越危險，裝備要跟上。"},
+        {"text": "銅礦五個煉一塊銅錠。熔爐就在我店旁邊。"},
+        {"text": "甜的東西？我不吃。", "minFriendship": 100},
+        {"text": "上次你家那位從礦洞回來，渾身是灰還在笑。真有膽量。", "minFriendship": 300}
+      ],
+      "events": [
+        {
+          "id": "smith-1",
+          "minFriendship": 300,
+          "lines": ["……來，看看這個。", "我師父留下的鎚子。", "總有一天，我要打出一把比他更好的劍。", "到時候，第一把給你家那位。"]
+        }
+      ],
+      "sprite": "assets/npc/smith.png",
+      "portrait": "assets/npc/smith-big.png"
+    }
+  },
+  "marriage": {"item": "item_blue_shell", "minAffection": 500, "levelName": "伴侶", "helps": {"water": true, "animals": true}},
+  "mine": {
+    "staminaCost": 30,
+    "baseHp": 30,
+    "basePower": 2,
+    "zones": [
+      {
+        "name": "上層",
+        "from": 1,
+        "to": 5,
+        "minutes": 30,
+        "needPickaxe": 1,
+        "monsters": [
+          {"name": "史萊姆", "emoji": "🟢", "hp": 6, "atk": 3, "drop": "drop_slime"},
+          {"name": "蝙蝠", "emoji": "🦇", "hp": 4, "atk": 4, "drop": "drop_wing"}
+        ],
+        "loot": [
+          {"item": "ore_copper", "weight": 60},
+          {"item": "gem_quartz", "weight": 15},
+          {"item": "ore_iron", "weight": 5},
+          {"item": "sword_wood", "weight": 2}
+        ]
+      },
+      {
+        "name": "中層",
+        "from": 6,
+        "to": 10,
+        "minutes": 60,
+        "needPickaxe": 2,
+        "monsters": [
+          {"name": "石頭人", "emoji": "🗿", "hp": 14, "atk": 6, "drop": "ore_iron"},
+          {"name": "藍史萊姆", "emoji": "🔵", "hp": 12, "atk": 7, "drop": "drop_slime"},
+          {"name": "蘑菇怪", "emoji": "🍄", "hp": 10, "atk": 5, "drop": "forage_mushroom"}
+        ],
+        "loot": [
+          {"item": "ore_iron", "weight": 50},
+          {"item": "ore_copper", "weight": 20},
+          {"item": "gem_amethyst", "weight": 12},
+          {"item": "armor_leather", "weight": 2}
+        ]
+      },
+      {
+        "name": "深層",
+        "from": 11,
+        "to": 15,
+        "minutes": 90,
+        "needPickaxe": 3,
+        "monsters": [
+          {"name": "骷髏", "emoji": "💀", "hp": 26, "atk": 10, "drop": "drop_bone"},
+          {"name": "幽靈", "emoji": "👻", "hp": 20, "atk": 12, "drop": "drop_ecto"}
+        ],
+        "loot": [
+          {"item": "ore_gold", "weight": 40},
+          {"item": "ore_iron", "weight": 20},
+          {"item": "gem_diamond", "weight": 6},
+          {"item": "sword_crystal", "weight": 2},
+          {"item": "armor_crystal", "weight": 2}
+        ]
+      },
+      {
+        "name": "熔岩層",
+        "from": 16,
+        "to": 20,
+        "minutes": 120,
+        "needPickaxe": 4,
+        "monsters": [
+          {"name": "火焰史萊姆", "emoji": "🔴", "hp": 40, "atk": 16, "drop": "drop_slime"},
+          {"name": "小惡魔", "emoji": "😈", "hp": 50, "atk": 18, "drop": "gem_ruby"}
+        ],
+        "loot": [
+          {"item": "ore_gold", "weight": 35},
+          {"item": "gem_ruby", "weight": 10},
+          {"item": "gem_diamond", "weight": 8}
+        ]
+      }
+    ]
+  },
+  "gifts": {"salt": "whale-girl-v1"},
+  "forage": {
+    "scenes": {
+      "garden": {
+        "slots": 4,
+        "chance": 0.5,
+        "table": [
+          {"item": "forage_berry", "weight": 10, "seasons": ["spring", "summer", "autumn"]},
+          {"item": "forage_flower", "weight": 8, "seasons": ["spring", "summer", "autumn"]},
+          {"item": "forage_mushroom", "weight": 10, "weather": ["rainy"]},
+          {"item": "forage_mushroom", "weight": 4}
+        ]
+      },
+      "ranch": {
+        "slots": 4,
+        "chance": 0.5,
+        "table": [
+          {"item": "forage_flower", "weight": 10},
+          {"item": "forage_berry", "weight": 6, "seasons": ["summer", "autumn"]},
+          {"item": "forage_mushroom", "weight": 6}
+        ]
+      },
+      "beach": {
+        "slots": 5,
+        "chance": 0.5,
+        "table": [
+          {"item": "forage_driftwood", "weight": 12},
+          {"item": "forage_seaglass", "weight": 3},
+          {"item": "junk_can", "weight": 4}
+        ]
+      }
+    }
+  }
+}

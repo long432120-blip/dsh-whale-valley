@@ -1,0 +1,1794 @@
+{
+  "version": 1,
+  "scenes": {
+    "room": {
+      "image": "assets/rooms/whale-room.webp",
+      "imageSize": {
+        "w": 1402,
+        "h": 1122
+      },
+      "tiles": {
+        "w": 15,
+        "h": 12
+      },
+      "actorScale": 0.8,
+      "floor": [
+        {
+          "x": 60,
+          "y": 495,
+          "w": 1275,
+          "h": 490
+        },
+        {
+          "x": 630,
+          "y": 985,
+          "w": 150,
+          "h": 110
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 75,
+          "y": 440,
+          "w": 100,
+          "h": 115
+        },
+        {
+          "x": 55,
+          "y": 570,
+          "w": 110,
+          "h": 165
+        },
+        {
+          "x": 870,
+          "y": 350,
+          "w": 75,
+          "h": 135
+        },
+        {
+          "x": 945,
+          "y": 395,
+          "w": 305,
+          "h": 140
+        },
+        {
+          "x": 1215,
+          "y": 765,
+          "w": 130,
+          "h": 215
+        }
+      ],
+      "spawns": {
+        "default": {
+          "x": 700,
+          "y": 760,
+          "face": "down"
+        },
+        "fromGarden": {
+          "x": 705,
+          "y": 960,
+          "face": "up"
+        },
+        "fromAttic": {
+          "x": 120,
+          "y": 960,
+          "face": "right"
+        },
+        "fromHall": {
+          "x": 705,
+          "y": 960,
+          "face": "up"
+        }
+      },
+      "spots": {
+        "window": {
+          "x": 1000,
+          "y": 580,
+          "face": "up",
+          "emote": "note"
+        },
+        "bed": {
+          "x": 300,
+          "y": 715,
+          "face": "up",
+          "emote": "zzz",
+          "action": "sleepy"
+        },
+        "rug": {
+          "x": 700,
+          "y": 740,
+          "face": "down",
+          "action": "sit"
+        },
+        "table": {
+          "x": 520,
+          "y": 900,
+          "face": "left",
+          "emote": "heart"
+        },
+        "plant": {
+          "x": 900,
+          "y": 560,
+          "face": "up"
+        }
+      },
+      "hotspots": [
+        {
+          "id": "bed",
+          "name": "貝殼床",
+          "rect": {
+            "x": 170,
+            "y": 300,
+            "w": 275,
+            "h": 365
+          },
+          "stand": {
+            "x": 300,
+            "y": 715
+          },
+          "face": "up",
+          "hint": "🛏️ 貝殼床：睡到明天早上（體力補滿）",
+          "action": {
+            "type": "sleep"
+          }
+        },
+        {
+          "id": "sofa",
+          "name": "沙發几",
+          "rect": {
+            "x": 145,
+            "y": 745,
+            "w": 315,
+            "h": 200
+          },
+          "stand": {
+            "x": 520,
+            "y": 900
+          },
+          "face": "left",
+          "pose": "sit",
+          "hint": "🛋️ 沙發几：坐下來吃點東西",
+          "action": {
+            "type": "eat"
+          }
+        },
+        {
+          "id": "aquarium",
+          "name": "水族箱",
+          "rect": {
+            "x": 395,
+            "y": 195,
+            "w": 480,
+            "h": 300
+          },
+          "stand": {
+            "x": 640,
+            "y": 560
+          },
+          "face": "up",
+          "emote": "heart",
+          "hint": "🐠 水族箱：看魚類圖鑑",
+          "action": {
+            "type": "open_ui",
+            "ui": "codex"
+          }
+        },
+        {
+          "id": "bookshelf",
+          "name": "書架",
+          "rect": {
+            "x": 68,
+            "y": 145,
+            "w": 245,
+            "h": 195
+          },
+          "stand": {
+            "x": 480,
+            "y": 560
+          },
+          "face": "up",
+          "hint": "📚 書架：翻翻圖鑑",
+          "action": {
+            "type": "open_ui",
+            "ui": "codex"
+          }
+        },
+        {
+          "id": "desk",
+          "name": "書桌",
+          "rect": {
+            "x": 1085,
+            "y": 545,
+            "w": 235,
+            "h": 180
+          },
+          "stand": {
+            "x": 1180,
+            "y": 780
+          },
+          "face": "up",
+          "hint": "📖 書桌：翻食譜做料理",
+          "action": {
+            "type": "shop",
+            "shop": "kitchen"
+          }
+        },
+        {
+          "id": "chest",
+          "name": "寶箱",
+          "rect": {
+            "x": 1068,
+            "y": 850,
+            "w": 160,
+            "h": 130
+          },
+          "stand": {
+            "x": 990,
+            "y": 930
+          },
+          "face": "right",
+          "hint": "🧰 寶箱：打開揹包",
+          "action": {
+            "type": "open_ui",
+            "ui": "bag"
+          }
+        },
+        {
+          "id": "window",
+          "name": "窗戶",
+          "rect": {
+            "x": 935,
+            "y": 85,
+            "w": 320,
+            "h": 255
+          },
+          "stand": {
+            "x": 1000,
+            "y": 580
+          },
+          "face": "up",
+          "emote": "note",
+          "hint": "🪟 窗戶：看看外面的海",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "今天的海好藍喔，主人要不要去海邊走走？",
+              "從這裡看得到小鎮的燈塔耶。",
+              "海風好舒服～"
+            ]
+          }
+        },
+        {
+          "id": "ship-bottle",
+          "name": "瓶中船",
+          "rect": {
+            "x": 1055,
+            "y": 325,
+            "w": 95,
+            "h": 105
+          },
+          "stand": {
+            "x": 1100,
+            "y": 580
+          },
+          "face": "up",
+          "hint": "⛵ 瓶中船",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "這艘小船是怎麼放進瓶子裡的呢？好神奇！",
+              "總有一天想坐真的船去很遠的地方。"
+            ]
+          }
+        },
+        {
+          "id": "jelly-lamps",
+          "name": "水母燈",
+          "rect": {
+            "x": 410,
+            "y": 90,
+            "w": 410,
+            "h": 100
+          },
+          "approach": "none",
+          "blocks": false,
+          "emote": "note",
+          "hint": "🪼 水母燈",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "水母燈一閃一閃的，好像在跟我打招呼。",
+              "晚上關燈的時候，水母燈最漂亮了～"
+            ]
+          }
+        },
+        {
+          "id": "door",
+          "name": "門口",
+          "rect": {
+            "x": 600,
+            "y": 990,
+            "w": 210,
+            "h": 110
+          },
+          "stand": {
+            "x": 705,
+            "y": 1040
+          },
+          "blocks": false,
+          "hint": "🚪 門口：出門、去別的房間",
+          "action": {
+            "type": "door",
+            "to": "garden",
+            "spawn": "fromRoom",
+            "options": [
+              {
+                "to": "garden",
+                "spawn": "fromRoom",
+                "label": "🌷 花園"
+              },
+              {
+                "to": "kitchen",
+                "spawn": "fromHall",
+                "label": "🍳 廚房"
+              },
+              {
+                "to": "bath",
+                "spawn": "fromHall",
+                "label": "♨️ 浴室"
+              },
+              {
+                "to": "gameroom",
+                "spawn": "fromHall",
+                "label": "🎮 遊戲室"
+              }
+            ]
+          }
+        },
+        {
+          "id": "to-attic",
+          "name": "閣樓爬梯",
+          "rect": {
+            "x": 55,
+            "y": 820,
+            "w": 95,
+            "h": 130
+          },
+          "stand": {
+            "x": 120,
+            "y": 965
+          },
+          "unlock": "house_upgrade",
+          "hint": "🪜 船錨旁的爬梯：去閣樓",
+          "action": {
+            "type": "door",
+            "to": "attic",
+            "spawn": "default"
+          }
+        }
+      ]
+    },
+    "kitchen": {
+      "image": "assets/rooms/kitchen.webp",
+      "imageSize": {
+        "w": 1536,
+        "h": 1024
+      },
+      "tiles": {
+        "w": 18,
+        "h": 12
+      },
+      "actorScale": 0.8,
+      "floor": [
+        {
+          "x": 60,
+          "y": 545,
+          "w": 1420,
+          "h": 440
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 50,
+          "y": 550,
+          "w": 110,
+          "h": 135
+        },
+        {
+          "x": 55,
+          "y": 665,
+          "w": 140,
+          "h": 260
+        },
+        {
+          "x": 1360,
+          "y": 770,
+          "w": 125,
+          "h": 155
+        },
+        {
+          "x": 1370,
+          "y": 420,
+          "w": 125,
+          "h": 245
+        },
+        {
+          "x": 485,
+          "y": 600,
+          "w": 570,
+          "h": 285
+        }
+      ],
+      "spawns": {
+        "default": {
+          "x": 300,
+          "y": 880,
+          "face": "up"
+        },
+        "fromHall": {
+          "x": 770,
+          "y": 870,
+          "face": "up"
+        }
+      },
+      "spots": {
+        "stove": {
+          "x": 690,
+          "y": 560,
+          "face": "up"
+        },
+        "fridge": {
+          "x": 1260,
+          "y": 560,
+          "face": "up"
+        },
+        "table": {
+          "x": 725,
+          "y": 900,
+          "face": "down",
+          "action": "sit",
+          "seat": {
+            "x": 705,
+            "y": 830
+          }
+        }
+      },
+      "hotspots": [
+        {
+          "id": "stove",
+          "name": "爐子",
+          "rect": {
+            "x": 555,
+            "y": 255,
+            "w": 270,
+            "h": 305
+          },
+          "stand": {
+            "x": 690,
+            "y": 560
+          },
+          "face": "up",
+          "hint": "🍳 爐子：做料理",
+          "action": {
+            "type": "shop",
+            "shop": "kitchen"
+          }
+        },
+        {
+          "id": "sink",
+          "name": "水槽",
+          "rect": {
+            "x": 285,
+            "y": 305,
+            "w": 170,
+            "h": 145
+          },
+          "stand": {
+            "x": 370,
+            "y": 560
+          },
+          "face": "up",
+          "hint": "🚰 水龍頭：喝口水",
+          "action": {
+            "type": "drink",
+            "table": "tap"
+          }
+        },
+        {
+          "id": "fridge",
+          "name": "冰箱",
+          "rect": {
+            "x": 1170,
+            "y": 250,
+            "w": 185,
+            "h": 305
+          },
+          "stand": {
+            "x": 1260,
+            "y": 560
+          },
+          "face": "up",
+          "hint": "🧊 冰箱：打開看看有什麼（每天會找到一樣東西）",
+          "action": {
+            "type": "fridge"
+          }
+        },
+        {
+          "id": "table",
+          "name": "餐桌",
+          "rect": {
+            "x": 485,
+            "y": 560,
+            "w": 565,
+            "h": 320
+          },
+          "stand": {
+            "x": 725,
+            "y": 900
+          },
+          "face": "down",
+          "pose": "sit",
+          "blocks": false,
+          "hint": "🍽️ 餐桌：坐在高腳椅上吃飯",
+          "action": {
+            "type": "eat"
+          },
+          "seat": {
+            "x": 705,
+            "y": 830
+          }
+        },
+        {
+          "id": "clock",
+          "name": "魚時鐘",
+          "rect": {
+            "x": 820,
+            "y": 65,
+            "w": 210,
+            "h": 110
+          },
+          "approach": "none",
+          "hint": "🕐 魚時鐘",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "現在是 {time}，{season}。",
+              "魚時鐘說現在是 {time}！"
+            ]
+          }
+        },
+        {
+          "id": "pans",
+          "name": "鍋子",
+          "rect": {
+            "x": 820,
+            "y": 185,
+            "w": 210,
+            "h": 125
+          },
+          "stand": {
+            "x": 930,
+            "y": 560
+          },
+          "face": "up",
+          "hint": "🍳 掛著的鍋子",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "大鍋子煮湯，小鍋子煎蛋！",
+              "鍋子都擦得亮晶晶的～"
+            ]
+          }
+        },
+        {
+          "id": "window-l",
+          "name": "左邊的窗戶",
+          "rect": {
+            "x": 170,
+            "y": 90,
+            "w": 265,
+            "h": 200
+          },
+          "stand": {
+            "x": 300,
+            "y": 560
+          },
+          "face": "up",
+          "hint": "🪟 窗戶",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "外面是{weather}呢。",
+              "從廚房看得到海耶～"
+            ]
+          }
+        },
+        {
+          "id": "window-r",
+          "name": "右邊的窗戶",
+          "rect": {
+            "x": 1130,
+            "y": 90,
+            "w": 255,
+            "h": 160
+          },
+          "stand": {
+            "x": 1100,
+            "y": 560
+          },
+          "face": "up",
+          "hint": "🪟 窗戶",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "外面是{weather}呢。",
+              "窗台的薄荷長得好快。"
+            ]
+          }
+        },
+        {
+          "id": "fruit",
+          "name": "水果籃",
+          "rect": {
+            "x": 1050,
+            "y": 290,
+            "w": 110,
+            "h": 110
+          },
+          "stand": {
+            "x": 1100,
+            "y": 560
+          },
+          "face": "up",
+          "hint": "🍋 水果籃",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "檸檬好酸……但做成果汁很好喝！"
+            ]
+          }
+        },
+        {
+          "id": "hall",
+          "name": "走廊",
+          "rect": {
+            "x": 620,
+            "y": 970,
+            "w": 300,
+            "h": 54
+          },
+          "stand": {
+            "x": 770,
+            "y": 950
+          },
+          "blocks": false,
+          "hint": "🚪 走廊：去別的房間",
+          "action": {
+            "type": "door",
+            "to": "room",
+            "spawn": "fromHall",
+            "options": [
+              {
+                "to": "room",
+                "spawn": "fromHall",
+                "label": "🐋 鯨魚娘的房間"
+              },
+              {
+                "to": "gameroom",
+                "spawn": "fromHall",
+                "label": "🎮 遊戲室"
+              },
+              {
+                "to": "bath",
+                "spawn": "fromHall",
+                "label": "♨️ 浴室"
+              },
+              {
+                "to": "garden",
+                "spawn": "fromRoom",
+                "label": "🌷 花園"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "bath": {
+      "image": "assets/rooms/bath.webp",
+      "imageSize": {
+        "w": 1536,
+        "h": 1024
+      },
+      "tiles": {
+        "w": 18,
+        "h": 12
+      },
+      "actorScale": 0.8,
+      "floor": [
+        {
+          "x": 60,
+          "y": 600,
+          "w": 1420,
+          "h": 385
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 60,
+          "y": 530,
+          "w": 265,
+          "h": 220
+        },
+        {
+          "x": 55,
+          "y": 755,
+          "w": 250,
+          "h": 215
+        },
+        {
+          "x": 355,
+          "y": 580,
+          "w": 145,
+          "h": 145
+        },
+        {
+          "x": 515,
+          "y": 670,
+          "w": 155,
+          "h": 140
+        },
+        {
+          "x": 815,
+          "y": 670,
+          "w": 155,
+          "h": 140
+        },
+        {
+          "x": 985,
+          "y": 575,
+          "w": 155,
+          "h": 180
+        },
+        {
+          "x": 1215,
+          "y": 580,
+          "w": 265,
+          "h": 200
+        },
+        {
+          "x": 1215,
+          "y": 780,
+          "w": 110,
+          "h": 150
+        },
+        {
+          "x": 1325,
+          "y": 760,
+          "w": 170,
+          "h": 200
+        }
+      ],
+      "spawns": {
+        "default": {
+          "x": 740,
+          "y": 880,
+          "face": "up"
+        },
+        "fromHall": {
+          "x": 770,
+          "y": 870,
+          "face": "up"
+        }
+      },
+      "spots": {
+        "tub": {
+          "x": 740,
+          "y": 760,
+          "face": "up",
+          "action": "swim"
+        }
+      },
+      "hotspots": [
+        {
+          "id": "tub",
+          "name": "溫泉",
+          "rect": {
+            "x": 410,
+            "y": 320,
+            "w": 700,
+            "h": 400
+          },
+          "stand": {
+            "x": 740,
+            "y": 760
+          },
+          "face": "up",
+          "emote": "heart",
+          "hint": "♨️ 溫泉：泡個澡（體力回復）",
+          "action": {
+            "type": "bath"
+          }
+        },
+        {
+          "id": "toy-whales",
+          "name": "小鯨魚玩具",
+          "rect": {
+            "x": 590,
+            "y": 370,
+            "w": 360,
+            "h": 155
+          },
+          "approach": "none",
+          "emote": "heart",
+          "hint": "🐳 小鯨魚玩具",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "小鯨魚玩具在水上漂來漂去～",
+              "噗噗噗，它會噴水耶！"
+            ]
+          }
+        },
+        {
+          "id": "towels",
+          "name": "毛巾架",
+          "rect": {
+            "x": 1215,
+            "y": 580,
+            "w": 265,
+            "h": 200
+          },
+          "stand": {
+            "x": 1150,
+            "y": 850
+          },
+          "face": "right",
+          "hint": "🧺 毛巾架",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "鯨魚毛巾軟綿綿的～",
+              "泡完澡要擦乾，不然會感冒！"
+            ]
+          }
+        },
+        {
+          "id": "bottles",
+          "name": "洗髮精",
+          "rect": {
+            "x": 165,
+            "y": 770,
+            "w": 110,
+            "h": 130
+          },
+          "stand": {
+            "x": 400,
+            "y": 880
+          },
+          "face": "left",
+          "hint": "🧴 洗髮精",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "這瓶是海鹽香味的！",
+              "洗完頭髮香香的～"
+            ]
+          }
+        },
+        {
+          "id": "noren",
+          "name": "湯暖簾",
+          "rect": {
+            "x": 650,
+            "y": 35,
+            "w": 265,
+            "h": 235
+          },
+          "approach": "none",
+          "hint": "♨️ 湯",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "「湯」就是溫泉的意思喔！"
+            ]
+          }
+        },
+        {
+          "id": "scroll",
+          "name": "掛軸",
+          "rect": {
+            "x": 135,
+            "y": 125,
+            "w": 140,
+            "h": 280
+          },
+          "approach": "none",
+          "hint": "🖼️ 掛軸",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "月亮下的鯨魚……好像我喔。"
+            ]
+          }
+        },
+        {
+          "id": "flowers",
+          "name": "繡球花",
+          "rect": {
+            "x": 180,
+            "y": 395,
+            "w": 140,
+            "h": 180
+          },
+          "approach": "none",
+          "hint": "💠 繡球花",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "繡球花是藍色的，跟大海一樣！"
+            ]
+          }
+        },
+        {
+          "id": "stone-lantern",
+          "name": "石燈籠",
+          "rect": {
+            "x": 1165,
+            "y": 280,
+            "w": 130,
+            "h": 200
+          },
+          "approach": "none",
+          "hint": "🏮 石燈籠",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "晚上點起來好有氣氛～"
+            ]
+          }
+        },
+        {
+          "id": "hall",
+          "name": "走廊",
+          "rect": {
+            "x": 620,
+            "y": 970,
+            "w": 300,
+            "h": 54
+          },
+          "stand": {
+            "x": 770,
+            "y": 950
+          },
+          "blocks": false,
+          "hint": "🚪 走廊：去別的房間",
+          "action": {
+            "type": "door",
+            "to": "room",
+            "spawn": "fromHall",
+            "options": [
+              {
+                "to": "room",
+                "spawn": "fromHall",
+                "label": "🐋 鯨魚娘的房間"
+              },
+              {
+                "to": "kitchen",
+                "spawn": "fromHall",
+                "label": "🍳 廚房"
+              },
+              {
+                "to": "gameroom",
+                "spawn": "fromHall",
+                "label": "🎮 遊戲室"
+              },
+              {
+                "to": "garden",
+                "spawn": "fromRoom",
+                "label": "🌷 花園"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "gameroom": {
+      "image": "assets/rooms/gameroom.webp",
+      "imageSize": {
+        "w": 1536,
+        "h": 1024
+      },
+      "tiles": {
+        "w": 18,
+        "h": 12
+      },
+      "actorScale": 0.8,
+      "floor": [
+        {
+          "x": 60,
+          "y": 560,
+          "w": 1420,
+          "h": 425
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 55,
+          "y": 515,
+          "w": 190,
+          "h": 205
+        },
+        {
+          "x": 60,
+          "y": 700,
+          "w": 175,
+          "h": 255
+        },
+        {
+          "x": 1400,
+          "y": 510,
+          "w": 90,
+          "h": 150
+        }
+      ],
+      "spawns": {
+        "default": {
+          "x": 770,
+          "y": 880,
+          "face": "up"
+        },
+        "fromHall": {
+          "x": 770,
+          "y": 870,
+          "face": "up"
+        }
+      },
+      "spots": {
+        "tv": {
+          "x": 540,
+          "y": 650,
+          "face": "up"
+        }
+      },
+      "hotspots": [
+        {
+          "id": "tv",
+          "name": "電視遊樂器",
+          "rect": {
+            "x": 715,
+            "y": 230,
+            "w": 445,
+            "h": 330
+          },
+          "stand": {
+            "x": 540,
+            "y": 650
+          },
+          "face": "up",
+          "pose": "sit",
+          "hint": "🎮 電視遊樂器：讓她坐在懶骨頭上玩",
+          "action": {
+            "type": "play",
+            "game": "console"
+          }
+        },
+        {
+          "id": "beanbag",
+          "name": "懶骨頭",
+          "rect": {
+            "x": 380,
+            "y": 300,
+            "w": 310,
+            "h": 300
+          },
+          "stand": {
+            "x": 540,
+            "y": 650
+          },
+          "face": "up",
+          "pose": "sit",
+          "hint": "🛋️ 懶骨頭：坐下來打電動",
+          "action": {
+            "type": "play",
+            "game": "console"
+          }
+        },
+        {
+          "id": "arcade",
+          "name": "街機",
+          "rect": {
+            "x": 125,
+            "y": 170,
+            "w": 245,
+            "h": 415
+          },
+          "stand": {
+            "x": 300,
+            "y": 650
+          },
+          "face": "up",
+          "hint": "🕹️ 街機：讓她玩一下",
+          "action": {
+            "type": "play",
+            "game": "arcade"
+          }
+        },
+        {
+          "id": "shelf",
+          "name": "遊戲收藏櫃",
+          "rect": {
+            "x": 1170,
+            "y": 165,
+            "w": 265,
+            "h": 440
+          },
+          "stand": {
+            "x": 1290,
+            "y": 650
+          },
+          "face": "up",
+          "hint": "📚 收藏櫃",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "這些卡帶都是我的寶貝～",
+              "下次要玩哪一款呢？",
+              "漫畫看到一半，好想知道後面！"
+            ]
+          }
+        },
+        {
+          "id": "snack",
+          "name": "零食桌",
+          "rect": {
+            "x": 1105,
+            "y": 640,
+            "w": 315,
+            "h": 175
+          },
+          "stand": {
+            "x": 1060,
+            "y": 900
+          },
+          "face": "down",
+          "hint": "🍪 零食桌：坐在小坐墊上吃零食（每天有免費的）",
+          "action": {
+            "type": "eat",
+            "snack": "snack"
+          },
+          "seat": {
+            "x": 1215,
+            "y": 905
+          },
+          "pose": "sit"
+        },
+        {
+          "id": "pouf",
+          "name": "小坐墊",
+          "rect": {
+            "x": 1130,
+            "y": 815,
+            "w": 170,
+            "h": 140
+          },
+          "stand": {
+            "x": 1060,
+            "y": 900
+          },
+          "face": "down",
+          "pose": "sit",
+          "hint": "🪑 小坐墊",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "坐墊軟綿綿的～",
+              "休息一下再繼續破關！"
+            ]
+          },
+          "seat": {
+            "x": 1215,
+            "y": 905
+          }
+        },
+        {
+          "id": "posters",
+          "name": "海報",
+          "rect": {
+            "x": 310,
+            "y": 70,
+            "w": 410,
+            "h": 240
+          },
+          "approach": "none",
+          "blocks": false,
+          "emote": "heart",
+          "hint": "🖼️ 海報",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "那張鯨魚的海報是我最喜歡的！",
+              "水母海報晚上看起來好像在發光～"
+            ]
+          }
+        },
+        {
+          "id": "blocks",
+          "name": "玩具箱",
+          "rect": {
+            "x": 225,
+            "y": 770,
+            "w": 130,
+            "h": 180
+          },
+          "stand": {
+            "x": 410,
+            "y": 880
+          },
+          "face": "left",
+          "hint": "📦 玩具箱",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "星星箱子和船錨箱子，裡面都是我的玩具！",
+              "搖一搖……喀啦喀啦，好像有彈珠？"
+            ]
+          }
+        },
+        {
+          "id": "whale-lamp",
+          "name": "鯨魚夜燈",
+          "rect": {
+            "x": 60,
+            "y": 455,
+            "w": 150,
+            "h": 110
+          },
+          "approach": "none",
+          "emote": "heart",
+          "hint": "🐋 鯨魚夜燈",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "鯨魚夜燈亮亮的，好可愛！"
+            ]
+          }
+        },
+        {
+          "id": "hall",
+          "name": "走廊",
+          "rect": {
+            "x": 620,
+            "y": 970,
+            "w": 300,
+            "h": 54
+          },
+          "stand": {
+            "x": 770,
+            "y": 950
+          },
+          "blocks": false,
+          "hint": "🚪 走廊：去別的房間",
+          "action": {
+            "type": "door",
+            "to": "room",
+            "spawn": "fromHall",
+            "options": [
+              {
+                "to": "room",
+                "spawn": "fromHall",
+                "label": "🐋 鯨魚娘的房間"
+              },
+              {
+                "to": "kitchen",
+                "spawn": "fromHall",
+                "label": "🍳 廚房"
+              },
+              {
+                "to": "bath",
+                "spawn": "fromHall",
+                "label": "♨️ 浴室"
+              },
+              {
+                "to": "garden",
+                "spawn": "fromRoom",
+                "label": "🌷 花園"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "tavern": {
+      "image": "assets/rooms/tavern.webp",
+      "imageSize": {
+        "w": 1536,
+        "h": 1024
+      },
+      "tiles": {
+        "w": 18,
+        "h": 12
+      },
+      "actorScale": 0.8,
+      "floor": [
+        {
+          "x": 40,
+          "y": 395,
+          "w": 965,
+          "h": 470
+        },
+        {
+          "x": 1000,
+          "y": 395,
+          "w": 40,
+          "h": 110
+        },
+        {
+          "x": 1035,
+          "y": 400,
+          "w": 455,
+          "h": 465
+        },
+        {
+          "x": 600,
+          "y": 860,
+          "w": 280,
+          "h": 110
+        }
+      ],
+      "obstacles": [
+        {
+          "x": 395,
+          "y": 395,
+          "w": 460,
+          "h": 65
+        },
+        {
+          "x": 40,
+          "y": 440,
+          "w": 80,
+          "h": 110
+        },
+        {
+          "x": 40,
+          "y": 600,
+          "w": 70,
+          "h": 205
+        },
+        {
+          "x": 200,
+          "y": 540,
+          "w": 110,
+          "h": 110
+        },
+        {
+          "x": 790,
+          "y": 540,
+          "w": 115,
+          "h": 110
+        },
+        {
+          "x": 330,
+          "y": 700,
+          "w": 145,
+          "h": 130
+        },
+        {
+          "x": 680,
+          "y": 700,
+          "w": 140,
+          "h": 130
+        },
+        {
+          "x": 1190,
+          "y": 470,
+          "w": 180,
+          "h": 95
+        },
+        {
+          "x": 1190,
+          "y": 680,
+          "w": 180,
+          "h": 120
+        },
+        {
+          "x": 1040,
+          "y": 785,
+          "w": 80,
+          "h": 80
+        },
+        {
+          "x": 1415,
+          "y": 395,
+          "w": 75,
+          "h": 40
+        }
+      ],
+      "spawns": {
+        "default": {
+          "x": 640,
+          "y": 900,
+          "face": "up"
+        },
+        "fromTown": {
+          "x": 640,
+          "y": 900,
+          "face": "up"
+        }
+      },
+      "spots": {
+        "rug": {
+          "x": 570,
+          "y": 600,
+          "face": "down"
+        },
+        "seat-a": {
+          "x": 128,
+          "y": 660,
+          "face": "right",
+          "action": "tavern_sit",
+          "seat": {
+            "x": 185,
+            "y": 662
+          }
+        },
+        "seat-c": {
+          "x": 300,
+          "y": 820,
+          "face": "right",
+          "action": "tavern_sit",
+          "seat": {
+            "x": 300,
+            "y": 840
+          }
+        },
+        "seat-d": {
+          "x": 896,
+          "y": 820,
+          "face": "left",
+          "action": "tavern_sit",
+          "seat": {
+            "x": 810,
+            "y": 827
+          }
+        }
+      },
+      "hotspots": [
+        {
+          "id": "bar",
+          "name": "吧台",
+          "rect": {
+            "x": 350,
+            "y": 300,
+            "w": 525,
+            "h": 100
+          },
+          "stand": {
+            "x": 600,
+            "y": 495
+          },
+          "face": "up",
+          "hint": "🍺 吧台：跟老吳點餐（飲料、高級料理）",
+          "action": {
+            "type": "shop",
+            "shop": "tavern"
+          }
+        },
+        {
+          "id": "menu",
+          "name": "今日菜單",
+          "rect": {
+            "x": 875,
+            "y": 165,
+            "w": 100,
+            "h": 120
+          },
+          "stand": {
+            "x": 600,
+            "y": 495
+          },
+          "face": "up",
+          "hint": "📋 今日菜單：點餐",
+          "blocks": false,
+          "action": {
+            "type": "shop",
+            "shop": "tavern"
+          }
+        },
+        {
+          "id": "arcade",
+          "name": "街機",
+          "rect": {
+            "x": 1070,
+            "y": 220,
+            "w": 135,
+            "h": 225
+          },
+          "stand": {
+            "x": 1060,
+            "y": 475
+          },
+          "face": "up",
+          "hint": "🕹️ 街機：猜硬幣（10 金幣一次，猜中拿 20）",
+          "action": {
+            "type": "coin_flip"
+          }
+        },
+        {
+          "id": "cards",
+          "name": "牌桌",
+          "rect": {
+            "x": 1150,
+            "y": 640,
+            "w": 255,
+            "h": 185
+          },
+          "stand": {
+            "x": 1110,
+            "y": 745
+          },
+          "face": "right",
+          "hint": "🃏 牌桌：跟酒館裡的人比大小",
+          "action": {
+            "type": "cards"
+          },
+          "blocks": false
+        },
+        {
+          "id": "pool",
+          "name": "撞球桌",
+          "rect": {
+            "x": 1150,
+            "y": 440,
+            "w": 265,
+            "h": 135
+          },
+          "stand": {
+            "x": 1210,
+            "y": 610
+          },
+          "face": "up",
+          "hint": "🎱 撞球桌",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "球都排好了，可是我的手太短了…",
+              "一號球進洞！…咦，是母球。",
+              "撞球好難喔，主人會打嗎？"
+            ]
+          },
+          "blocks": false
+        },
+        {
+          "id": "darts",
+          "name": "飛鏢靶",
+          "rect": {
+            "x": 1265,
+            "y": 225,
+            "w": 105,
+            "h": 110
+          },
+          "stand": {
+            "x": 1300,
+            "y": 610
+          },
+          "face": "up",
+          "hint": "🎯 飛鏢靶",
+          "blocks": false,
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "咻——差一點點就中紅心了！",
+              "射飛鏢要瞇一隻眼睛…兩隻都瞇起來了。",
+              "老吳說阿綱是飛鏢高手。"
+            ]
+          }
+        },
+        {
+          "id": "fireplace",
+          "name": "壁爐",
+          "rect": {
+            "x": 105,
+            "y": 45,
+            "w": 210,
+            "h": 345
+          },
+          "stand": {
+            "x": 210,
+            "y": 450
+          },
+          "face": "up",
+          "hint": "🔥 壁爐：烤烤火",
+          "emote": "heart",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "好暖和喔～",
+              "火光暖暖的，好想睡覺…",
+              "壁爐上的盾牌好帥！"
+            ]
+          }
+        },
+        {
+          "id": "table-a",
+          "name": "餐桌",
+          "rect": {
+            "x": 145,
+            "y": 495,
+            "w": 225,
+            "h": 170
+          },
+          "stand": {
+            "x": 128,
+            "y": 660
+          },
+          "face": "right",
+          "pose": "tavern_sit",
+          "hint": "🍽️ 餐桌：坐下來吃東西",
+          "action": {
+            "type": "eat"
+          },
+          "blocks": false,
+          "seat": {
+            "x": 185,
+            "y": 662
+          }
+        },
+        {
+          "id": "table-b",
+          "name": "餐桌",
+          "rect": {
+            "x": 750,
+            "y": 495,
+            "w": 220,
+            "h": 170
+          },
+          "stand": {
+            "x": 981,
+            "y": 660
+          },
+          "face": "left",
+          "pose": "tavern_sit",
+          "hint": "🍽️ 餐桌：坐下來吃東西",
+          "action": {
+            "type": "eat"
+          },
+          "blocks": false,
+          "seat": {
+            "x": 933,
+            "y": 665
+          }
+        },
+        {
+          "id": "table-c",
+          "name": "餐桌",
+          "rect": {
+            "x": 260,
+            "y": 670,
+            "w": 235,
+            "h": 170
+          },
+          "stand": {
+            "x": 300,
+            "y": 820
+          },
+          "face": "right",
+          "pose": "tavern_sit",
+          "hint": "🍽️ 餐桌：坐下來吃東西",
+          "action": {
+            "type": "eat"
+          },
+          "blocks": false,
+          "seat": {
+            "x": 300,
+            "y": 840
+          }
+        },
+        {
+          "id": "table-d",
+          "name": "餐桌",
+          "rect": {
+            "x": 615,
+            "y": 665,
+            "w": 230,
+            "h": 175
+          },
+          "stand": {
+            "x": 896,
+            "y": 820
+          },
+          "face": "left",
+          "pose": "tavern_sit",
+          "hint": "🍽️ 餐桌：坐下來吃東西",
+          "action": {
+            "type": "eat"
+          },
+          "blocks": false,
+          "seat": {
+            "x": 810,
+            "y": 827
+          }
+        },
+        {
+          "id": "banner",
+          "name": "啤酒旗",
+          "rect": {
+            "x": 505,
+            "y": 85,
+            "w": 205,
+            "h": 140
+          },
+          "blocks": false,
+          "approach": "none",
+          "hint": "🍺 老吳的酒館",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "「老吳的酒館」…招牌上畫了一個大杯子！",
+              "現在是 {time}，酒館正熱鬧呢。"
+            ]
+          }
+        },
+        {
+          "id": "window",
+          "name": "窗戶",
+          "rect": {
+            "x": 1065,
+            "y": 110,
+            "w": 340,
+            "h": 95
+          },
+          "blocks": false,
+          "approach": "none",
+          "hint": "🌙 窗外",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "外面的星星好亮～",
+              "{weather}的晚上，酒館裡特別溫暖。"
+            ]
+          }
+        },
+        {
+          "id": "barrels",
+          "name": "酒桶",
+          "rect": {
+            "x": 45,
+            "y": 600,
+            "w": 70,
+            "h": 205
+          },
+          "approach": "none",
+          "hint": "🛢️ 酒桶",
+          "action": {
+            "type": "show_dialogue",
+            "lines": [
+              "好大的桶子…裡面裝的是麥汁嗎？",
+              "敲敲看…咚咚，是滿的！"
+            ]
+          }
+        },
+        {
+          "id": "door",
+          "name": "門口",
+          "rect": {
+            "x": 560,
+            "y": 880,
+            "w": 340,
+            "h": 120
+          },
+          "stand": {
+            "x": 740,
+            "y": 930
+          },
+          "blocks": false,
+          "hint": "🚪 回小鎮",
+          "action": {
+            "type": "door",
+            "to": "town",
+            "spawn": "fromTavern"
+          }
+        }
+      ]
+    }
+  }
+}

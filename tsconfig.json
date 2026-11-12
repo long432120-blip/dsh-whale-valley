@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "react-jsx",
+    "types": ["node"]
+  },
+  // host/index.ts、host/service.ts、client/dsh-entry.tsx 依賴 DSH 套件。
+  // @deepseek-ai/cordis 與 @deepseek-ai/schemastery 已安裝（含 .d.ts），所以一併納入檢查。
+  "include": [
+    "src/shared",
+    "src/client/stage.ts",
+    "src/client/stage-css.ts",
+    "src/client/bridge-local.ts",
+    "src/client/bridge-dsh.ts",
+    "src/client/css-url.ts",
+    "src/client/pixel",
+    "src/client/dsh-entry.tsx",
+    "src/host/store.ts",
+    "src/host/routes.ts",
+    "src/host/index.ts",
+    "src/host/service.ts",
+    "src/host/ai-llm.ts",
+    "demo",
+    "scripts",
+    "test"
+  ]
+}

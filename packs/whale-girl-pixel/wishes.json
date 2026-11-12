@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "afterQuest": "tutorial",
+  "lines": {
+    "new": ["主人主人，{wish}", "跟你說喔……{wish}", "{wish}嘿嘿～"],
+    "done": ["願望實現了！謝謝主人～", "好開心！主人最好了～", "噗嚕～今天的願望達成了！"]
+  },
+  "wishes": [
+    { "id": "eat-cook", "event": "fed", "emoji": "🍳", "text": "今天好想吃{item}～", "items": ["food_pancake", "food_omelette", "food_soup", "food_salad", "food_sushi"], "affection": 6, "hint": "在廚房的爐子做料理，或到酒館跟老吳點，再餵她吃", "weight": 3 },
+    { "id": "eat-snack", "event": "fed", "emoji": "🍓", "text": "想吃甜甜的{item}！", "items": ["drink_soda", "drink_cocoa", "food_jam", "forage_berry"], "affection": 5, "hint": "酒館有賣飲料，冰箱和地上也可能找到，再餵她吃", "weight": 2 },
+    { "id": "eat-fish", "event": "fed", "emoji": "🐟", "text": "好想吃魚喔……{item}的話更好！", "items": ["fish_bass", "fish_carp", "fish_shrimp"], "affection": 5, "hint": "去池塘釣，釣到之後餵她吃", "weight": 2 },
+    { "id": "fish", "event": "caught", "emoji": "🎣", "text": "想跟主人一起釣{n}條魚！", "count": 3, "affection": 5, "hint": "到池塘或海邊釣魚", "weight": 3 },
+    { "id": "harvest", "event": "harvested", "emoji": "🌱", "text": "想看看田裡收成的樣子！", "affection": 4, "hint": "等作物長大，去田裡收成", "weight": 2 },
+    { "id": "plant", "event": "planted", "emoji": "🌰", "text": "我們來種{n}顆種子吧！", "count": 2, "affection": 4, "hint": "跟小葵買種子，種在花園的田裡", "weight": 2 },
+    { "id": "beach", "event": "enter", "scene": "beach", "emoji": "🏖️", "text": "好想去海邊吹吹風～", "affection": 4, "hint": "帶她去海邊（🗺️ 地圖）", "weight": 2 },
+    { "id": "tavern", "event": "enter", "scene": "tavern", "emoji": "🍺", "text": "想去老吳的酒館坐坐！", "affection": 4, "hint": "帶她去小鎮的酒館", "weight": 2 },
+    { "id": "bath", "event": "bathed", "emoji": "🛁", "text": "今天想泡個暖呼呼的澡。", "affection": 4, "hint": "去浴室點浴池", "weight": 2 },
+    { "id": "play", "event": "play_stopped", "emoji": "🎮", "text": "想在遊戲室玩電動！", "affection": 4, "hint": "去遊戲室點電視或遊戲機，玩一下再停", "weight": 2 },
+    { "id": "headpat", "event": "headpat", "emoji": "🤚", "text": "可以……摸摸我的頭嗎？", "affection": 5, "hint": "在她身上快速點三下", "weight": 3 },
+    { "id": "gift", "event": "gifted", "emoji": "🎁", "text": "我們送個禮物給{npc}好不好？", "npcs": ["fisher", "florist", "smith", "barkeep"], "affection": 5, "hint": "點居民，選「送禮」", "weight": 2 },
+    { "id": "talk", "event": "talked", "emoji": "💬", "text": "好久沒跟{npc}聊天了～", "npcs": ["fisher", "florist", "smith", "barkeep"], "affection": 3, "hint": "點居民，選「聊天」", "weight": 2 },
+    { "id": "decor", "event": "placed", "emoji": "🪑", "text": "房間想多一點裝飾～擺個家具吧！", "affection": 5, "coins": 0, "hint": "🪑 家具目錄買家具，再從揹包擺出來", "weight": 1 },
+    { "id": "mine", "event": "mine_returned", "emoji": "⛏️", "text": "想去礦洞探險！", "affection": 5, "hint": "去礦洞入口，讓她下去探險", "weight": 1 }
+  ]
+}

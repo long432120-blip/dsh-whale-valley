@@ -1,0 +1,129 @@
+{
+  "version": 1,
+  "items": [
+    {"id": "hay", "name": "乾草", "emoji": "🌾", "category": "feed", "description": "動物的飼料。", "price": 5},
+    {
+      "id": "egg",
+      "name": "雞蛋",
+      "emoji": "🥚",
+      "category": "animal",
+      "food": {"satiety": 10, "affection": 2},
+      "price": 50
+    },
+    {
+      "id": "egg_large",
+      "name": "大雞蛋",
+      "emoji": "🥚",
+      "category": "animal",
+      "description": "心情好的雞才會生。",
+      "food": {"satiety": 15, "affection": 3},
+      "price": 95
+    },
+    {
+      "id": "egg_duck",
+      "name": "鴨蛋",
+      "emoji": "🥚",
+      "category": "animal",
+      "food": {"satiety": 12, "affection": 3},
+      "price": 95
+    },
+    {"id": "feather", "name": "鴨毛", "emoji": "🪶", "category": "animal", "description": "開心的鴨子偶爾會掉。", "price": 250},
+    {
+      "id": "milk",
+      "name": "牛奶",
+      "emoji": "🥛",
+      "category": "animal",
+      "food": {"satiety": 12, "affection": 2},
+      "price": 125
+    },
+    {
+      "id": "milk_large",
+      "name": "大瓶牛奶",
+      "emoji": "🍼",
+      "category": "animal",
+      "description": "心情好的牛才有。",
+      "food": {"satiety": 18, "affection": 3},
+      "price": 190
+    },
+    {"id": "wool", "name": "羊毛", "emoji": "🧶", "category": "animal", "price": 340},
+    {
+      "id": "wool_fine",
+      "name": "上等羊毛",
+      "emoji": "🧶",
+      "category": "animal",
+      "description": "摸得夠多的羊才會長。",
+      "price": 500
+    },
+    {"id": "truffle", "name": "松露", "emoji": "🍄", "category": "animal", "description": "心情好的豬會去找。", "price": 625}
+  ],
+  "buildings": {
+    "coop": {
+      "name": "雞舍",
+      "emoji": "🐔",
+      "levels": [{"capacity": 2, "cost": {}}, {"capacity": 4, "cost": {"coin": 1500}}, {"capacity": 6, "cost": {"coin": 3000}}]
+    },
+    "barn": {"name": "畜棚", "emoji": "🐄", "levels": [{"capacity": 2, "cost": {}}, {"capacity": 4, "cost": {"coin": 3500}}]}
+  },
+  "animals": {
+    "chicken": {
+      "name": "雞",
+      "emoji": "🐔",
+      "building": "coop",
+      "price": {"coin": 300},
+      "product": "egg",
+      "goodProduct": "egg_large",
+      "hours": 24,
+      "feed": "hay",
+      "baby": {"name": "小雞", "emoji": "🐣", "growHours": 24},
+      "sellPrice": {"baby": 150, "adult": 450}
+    },
+    "duck": {
+      "name": "鴨",
+      "emoji": "🦆",
+      "building": "coop",
+      "price": {"coin": 600},
+      "product": "egg_duck",
+      "goodProduct": "feather",
+      "hours": 36,
+      "feed": "hay",
+      "baby": {"name": "小鴨", "emoji": "🐥", "growHours": 36},
+      "sellPrice": {"baby": 300, "adult": 900}
+    },
+    "cow": {
+      "name": "牛",
+      "emoji": "🐄",
+      "building": "barn",
+      "price": {"coin": 1200},
+      "product": "milk",
+      "goodProduct": "milk_large",
+      "hours": 24,
+      "feed": "hay",
+      "baby": {"name": "小牛", "emoji": "🐮", "growHours": 48},
+      "sellPrice": {"baby": 600, "adult": 1800}
+    },
+    "sheep": {
+      "name": "羊",
+      "emoji": "🐑",
+      "building": "barn",
+      "price": {"coin": 1500},
+      "product": "wool",
+      "goodProduct": "wool_fine",
+      "hours": 48,
+      "feed": "hay",
+      "baby": {"name": "小羊", "emoji": "🐑", "growHours": 48},
+      "sellPrice": {"baby": 750, "adult": 2200}
+    },
+    "pig": {
+      "name": "豬",
+      "emoji": "🐖",
+      "building": "barn",
+      "price": {"coin": 3000},
+      "product": "truffle",
+      "hours": 24,
+      "feed": "hay",
+      "minMood": 60,
+      "baby": {"name": "小豬", "emoji": "🐷", "growHours": 48},
+      "sellPrice": {"baby": 1500, "adult": 4500}
+    }
+  }
+}

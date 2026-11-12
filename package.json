@@ -1,0 +1,91 @@
+{
+  "name": "dsh-whale-valley",
+  "version": "0.22.0",
+  "description": "鯨魚谷物語：和鯨魚娘一起過日子的像素小鎮（釣魚、種田、牧場、居民、酒館、四季、AI 日記）。DeepSeek Harness 插件，也能單機開瀏覽器玩。",
+  "license": "MIT",
+  "author": "long432120-blip",
+  "homepage": "https://github.com/long432120-blip/dsh-whale-valley#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/long432120-blip/dsh-whale-valley.git"
+  },
+  "bugs": {
+    "url": "https://github.com/long432120-blip/dsh-whale-valley/issues"
+  },
+  "type": "module",
+  "keywords": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsh",
+    "pixel-art",
+    "farming-sim",
+    "virtual-pet",
+    "game"
+  ],
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "files": [
+    "lib",
+    "packs",
+    "!packs/*/assets/source",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout"
+      ]
+    }
+  },
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.1-rc.5 <0.3.0"
+  },
+  "scripts": {
+    "demo": "esbuild demo=demo/main.ts pixel=demo/pixel-main.ts --bundle --format=esm --target=es2022 --loader:.tmj=json --loader:.tsj=json --outdir=demo --servedir=. --serve=8080",
+    "demo:build": "esbuild demo=demo/main.ts pixel=demo/pixel-main.ts --bundle --format=esm --target=es2022 --loader:.tmj=json --loader:.tsj=json --outdir=demo",
+    "demo:standalone": "tsx scripts/build-standalone.ts",
+    "demo:ai": "tsx scripts/ai-dev-server.ts",
+    "build:host": "esbuild src/host/index.ts --bundle --platform=node --format=esm --target=node22 --packages=external --outfile=lib/index.js",
+    "build:client": "tsx scripts/build-client.ts",
+    "build": "npm run build:host && npm run build:client",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "check:pack": "tsx scripts/check-pack.ts",
+    "check:pixel": "tsx scripts/check-pixel.ts",
+    "sim": "tsx scripts/sim-week.ts",
+    "check:secrets": "node scripts/check-secrets.mjs"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/schemastery": "*",
+    "react": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.3.0",
+    "esbuild": "^0.25.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  }
+}

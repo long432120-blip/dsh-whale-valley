@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "aspectRatio": "16 / 9",
+  "initialScene": "room",
+  "scenes": [
+    {
+      "id": "room",
+      "name": "室內房間",
+      "background": "assets/room.svg",
+      "walkArea": { "xMin": 14, "xMax": 68, "groundY": 87, "scale": 1 },
+      "spawns": { "default": 42, "fromGarden": 68 },
+      "hotspots": [
+        {
+          "id": "door-to-garden",
+          "label": "🚪 去花園",
+          "rect": { "x": 79, "y": 27, "w": 13, "h": 47 },
+          "action": { "type": "goto", "scene": "garden", "spawn": "fromRoom" }
+        }
+      ]
+    },
+    {
+      "id": "garden",
+      "name": "池塘花園",
+      "background": "assets/garden.svg",
+      "walkArea": { "xMin": 24, "xMax": 86, "groundY": 90, "scale": 0.9 },
+      "spawns": { "default": 55, "fromRoom": 25 },
+      "hotspots": [
+        {
+          "id": "door-to-room",
+          "label": "🏠 回房間",
+          "rect": { "x": 4, "y": 31, "w": 12, "h": 40 },
+          "action": { "type": "goto", "scene": "room", "spawn": "fromGarden" }
+        }
+      ]
+    }
+  ]
+}

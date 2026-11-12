@@ -1,0 +1,1149 @@
+{
+ "type": "map",
+ "version": "1.10",
+ "tiledversion": "1.10.2",
+ "orientation": "orthogonal",
+ "renderorder": "right-down",
+ "width": 20,
+ "height": 12,
+ "tilewidth": 16,
+ "tileheight": 16,
+ "infinite": false,
+ "nextlayerid": 4,
+ "nextobjectid": 26,
+ "tilesets": [
+  {
+   "firstgid": 1,
+   "source": "tiles.tsj"
+  }
+ ],
+ "layers": [
+  {
+   "id": 1,
+   "name": "ground",
+   "type": "tilelayer",
+   "width": 20,
+   "height": 12,
+   "x": 0,
+   "y": 0,
+   "opacity": 1,
+   "visible": true,
+   "data": [
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    40,
+    41,
+    40,
+    41,
+    40,
+    41,
+    40,
+    41,
+    40,
+    41,
+    40,
+    41,
+    40,
+    41,
+    40,
+    41,
+    40,
+    41,
+    40,
+    41,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    41,
+    40,
+    41,
+    40,
+    41,
+    40,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    40,
+    41,
+    39,
+    38,
+    38,
+    37,
+    40,
+    41,
+    40,
+    41,
+    40,
+    41,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    40,
+    41,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    41,
+    40,
+    41,
+    40,
+    41,
+    40,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    40,
+    41,
+    40,
+    41,
+    40,
+    41,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    39,
+    38,
+    85,
+    85,
+    85,
+    85,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    43,
+    44,
+    45,
+    39,
+    38,
+    38,
+    37,
+    37,
+    37,
+    39,
+    85,
+    85,
+    85,
+    85,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    48,
+    49,
+    50,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38,
+    37,
+    37,
+    39,
+    38,
+    38
+   ]
+  },
+  {
+   "id": 2,
+   "name": "decor",
+   "type": "tilelayer",
+   "width": 20,
+   "height": 12,
+   "x": 0,
+   "y": 0,
+   "opacity": 1,
+   "visible": true,
+   "data": [
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    62,
+    0,
+    0,
+    121,
+    122,
+    123,
+    0,
+    0,
+    142,
+    143,
+    144,
+    0,
+    0,
+    0,
+    130,
+    131,
+    132,
+    133,
+    0,
+    0,
+    0,
+    0,
+    53,
+    124,
+    125,
+    126,
+    53,
+    0,
+    145,
+    146,
+    147,
+    0,
+    53,
+    0,
+    134,
+    135,
+    136,
+    137,
+    0,
+    52,
+    0,
+    0,
+    0,
+    127,
+    128,
+    129,
+    0,
+    0,
+    148,
+    149,
+    150,
+    0,
+    0,
+    0,
+    138,
+    139,
+    140,
+    141,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    119,
+    119,
+    119,
+    0,
+    118,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    178,
+    179,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    180,
+    181,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    52,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "id": 3,
+   "name": "objects",
+   "type": "objectgroup",
+   "draworder": "topdown",
+   "x": 0,
+   "y": 0,
+   "opacity": 1,
+   "visible": true,
+   "objects": [
+    {
+     "id": 1,
+     "name": "default",
+     "type": "spawn",
+     "rotation": 0,
+     "visible": true,
+     "x": 152.0,
+     "y": 88.0,
+     "width": 0,
+     "height": 0,
+     "point": true,
+     "properties": [
+      {
+       "name": "face",
+       "type": "string",
+       "value": "down"
+      }
+     ]
+    },
+    {
+     "id": 2,
+     "name": "fromGarden",
+     "type": "spawn",
+     "rotation": 0,
+     "visible": true,
+     "x": 24.0,
+     "y": 104.0,
+     "width": 0,
+     "height": 0,
+     "point": true,
+     "properties": [
+      {
+       "name": "face",
+       "type": "string",
+       "value": "right"
+      }
+     ]
+    },
+    {
+     "id": 3,
+     "name": "fromTown",
+     "type": "spawn",
+     "rotation": 0,
+     "visible": true,
+     "x": 296.0,
+     "y": 104.0,
+     "width": 0,
+     "height": 0,
+     "point": true,
+     "properties": [
+      {
+       "name": "face",
+       "type": "string",
+       "value": "left"
+      }
+     ]
+    },
+    {
+     "id": 4,
+     "name": "fromGreenhouse",
+     "type": "spawn",
+     "rotation": 0,
+     "visible": true,
+     "x": 136.0,
+     "y": 72.0,
+     "width": 0,
+     "height": 0,
+     "point": true,
+     "properties": [
+      {
+       "name": "face",
+       "type": "string",
+       "value": "down"
+      }
+     ]
+    },
+    {
+     "id": 5,
+     "name": "to-garden",
+     "type": "door",
+     "rotation": 0,
+     "visible": true,
+     "x": 0,
+     "y": 80,
+     "width": 16,
+     "height": 48,
+     "properties": [
+      {
+       "name": "to",
+       "type": "string",
+       "value": "garden"
+      },
+      {
+       "name": "spawn",
+       "type": "string",
+       "value": "fromRanch"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\u2b05 \u82b1\u5712"
+      }
+     ]
+    },
+    {
+     "id": 6,
+     "name": "to-town",
+     "type": "door",
+     "rotation": 0,
+     "visible": true,
+     "x": 304,
+     "y": 80,
+     "width": 16,
+     "height": 48,
+     "properties": [
+      {
+       "name": "to",
+       "type": "string",
+       "value": "town"
+      },
+      {
+       "name": "spawn",
+       "type": "string",
+       "value": "fromRanch"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\u27a1 \u5c0f\u93ae"
+      }
+     ]
+    },
+    {
+     "id": 7,
+     "name": "to-greenhouse",
+     "type": "door",
+     "rotation": 0,
+     "visible": true,
+     "x": 128,
+     "y": 48,
+     "width": 16,
+     "height": 32,
+     "properties": [
+      {
+       "name": "to",
+       "type": "string",
+       "value": "greenhouse"
+      },
+      {
+       "name": "spawn",
+       "type": "string",
+       "value": "default"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83c\udf3f \u6eab\u5ba4"
+      },
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "greenhouse"
+      }
+     ]
+    },
+    {
+     "id": 8,
+     "name": "coop",
+     "type": "building",
+     "rotation": 0,
+     "visible": true,
+     "x": 32,
+     "y": 16,
+     "width": 48,
+     "height": 48,
+     "properties": [
+      {
+       "name": "building",
+       "type": "string",
+       "value": "coop"
+      },
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "coop"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83d\udc14 \u96de\u820d"
+      }
+     ]
+    },
+    {
+     "id": 9,
+     "name": "barn",
+     "type": "building",
+     "rotation": 0,
+     "visible": true,
+     "x": 208,
+     "y": 16,
+     "width": 64,
+     "height": 48,
+     "properties": [
+      {
+       "name": "building",
+       "type": "string",
+       "value": "barn"
+      },
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "barn"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83d\udc04 \u755c\u68da"
+      }
+     ]
+    },
+    {
+     "id": 10,
+     "name": "coop-pen",
+     "type": "pen",
+     "rotation": 0,
+     "visible": true,
+     "x": 16,
+     "y": 80,
+     "width": 64,
+     "height": 32,
+     "properties": [
+      {
+       "name": "building",
+       "type": "string",
+       "value": "coop"
+      }
+     ]
+    },
+    {
+     "id": 11,
+     "name": "barn-pen",
+     "type": "pen",
+     "rotation": 0,
+     "visible": true,
+     "x": 208,
+     "y": 80,
+     "width": 80,
+     "height": 32,
+     "properties": [
+      {
+       "name": "building",
+       "type": "string",
+       "value": "barn"
+      }
+     ]
+    },
+    {
+     "id": 12,
+     "name": "preserves-1",
+     "type": "machine",
+     "rotation": 0,
+     "visible": true,
+     "x": 112,
+     "y": 112,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "machine",
+       "type": "string",
+       "value": "preserves"
+      },
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "preserves"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83e\uded9 \u679c\u91ac\u6a5f"
+      }
+     ]
+    },
+    {
+     "id": 13,
+     "name": "smoker-1",
+     "type": "machine",
+     "rotation": 0,
+     "visible": true,
+     "x": 128,
+     "y": 112,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "machine",
+       "type": "string",
+       "value": "smoker"
+      },
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "smoker"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\u2668\ufe0f \u71fb\u9b5a\u7210"
+      }
+     ]
+    },
+    {
+     "id": 14,
+     "name": "artisan-1",
+     "type": "machine",
+     "rotation": 0,
+     "visible": true,
+     "x": 144,
+     "y": 112,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "machine",
+       "type": "string",
+       "value": "artisan"
+      },
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "artisan"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83e\uddc0 \u5de5\u574a"
+      }
+     ]
+    },
+    {
+     "id": 15,
+     "name": "shipping",
+     "type": "shop",
+     "rotation": 0,
+     "visible": true,
+     "x": 176,
+     "y": 112,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "shop",
+       "type": "string",
+       "value": "shipping"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83d\udce6 \u51fa\u8ca8\u7bb1"
+      }
+     ]
+    },
+    {
+     "id": 16,
+     "name": "field-a1",
+     "type": "plot",
+     "rotation": 0,
+     "visible": true,
+     "x": 32,
+     "y": 144,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "ranch_field_a"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83c\udf31 \u7267\u5834\u7530\u5730"
+      }
+     ]
+    },
+    {
+     "id": 17,
+     "name": "field-a2",
+     "type": "plot",
+     "rotation": 0,
+     "visible": true,
+     "x": 48,
+     "y": 144,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "ranch_field_a"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83c\udf31 \u7267\u5834\u7530\u5730"
+      }
+     ]
+    },
+    {
+     "id": 18,
+     "name": "field-a3",
+     "type": "plot",
+     "rotation": 0,
+     "visible": true,
+     "x": 64,
+     "y": 144,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "ranch_field_a"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83c\udf31 \u7267\u5834\u7530\u5730"
+      }
+     ]
+    },
+    {
+     "id": 19,
+     "name": "field-a4",
+     "type": "plot",
+     "rotation": 0,
+     "visible": true,
+     "x": 80,
+     "y": 144,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "ranch_field_a"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83c\udf31 \u7267\u5834\u7530\u5730"
+      }
+     ]
+    },
+    {
+     "id": 20,
+     "name": "field-b1",
+     "type": "plot",
+     "rotation": 0,
+     "visible": true,
+     "x": 32,
+     "y": 160,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "ranch_field_b"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83c\udf31 \u7267\u5834\u7530\u5730"
+      }
+     ]
+    },
+    {
+     "id": 21,
+     "name": "field-b2",
+     "type": "plot",
+     "rotation": 0,
+     "visible": true,
+     "x": 48,
+     "y": 160,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "ranch_field_b"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83c\udf31 \u7267\u5834\u7530\u5730"
+      }
+     ]
+    },
+    {
+     "id": 22,
+     "name": "field-b3",
+     "type": "plot",
+     "rotation": 0,
+     "visible": true,
+     "x": 64,
+     "y": 160,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "ranch_field_b"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83c\udf31 \u7267\u5834\u7530\u5730"
+      }
+     ]
+    },
+    {
+     "id": 23,
+     "name": "field-b4",
+     "type": "plot",
+     "rotation": 0,
+     "visible": true,
+     "x": 80,
+     "y": 160,
+     "width": 16,
+     "height": 16,
+     "properties": [
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "ranch_field_b"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83c\udf31 \u7267\u5834\u7530\u5730"
+      }
+     ]
+    },
+    {
+     "id": 24,
+     "name": "fishpond",
+     "type": "fishing",
+     "rotation": 0,
+     "visible": true,
+     "x": 192,
+     "y": 144,
+     "width": 48,
+     "height": 32,
+     "properties": [
+      {
+       "name": "table",
+       "type": "string",
+       "value": "fishpond"
+      },
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "fishpond"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83d\udc20 \u9b5a\u5858"
+      }
+     ]
+    },
+    {
+     "id": 25,
+     "name": "stable",
+     "type": "sign",
+     "rotation": 0,
+     "visible": true,
+     "x": 256,
+     "y": 128,
+     "width": 32,
+     "height": 32,
+     "properties": [
+      {
+       "name": "unlock",
+       "type": "string",
+       "value": "stable"
+      },
+      {
+       "name": "icon",
+       "type": "string",
+       "value": "\ud83d\udc34"
+      },
+      {
+       "name": "label",
+       "type": "string",
+       "value": "\ud83d\udc34 \u99ac\u5ec4"
+      },
+      {
+       "name": "text",
+       "type": "string",
+       "value": "\u99ac\u5728\u9019\u88e1\u4f11\u606f\u3002\u6709\u4e86\u99ac\uff0c\u5979\u5728\u6236\u5916\u8d70\u8def\u8b8a\u5feb\u4e86\u3002"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

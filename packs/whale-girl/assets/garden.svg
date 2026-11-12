@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8fd0ff"/><stop offset="1" stop-color="#e3f6ff"/>
+    </linearGradient>
+    <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a6db88"/><stop offset="1" stop-color="#78bf63"/>
+    </linearGradient>
+    <radialGradient id="pond" cx="0.45" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#9fdcff"/><stop offset="1" stop-color="#4f9fd6"/>
+    </radialGradient>
+  </defs>
+
+  <!-- 天空、太陽、雲 -->
+  <rect width="960" height="320" fill="url(#sky)"/>
+  <circle cx="830" cy="86" r="40" fill="#ffe28f"/>
+  <circle cx="830" cy="86" r="56" fill="#ffe28f" opacity="0.25"/>
+  <g fill="#fff" opacity="0.92">
+    <ellipse cx="300" cy="80" rx="54" ry="18"/><ellipse cx="336" cy="68" rx="34" ry="20"/>
+    <ellipse cx="610" cy="130" rx="44" ry="14"/><ellipse cx="640" cy="120" rx="26" ry="15"/>
+  </g>
+
+  <!-- 遠山 -->
+  <path d="M0 300q120 -90 260 -20q110 -70 250 0q130 -80 260 -10q110 -50 190 -10v60h-960z" fill="#b6e2a6"/>
+
+  <!-- 草地 -->
+  <rect y="296" width="960" height="244" fill="url(#grass)"/>
+
+  <!-- 籬笆 -->
+  <g fill="#f4e6d2" stroke="#d9c2a3" stroke-width="2">
+    <rect x="180" y="300" width="780" height="8" rx="3"/>
+    <rect x="180" y="318" width="780" height="8" rx="3"/>
+  </g>
+  <g fill="#fbf1e3" stroke="#d9c2a3" stroke-width="2">
+    <path d="M200 334v-58l8 -10l8 10v58z"/><path d="M290 334v-58l8 -10l8 10v58z"/>
+    <path d="M380 334v-58l8 -10l8 10v58z"/><path d="M470 334v-58l8 -10l8 10v58z"/>
+    <path d="M560 334v-58l8 -10l8 10v58z"/><path d="M650 334v-58l8 -10l8 10v58z"/>
+    <path d="M740 334v-58l8 -10l8 10v58z"/><path d="M830 334v-58l8 -10l8 10v58z"/>
+    <path d="M920 334v-58l8 -10l8 10v58z"/>
+  </g>
+
+  <!-- 池塘（在角色行走線後方） -->
+  <ellipse cx="640" cy="392" rx="236" ry="58" fill="#5aa9dc"/>
+  <ellipse cx="640" cy="388" rx="224" ry="50" fill="url(#pond)"/>
+  <path d="M520 380q20 -6 40 0M700 400q24 -6 48 0M600 410q16 -5 32 0" stroke="#fff" stroke-width="3" fill="none" opacity="0.7" stroke-linecap="round"/>
+  <g fill="#6cbf6a">
+    <ellipse cx="530" cy="400" rx="22" ry="9"/>
+    <ellipse cx="770" cy="372" rx="20" ry="8"/><ellipse cx="560" cy="362" rx="16" ry="6"/>
+  </g>
+  <path d="M530 400l23 -4v8z" fill="#8fd0f5"/>
+  <g transform="translate(770 366)">
+    <path d="M0 0q-12 -10 -4 -20q4 8 4 20q0 -12 4 -20q8 10 -4 20z" fill="#ffb3cf"/>
+  </g>
+  <path d="M690 384q8 -8 16 0q-8 8 -16 0zM706 384l7 -5v10z" fill="#ff9a6b" opacity="0.85"/>
+
+  <!-- 花叢 -->
+  <g>
+    <g fill="#ff9fc0"><circle cx="250" cy="352" r="7"/><circle cx="262" cy="346" r="7"/><circle cx="270" cy="356" r="7"/></g>
+    <g fill="#ffe17a"><circle cx="860" cy="470" r="8"/><circle cx="874" cy="462" r="8"/><circle cx="884" cy="474" r="8"/></g>
+    <g fill="#c7a5ff"><circle cx="420" cy="350" r="6"/><circle cx="430" cy="344" r="6"/></g>
+    <g fill="#fff"><circle cx="150" cy="500" r="6"/><circle cx="160" cy="494" r="6"/><circle cx="168" cy="504" r="6"/></g>
+    <g fill="#ff9fc0"><circle cx="920" cy="380" r="7"/><circle cx="932" cy="372" r="7"/></g>
+  </g>
+
+  <!-- 踏腳石 -->
+  <g fill="#e3ddd2" stroke="#cfc6b6" stroke-width="2">
+    <ellipse cx="120" cy="420" rx="26" ry="9"/><ellipse cx="190" cy="450" rx="24" ry="8"/>
+    <ellipse cx="270" cy="474" rx="26" ry="9"/>
+  </g>
+
+  <!-- 房子外牆與門（熱區對齊這裡：x 4–16%、y 31–71%） -->
+  <rect x="0" y="120" width="178" height="282" fill="#f6e7d6"/>
+  <path d="M-10 128l104 -76l104 76z" fill="#d98a7a"/>
+  <rect x="0" y="396" width="178" height="10" fill="#e2c9ae"/>
+  <rect x="38" y="166" width="114" height="226" rx="6" fill="#9a6644"/>
+  <rect x="46" y="174" width="98" height="218" rx="4" fill="#c98d5e"/>
+  <circle cx="130" cy="290" r="6" fill="#ffd27a" stroke="#c99a3a" stroke-width="2"/>
+  <circle cx="95" cy="222" r="20" fill="#eaf6ff" stroke="#fff" stroke-width="4"/>
+  <path d="M82 224q10 -11 20 0q-11 9 -20 0zM102 224l8 -6v12z" fill="#5b7fd6"/>
+</svg>

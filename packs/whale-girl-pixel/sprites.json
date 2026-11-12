@@ -1,0 +1,1425 @@
+{
+  "version": 1,
+  "_note": "由 tools/import_asset_sheet.py 產生，不要手改；要換圖請改那個檔案的對照表再跑一次",
+  "tilesHd": {
+    "image": "assets/tiles-hd.webp",
+    "scale": 4
+  },
+  "atlas": "assets/sprites.webp",
+  "frames": {
+    "animal:chicken": {
+      "x": 0,
+      "y": 0,
+      "w": 96,
+      "h": 96
+    },
+    "animal:chicken:baby": {
+      "x": 102,
+      "y": 0,
+      "w": 96,
+      "h": 96
+    },
+    "animal:duck": {
+      "x": 204,
+      "y": 0,
+      "w": 96,
+      "h": 96
+    },
+    "animal:duck:baby": {
+      "x": 306,
+      "y": 0,
+      "w": 96,
+      "h": 96
+    },
+    "animal:cow": {
+      "x": 408,
+      "y": 0,
+      "w": 96,
+      "h": 96
+    },
+    "animal:cow:baby": {
+      "x": 510,
+      "y": 0,
+      "w": 96,
+      "h": 96
+    },
+    "animal:sheep": {
+      "x": 612,
+      "y": 0,
+      "w": 96,
+      "h": 96
+    },
+    "animal:sheep:baby": {
+      "x": 714,
+      "y": 0,
+      "w": 96,
+      "h": 96
+    },
+    "animal:pig": {
+      "x": 816,
+      "y": 0,
+      "w": 96,
+      "h": 96
+    },
+    "animal:pig:baby": {
+      "x": 918,
+      "y": 0,
+      "w": 96,
+      "h": 96
+    },
+    "crop:strawberry_0": {
+      "x": 0,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:strawberry_1": {
+      "x": 70,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:strawberry_3": {
+      "x": 140,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:tomato_0": {
+      "x": 210,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:tomato_2": {
+      "x": 280,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:tomato_3": {
+      "x": 350,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:corn_0": {
+      "x": 420,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:corn_1": {
+      "x": 490,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:corn_2": {
+      "x": 560,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:corn_3": {
+      "x": 630,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:pumpkin_0": {
+      "x": 700,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:pumpkin_2": {
+      "x": 770,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:pumpkin_3": {
+      "x": 840,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:carrot_0": {
+      "x": 910,
+      "y": 102,
+      "w": 64,
+      "h": 64
+    },
+    "crop:carrot_3": {
+      "x": 0,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "crop:sunflower_0": {
+      "x": 70,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "crop:sunflower_1": {
+      "x": 140,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "crop:sunflower_3": {
+      "x": 210,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "crop:pepper_0": {
+      "x": 280,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "crop:pepper_1": {
+      "x": 350,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "crop:pepper_3": {
+      "x": 420,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "crop:cabbage_0": {
+      "x": 490,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "crop:cabbage_1": {
+      "x": 560,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "crop:cabbage_3": {
+      "x": 630,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "item:forage_driftwood": {
+      "x": 700,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "item:ore_iron": {
+      "x": 770,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "item:ore_copper": {
+      "x": 840,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "item:bar_copper": {
+      "x": 910,
+      "y": 172,
+      "w": 64,
+      "h": 64
+    },
+    "item:bar_gold": {
+      "x": 0,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:gem_quartz": {
+      "x": 70,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:milk": {
+      "x": 140,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_cheese": {
+      "x": 210,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:egg": {
+      "x": 280,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:wool": {
+      "x": 350,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_mayo": {
+      "x": 420,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_pickle": {
+      "x": 490,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:pet_food": {
+      "x": 560,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:seed_carrot": {
+      "x": 630,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:bait_ball": {
+      "x": 700,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_smoked_fish": {
+      "x": 770,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:crop_strawberry": {
+      "x": 840,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:crop_tomato": {
+      "x": 910,
+      "y": 242,
+      "w": 64,
+      "h": 64
+    },
+    "item:crop_corn": {
+      "x": 0,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:crop_pumpkin": {
+      "x": 70,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:crop_carrot": {
+      "x": 140,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:crop_sunflower": {
+      "x": 210,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:forage_flower": {
+      "x": 280,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:forage_berry": {
+      "x": 350,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_jam": {
+      "x": 420,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_chair": {
+      "x": 490,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_sofa": {
+      "x": 560,
+      "y": 312,
+      "w": 96,
+      "h": 96
+    },
+    "item:furn_plant": {
+      "x": 662,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_teddy": {
+      "x": 732,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_books": {
+      "x": 802,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_lamp": {
+      "x": 872,
+      "y": 312,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_aquarium": {
+      "x": 0,
+      "y": 414,
+      "w": 96,
+      "h": 96
+    },
+    "item:furn_trophy": {
+      "x": 102,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_sakura": {
+      "x": 172,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_scarecrow": {
+      "x": 242,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_xmas": {
+      "x": 312,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:deco_stone": {
+      "x": 382,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:plot_kit": {
+      "x": 452,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:floor_blue": {
+      "x": 522,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:floor_check": {
+      "x": 592,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:wall_mint": {
+      "x": 662,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:wall_star": {
+      "x": 732,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:sword_wood": {
+      "x": 802,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:sword_copper": {
+      "x": 872,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:sword_iron": {
+      "x": 942,
+      "y": 414,
+      "w": 64,
+      "h": 64
+    },
+    "item:sword_crystal": {
+      "x": 0,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:armor_leather": {
+      "x": 70,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:armor_iron": {
+      "x": 140,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:armor_crystal": {
+      "x": 210,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:pickaxe_basic": {
+      "x": 280,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:pickaxe_copper": {
+      "x": 350,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:pickaxe_iron": {
+      "x": 420,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:pickaxe_gold": {
+      "x": 490,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:rod_bamboo": {
+      "x": 560,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:rod_fiberglass": {
+      "x": 630,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:rod_iridium": {
+      "x": 700,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:bait_worm": {
+      "x": 770,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:bait_magic": {
+      "x": 840,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:net_basic": {
+      "x": 910,
+      "y": 516,
+      "w": 64,
+      "h": 64
+    },
+    "item:net_silk": {
+      "x": 0,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:tool_sprinkler": {
+      "x": 70,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:hay": {
+      "x": 140,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:feather": {
+      "x": 210,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:truffle": {
+      "x": 280,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:pet_treat": {
+      "x": 350,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_sushi": {
+      "x": 420,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_salad": {
+      "x": 490,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_soup": {
+      "x": 560,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_pie": {
+      "x": 630,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_kimchi": {
+      "x": 700,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_ketchup": {
+      "x": 770,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:food_omelette": {
+      "x": 840,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:ore_gold": {
+      "x": 910,
+      "y": 586,
+      "w": 64,
+      "h": 64
+    },
+    "item:bar_iron": {
+      "x": 0,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:gem_amethyst": {
+      "x": 70,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:gem_diamond": {
+      "x": 140,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:gem_ruby": {
+      "x": 210,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:drop_slime": {
+      "x": 280,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:drop_wing": {
+      "x": 350,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:drop_bone": {
+      "x": 420,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:drop_ecto": {
+      "x": 490,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:item_blue_shell": {
+      "x": 560,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:cloth": {
+      "x": 630,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:forage_mushroom": {
+      "x": 700,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:forage_seaglass": {
+      "x": 770,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:junk_boot": {
+      "x": 840,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:junk_can": {
+      "x": 910,
+      "y": 656,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_icefish": {
+      "x": 0,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_bass": {
+      "x": 70,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_carp": {
+      "x": 140,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_mackerel": {
+      "x": 210,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_sunfish": {
+      "x": 280,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_trout": {
+      "x": 350,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_goldfish": {
+      "x": 420,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_tropical": {
+      "x": 490,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_salmon": {
+      "x": 560,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_puffer": {
+      "x": 630,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_eel": {
+      "x": 700,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_squid": {
+      "x": 770,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_koi_king": {
+      "x": 840,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_golden_trout": {
+      "x": 910,
+      "y": 726,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_shark": {
+      "x": 0,
+      "y": 796,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_oarfish": {
+      "x": 70,
+      "y": 796,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_jellyfish": {
+      "x": 140,
+      "y": 796,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_fireplace": {
+      "x": 210,
+      "y": 796,
+      "w": 128,
+      "h": 128
+    },
+    "item:furn_bed_single": {
+      "x": 344,
+      "y": 796,
+      "w": 96,
+      "h": 96
+    },
+    "item:furn_bed_double": {
+      "x": 446,
+      "y": 796,
+      "w": 128,
+      "h": 128
+    },
+    "item:furn_rug_pink": {
+      "x": 580,
+      "y": 796,
+      "w": 128,
+      "h": 128
+    },
+    "item:furn_rug_blue": {
+      "x": 714,
+      "y": 796,
+      "w": 128,
+      "h": 128
+    },
+    "item:furn_rug_green": {
+      "x": 848,
+      "y": 796,
+      "w": 128,
+      "h": 128
+    },
+    "item:furn_rug_red": {
+      "x": 0,
+      "y": 930,
+      "w": 128,
+      "h": 128
+    },
+    "item:furn_bookshelf_tall": {
+      "x": 134,
+      "y": 930,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_table_long": {
+      "x": 204,
+      "y": 930,
+      "w": 96,
+      "h": 96
+    },
+    "item:furn_table_round": {
+      "x": 306,
+      "y": 930,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_desk": {
+      "x": 376,
+      "y": 930,
+      "w": 96,
+      "h": 96
+    },
+    "item:furn_armchair": {
+      "x": 478,
+      "y": 930,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_sofa_blue": {
+      "x": 548,
+      "y": 930,
+      "w": 96,
+      "h": 96
+    },
+    "item:furn_stool": {
+      "x": 650,
+      "y": 930,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_chest": {
+      "x": 720,
+      "y": 930,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_nightstand": {
+      "x": 790,
+      "y": 930,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_dresser": {
+      "x": 860,
+      "y": 930,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_wardrobe": {
+      "x": 930,
+      "y": 930,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_stove": {
+      "x": 0,
+      "y": 1064,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_pantry": {
+      "x": 70,
+      "y": 1064,
+      "w": 96,
+      "h": 96
+    },
+    "item:furn_palm": {
+      "x": 172,
+      "y": 1064,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_sunflower_vase": {
+      "x": 242,
+      "y": 1064,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_floor_lamp": {
+      "x": 312,
+      "y": 1064,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_clock": {
+      "x": 382,
+      "y": 1064,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_flowerpot": {
+      "x": 452,
+      "y": 1064,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_lucky_cat": {
+      "x": 522,
+      "y": 1064,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_snowman": {
+      "x": 592,
+      "y": 1064,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_fishbowl": {
+      "x": 662,
+      "y": 1064,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_sakura_tree": {
+      "x": 732,
+      "y": 1064,
+      "w": 128,
+      "h": 128
+    },
+    "item:furn_apple_tree": {
+      "x": 866,
+      "y": 1064,
+      "w": 128,
+      "h": 128
+    },
+    "item:furn_rose_bush": {
+      "x": 0,
+      "y": 1198,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_stump": {
+      "x": 70,
+      "y": 1198,
+      "w": 64,
+      "h": 64
+    },
+    "item:furn_stone_wall": {
+      "x": 140,
+      "y": 1198,
+      "w": 96,
+      "h": 96
+    },
+    "item:furn_hedge": {
+      "x": 242,
+      "y": 1198,
+      "w": 96,
+      "h": 96
+    },
+    "item:coin": {
+      "x": 344,
+      "y": 1198,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_shrimp": {
+      "x": 414,
+      "y": 1198,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_crab": {
+      "x": 484,
+      "y": 1198,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_lobster": {
+      "x": 554,
+      "y": 1198,
+      "w": 64,
+      "h": 64
+    },
+    "item:fish_octopus": {
+      "x": 624,
+      "y": 1198,
+      "w": 64,
+      "h": 64
+    },
+    "item:crop_pepper": {
+      "x": 694,
+      "y": 1198,
+      "w": 64,
+      "h": 64
+    },
+    "item:crop_cabbage": {
+      "x": 764,
+      "y": 1198,
+      "w": 64,
+      "h": 64
+    },
+    "monster:史萊姆": {
+      "x": 834,
+      "y": 1198,
+      "w": 96,
+      "h": 96
+    },
+    "monster:藍史萊姆": {
+      "x": 0,
+      "y": 1300,
+      "w": 96,
+      "h": 96
+    },
+    "monster:火焰史萊姆": {
+      "x": 102,
+      "y": 1300,
+      "w": 96,
+      "h": 96
+    },
+    "monster:蝙蝠": {
+      "x": 204,
+      "y": 1300,
+      "w": 96,
+      "h": 96
+    },
+    "monster:石頭人": {
+      "x": 306,
+      "y": 1300,
+      "w": 96,
+      "h": 96
+    },
+    "monster:蘑菇怪": {
+      "x": 408,
+      "y": 1300,
+      "w": 96,
+      "h": 96
+    },
+    "monster:骷髏": {
+      "x": 510,
+      "y": 1300,
+      "w": 96,
+      "h": 96
+    },
+    "monster:幽靈": {
+      "x": 612,
+      "y": 1300,
+      "w": 96,
+      "h": 96
+    },
+    "monster:小惡魔": {
+      "x": 714,
+      "y": 1300,
+      "w": 96,
+      "h": 96
+    },
+    "obj:mine_rock": {
+      "x": 816,
+      "y": 1300,
+      "w": 64,
+      "h": 64
+    },
+    "obj:mine_ladder": {
+      "x": 886,
+      "y": 1300,
+      "w": 64,
+      "h": 64
+    },
+    "obj:machine_preserves": {
+      "x": 956,
+      "y": 1300,
+      "w": 64,
+      "h": 64
+    },
+    "obj:machine_smoker": {
+      "x": 0,
+      "y": 1402,
+      "w": 64,
+      "h": 64
+    },
+    "obj:machine_artisan": {
+      "x": 70,
+      "y": 1402,
+      "w": 64,
+      "h": 64
+    },
+    "obj:machine_furnace": {
+      "x": 140,
+      "y": 1402,
+      "w": 64,
+      "h": 64
+    }
+  },
+  "items": {
+    "forage_driftwood": "item:forage_driftwood",
+    "ore_iron": "item:ore_iron",
+    "ore_copper": "item:ore_copper",
+    "bar_copper": "item:bar_copper",
+    "bar_gold": "item:bar_gold",
+    "gem_quartz": "item:gem_quartz",
+    "milk": "item:milk",
+    "milk_large": "item:milk",
+    "food_cheese": "item:food_cheese",
+    "egg": "item:egg",
+    "egg_large": "item:egg",
+    "egg_duck": "item:egg",
+    "wool": "item:wool",
+    "wool_fine": "item:wool",
+    "food_mayo": "item:food_mayo",
+    "food_pickle": "item:food_pickle",
+    "pet_food": "item:pet_food",
+    "seed_carrot": "item:seed_carrot",
+    "seed_strawberry": "item:seed_carrot",
+    "seed_pepper": "item:seed_carrot",
+    "seed_tomato": "item:seed_carrot",
+    "seed_pumpkin": "item:seed_carrot",
+    "seed_cabbage": "item:seed_carrot",
+    "seed_corn": "item:seed_carrot",
+    "seed_sunflower": "item:seed_carrot",
+    "bait_ball": "item:bait_ball",
+    "food_smoked_fish": "item:food_smoked_fish",
+    "crop_strawberry": "item:crop_strawberry",
+    "crop_tomato": "item:crop_tomato",
+    "crop_corn": "item:crop_corn",
+    "crop_pumpkin": "item:crop_pumpkin",
+    "crop_carrot": "item:crop_carrot",
+    "crop_sunflower": "item:crop_sunflower",
+    "forage_flower": "item:forage_flower",
+    "deco_flower": "item:forage_flower",
+    "forage_berry": "item:forage_berry",
+    "food_jam": "item:food_jam",
+    "furn_chair": "item:furn_chair",
+    "furn_sofa": "item:furn_sofa",
+    "furn_plant": "item:furn_plant",
+    "furn_teddy": "item:furn_teddy",
+    "furn_books": "item:furn_books",
+    "furn_lamp": "item:furn_lamp",
+    "furn_aquarium": "item:furn_aquarium",
+    "furn_trophy": "item:furn_trophy",
+    "furn_sakura": "item:furn_sakura",
+    "furn_scarecrow": "item:furn_scarecrow",
+    "furn_xmas": "item:furn_xmas",
+    "deco_stone": "item:deco_stone",
+    "plot_kit": "item:plot_kit",
+    "floor_blue": "item:floor_blue",
+    "floor_check": "item:floor_check",
+    "wall_mint": "item:wall_mint",
+    "wall_star": "item:wall_star",
+    "sword_wood": "item:sword_wood",
+    "sword_copper": "item:sword_copper",
+    "sword_iron": "item:sword_iron",
+    "sword_crystal": "item:sword_crystal",
+    "armor_leather": "item:armor_leather",
+    "armor_iron": "item:armor_iron",
+    "armor_crystal": "item:armor_crystal",
+    "pickaxe_basic": "item:pickaxe_basic",
+    "pickaxe_copper": "item:pickaxe_copper",
+    "pickaxe_iron": "item:pickaxe_iron",
+    "pickaxe_gold": "item:pickaxe_gold",
+    "rod_bamboo": "item:rod_bamboo",
+    "rod_fiberglass": "item:rod_fiberglass",
+    "rod_iridium": "item:rod_iridium",
+    "bait_worm": "item:bait_worm",
+    "bait_magic": "item:bait_magic",
+    "net_basic": "item:net_basic",
+    "net_silk": "item:net_silk",
+    "tool_sprinkler": "item:tool_sprinkler",
+    "hay": "item:hay",
+    "feather": "item:feather",
+    "truffle": "item:truffle",
+    "pet_treat": "item:pet_treat",
+    "food_sushi": "item:food_sushi",
+    "food_salad": "item:food_salad",
+    "food_soup": "item:food_soup",
+    "food_pie": "item:food_pie",
+    "food_kimchi": "item:food_kimchi",
+    "food_ketchup": "item:food_ketchup",
+    "food_omelette": "item:food_omelette",
+    "ore_gold": "item:ore_gold",
+    "bar_iron": "item:bar_iron",
+    "gem_amethyst": "item:gem_amethyst",
+    "gem_diamond": "item:gem_diamond",
+    "gem_ruby": "item:gem_ruby",
+    "drop_slime": "item:drop_slime",
+    "drop_wing": "item:drop_wing",
+    "drop_bone": "item:drop_bone",
+    "drop_ecto": "item:drop_ecto",
+    "item_blue_shell": "item:item_blue_shell",
+    "cloth": "item:cloth",
+    "forage_mushroom": "item:forage_mushroom",
+    "forage_seaglass": "item:forage_seaglass",
+    "junk_boot": "item:junk_boot",
+    "junk_can": "item:junk_can",
+    "fish_icefish": "item:fish_icefish",
+    "fish_bass": "item:fish_bass",
+    "fish_carp": "item:fish_carp",
+    "fish_mackerel": "item:fish_mackerel",
+    "fish_sunfish": "item:fish_sunfish",
+    "fish_trout": "item:fish_trout",
+    "fish_goldfish": "item:fish_goldfish",
+    "fish_tropical": "item:fish_tropical",
+    "fish_salmon": "item:fish_salmon",
+    "fish_puffer": "item:fish_puffer",
+    "fish_eel": "item:fish_eel",
+    "fish_squid": "item:fish_squid",
+    "fish_koi_king": "item:fish_koi_king",
+    "fish_golden_trout": "item:fish_golden_trout",
+    "fish_shark": "item:fish_shark",
+    "fish_oarfish": "item:fish_oarfish",
+    "fish_jellyfish": "item:fish_jellyfish",
+    "furn_fireplace": "item:furn_fireplace",
+    "furn_bed_single": "item:furn_bed_single",
+    "furn_bed_double": "item:furn_bed_double",
+    "furn_rug_pink": "item:furn_rug_pink",
+    "furn_rug_blue": "item:furn_rug_blue",
+    "furn_rug_green": "item:furn_rug_green",
+    "furn_rug_red": "item:furn_rug_red",
+    "furn_bookshelf_tall": "item:furn_bookshelf_tall",
+    "furn_table_long": "item:furn_table_long",
+    "furn_table_round": "item:furn_table_round",
+    "furn_desk": "item:furn_desk",
+    "furn_armchair": "item:furn_armchair",
+    "furn_sofa_blue": "item:furn_sofa_blue",
+    "furn_stool": "item:furn_stool",
+    "furn_chest": "item:furn_chest",
+    "furn_nightstand": "item:furn_nightstand",
+    "furn_dresser": "item:furn_dresser",
+    "furn_wardrobe": "item:furn_wardrobe",
+    "furn_stove": "item:furn_stove",
+    "furn_pantry": "item:furn_pantry",
+    "furn_palm": "item:furn_palm",
+    "furn_sunflower_vase": "item:furn_sunflower_vase",
+    "furn_floor_lamp": "item:furn_floor_lamp",
+    "furn_clock": "item:furn_clock",
+    "furn_flowerpot": "item:furn_flowerpot",
+    "furn_lucky_cat": "item:furn_lucky_cat",
+    "furn_snowman": "item:furn_snowman",
+    "furn_fishbowl": "item:furn_fishbowl",
+    "furn_sakura_tree": "item:furn_sakura_tree",
+    "furn_apple_tree": "item:furn_apple_tree",
+    "furn_rose_bush": "item:furn_rose_bush",
+    "furn_stump": "item:furn_stump",
+    "furn_stone_wall": "item:furn_stone_wall",
+    "furn_hedge": "item:furn_hedge",
+    "coin": "item:coin",
+    "fish_shrimp": "item:fish_shrimp",
+    "fish_crab": "item:fish_crab",
+    "fish_lobster": "item:fish_lobster",
+    "fish_octopus": "item:fish_octopus",
+    "crop_pepper": "item:crop_pepper",
+    "crop_cabbage": "item:crop_cabbage"
+  },
+  "animals": {
+    "chicken": {
+      "adult": "animal:chicken",
+      "baby": "animal:chicken:baby"
+    },
+    "duck": {
+      "adult": "animal:duck",
+      "baby": "animal:duck:baby"
+    },
+    "cow": {
+      "adult": "animal:cow",
+      "baby": "animal:cow:baby"
+    },
+    "sheep": {
+      "adult": "animal:sheep",
+      "baby": "animal:sheep:baby"
+    },
+    "pig": {
+      "adult": "animal:pig",
+      "baby": "animal:pig:baby"
+    }
+  },
+  "crops": {
+    "carrot": [
+      null,
+      "crop:carrot_0",
+      "crop:carrot_3"
+    ],
+    "strawberry": [
+      null,
+      "crop:strawberry_0",
+      "crop:strawberry_1",
+      "crop:strawberry_3"
+    ],
+    "tomato": [
+      null,
+      "crop:tomato_0",
+      "crop:tomato_2",
+      "crop:tomato_3"
+    ],
+    "pumpkin": [
+      null,
+      "crop:pumpkin_0",
+      "crop:pumpkin_2",
+      "crop:pumpkin_3"
+    ],
+    "pepper": [
+      null,
+      "crop:pepper_0",
+      "crop:pepper_1",
+      "crop:pepper_3"
+    ],
+    "cabbage": [
+      null,
+      "crop:cabbage_0",
+      "crop:cabbage_1",
+      "crop:cabbage_3"
+    ],
+    "corn": [
+      null,
+      "crop:corn_0",
+      "crop:corn_1",
+      "crop:corn_2",
+      "crop:corn_3"
+    ],
+    "sunflower": [
+      null,
+      "crop:sunflower_0",
+      "crop:sunflower_1",
+      "crop:sunflower_3"
+    ]
+  },
+  "monsters": {
+    "史萊姆": "monster:史萊姆",
+    "藍史萊姆": "monster:藍史萊姆",
+    "火焰史萊姆": "monster:火焰史萊姆",
+    "蝙蝠": "monster:蝙蝠",
+    "石頭人": "monster:石頭人",
+    "蘑菇怪": "monster:蘑菇怪",
+    "骷髏": "monster:骷髏",
+    "幽靈": "monster:幽靈",
+    "小惡魔": "monster:小惡魔"
+  },
+  "objects": {
+    "mine_rock": "obj:mine_rock",
+    "mine_ladder": "obj:mine_ladder",
+    "machine_preserves": "obj:machine_preserves",
+    "machine_smoker": "obj:machine_smoker",
+    "machine_artisan": "obj:machine_artisan",
+    "machine_furnace": "obj:machine_furnace"
+  }
+}

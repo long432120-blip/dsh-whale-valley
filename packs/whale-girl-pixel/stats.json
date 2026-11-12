@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "lowRatio": 0.3,
+  "stamina": {
+    "start": 100,
+    "max": 100,
+    "regenPerHour": 0,
+    "restoreOnMorning": true
+  },
+  "satiety": {
+    "start": 80,
+    "max": 100,
+    "decayPerHour": 3,
+    "sleepDecayMult": 0.5,
+    "whenEmpty": {
+      "staminaMaxMult": 0.5,
+      "affectionLossPerDay": 5
+    },
+    "drink": {
+      "tables": [
+        "pond",
+        "river",
+        "fishpond"
+      ],
+      "satiety": 20,
+      "cooldownMinutes": 10,
+      "taps": [
+        "tap"
+      ]
+    }
+  },
+  "affection": {
+    "start": 0,
+    "decayPerHour": 0
+  },
+  "actions": {
+    "fish": {
+      "stamina": 10
+    },
+    "plant": {
+      "stamina": 2
+    },
+    "water": {
+      "stamina": 2
+    },
+    "mine": {
+      "stamina": 30
+    }
+  },
+  "eat": {
+    "staminaPerSatiety": 0.5
+  },
+  "lines": {
+    "tired": [
+      "好累，想睡覺……",
+      "呼……體力快沒了，吃點東西或回房間睡一覺吧？"
+    ],
+    "exhausted": [
+      "不行了……一點力氣都沒有。讓我吃點東西，或回房間睡覺嘛。",
+      "走不動了啦……主人，揹包裡有吃的嗎？"
+    ],
+    "hungry": [
+      "咕嚕……肚子餓了。",
+      "好渴喔……可以去池塘喝口水嗎？"
+    ],
+    "starving": [
+      "肚子好餓……都沒力氣了。再不吃東西，我要生氣了喔……",
+      "嗚……餓到頭昏昏的。"
+    ],
+    "drink": [
+      "咕嘟咕嘟……哈～活過來了！",
+      "池塘的水好甜～"
+    ],
+    "ate": [
+      "好好吃！又有力氣了～",
+      "嗯～肚子暖暖的。"
+    ],
+    "rested": [
+      "睡飽了！今天也要加油～"
+    ]
+  }
+}

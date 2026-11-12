@@ -1,0 +1,257 @@
+{
+  "version": 2,
+  "tileSize": 16,
+  "viewport": {
+    "tilesX": 20,
+    "tilesY": 12
+  },
+  "initialScene": "room",
+  "scenes": [
+    {
+      "id": "room",
+      "name": "室內房間",
+      "map": "maps/room.tmj",
+      "mapPos": {
+        "x": 1,
+        "y": 1
+      },
+      "icon": "🏠"
+    },
+    {
+      "id": "garden",
+      "name": "池塘花園",
+      "map": "maps/garden.tmj",
+      "outdoor": true,
+      "mapPos": {
+        "x": 2,
+        "y": 1
+      },
+      "icon": "🌷"
+    },
+    {
+      "id": "ranch",
+      "name": "牧場",
+      "map": "maps/ranch.tmj",
+      "outdoor": true,
+      "mapPos": {
+        "x": 3,
+        "y": 1
+      },
+      "icon": "🐔"
+    },
+    {
+      "id": "beach",
+      "name": "海邊",
+      "map": "maps/beach.tmj",
+      "outdoor": true,
+      "mapPos": {
+        "x": 2,
+        "y": 2
+      },
+      "icon": "🌊"
+    },
+    {
+      "id": "town",
+      "name": "小鎮",
+      "map": "maps/town.tmj",
+      "outdoor": true,
+      "mapPos": {
+        "x": 4,
+        "y": 1
+      },
+      "icon": "🏘️"
+    },
+    {
+      "id": "greenhouse",
+      "name": "溫室",
+      "map": "maps/greenhouse.tmj",
+      "mapPos": {
+        "x": 3,
+        "y": 0
+      },
+      "icon": "🌿"
+    },
+    {
+      "id": "attic",
+      "name": "閣樓",
+      "map": "maps/attic.tmj",
+      "mapPos": {
+        "x": 1,
+        "y": 0
+      },
+      "icon": "🛏️"
+    },
+    {
+      "id": "mine",
+      "name": "礦洞",
+      "map": "maps/mine.tmj",
+      "mapPos": {
+        "x": 4,
+        "y": 0
+      },
+      "icon": "⛏️"
+    },
+    {
+      "id": "kitchen",
+      "name": "廚房",
+      "mapPos": {
+        "x": 0,
+        "y": 0
+      },
+      "icon": "🍳"
+    },
+    {
+      "id": "bath",
+      "name": "浴室",
+      "mapPos": {
+        "x": 0,
+        "y": 1
+      },
+      "icon": "♨️"
+    },
+    {
+      "id": "gameroom",
+      "name": "遊戲室",
+      "mapPos": {
+        "x": 0,
+        "y": 2
+      },
+      "icon": "🎮"
+    },
+    {
+      "id": "tavern",
+      "name": "酒館",
+      "mapPos": {
+        "x": 4,
+        "y": 2
+      },
+      "icon": "🍺"
+    }
+  ],
+  "hud": {
+    "clock": {
+      "board": "assets/ui/hud-board.png",
+      "icons": {
+        "src": "assets/ui/weather-icons.png",
+        "size": 96,
+        "names": [
+          "sunny",
+          "rainy",
+          "storm",
+          "snowy"
+        ]
+      },
+      "corner": "top-right",
+      "nightFrom": 18,
+      "nightTo": 6,
+      "seasonIcons": {
+        "winter": "snowy"
+      }
+    }
+  },
+  "ambient": {
+    "seasons": {
+      "spring": {
+        "kind": "petal",
+        "colors": [
+          "#ffb3d1",
+          "#ff9ec4",
+          "#ffd1e3",
+          "#fff0f6"
+        ],
+        "count": 34,
+        "size": [
+          2,
+          3
+        ],
+        "fall": [
+          9,
+          17
+        ],
+        "sway": [
+          5,
+          12
+        ]
+      },
+      "summer": {
+        "kind": "firefly",
+        "colors": [
+          "#f4ff9a",
+          "#d6ff6e",
+          "#fffbc4"
+        ],
+        "count": 24,
+        "size": [
+          1,
+          2
+        ],
+        "fall": [
+          -4,
+          2
+        ],
+        "sway": [
+          3,
+          9
+        ],
+        "dayRatio": 0.35
+      },
+      "autumn": {
+        "kind": "leaf",
+        "colors": [
+          "#e0702a",
+          "#c9471f",
+          "#f0a634",
+          "#a8541c",
+          "#d8902c"
+        ],
+        "count": 26,
+        "size": [
+          2,
+          3
+        ],
+        "fall": [
+          11,
+          20
+        ],
+        "sway": [
+          8,
+          18
+        ]
+      }
+    },
+    "lateNight": {
+      "fromHour": 23,
+      "toHour": 5,
+      "repeatMinutes": 60,
+      "maxPerNight": 3,
+      "lines": [
+        "主人，現實裡已經很晚了，我們早點休息吧！",
+        "都這麼晚了……主人明天還要早起吧？去睡覺好不好～",
+        "噗嚕……我都想睡了。主人也該休息囉，晚安！"
+      ]
+    },
+    "weather": {
+      "snowy": {
+        "kind": "snow",
+        "colors": [
+          "#ffffff",
+          "#eef6ff",
+          "#dbe9ff"
+        ],
+        "count": 60,
+        "size": [
+          1,
+          2
+        ],
+        "fall": [
+          9,
+          19
+        ],
+        "sway": [
+          2,
+          7
+        ]
+      }
+    }
+  }
+}

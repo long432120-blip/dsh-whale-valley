@@ -1,0 +1,48 @@
+# ── 套件 ──
+node_modules/
+.pnpm-store/
+# lib/ 是編譯好的 DSH 插件：要提交，這樣 `dsh plugin add github:…` 不用另外建置
+
+# ── 編譯產物（npm run demo:build、demo:standalone 會產生）──
+demo/demo.js
+demo/pixel.js
+demo/standalone.html
+demo/pixel-standalone.html
+demo/music/
+release/
+*.tgz
+
+# ── 密鑰：API Key 只放 .env、環境變數或 DSH 插件設定，絕對不要提交 ──
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+# npm／pnpm 的登入設定可能有 Token
+.npmrc
+
+# ── 原始大圖（約 80 MB，有些含未處理的圖案）只留在作者電腦上 ──
+packs/*/assets/source/
+
+# ── 暫存與 log ──
+*.tmp
+*.log
+*.bak
+*.swp
+*~
+__pycache__/
+*.pyc
+.cache/
+coverage/
+
+# ── 系統與編輯器 ──
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.idea/
+.vscode/*
+!.vscode/extensions.json

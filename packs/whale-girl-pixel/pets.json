@@ -1,0 +1,144 @@
+{
+  "version": 1,
+  "maxPets": 6,
+  "defaultHome": "garden",
+  "shop": "petshop",
+  "affection": {"max": 1000, "petGain": 15, "feedGain": 5, "skillBonusAtMax": 0.5},
+  "satiety": {"max": 100, "start": 70},
+  "wild": {"blockHours": 2, "chance": 0.4, "weatherBonus": {"rainy": 1.5}},
+  "items": [
+    {
+      "id": "pet_food",
+      "name": "寵物飼料",
+      "emoji": "🥫",
+      "category": "petfood",
+      "description": "狗、貓、鼴鼠都吃。一次 +60 飽食度。",
+      "price": 10
+    },
+    {
+      "id": "pet_treat",
+      "name": "小魚乾",
+      "emoji": "🍘",
+      "category": "petfood",
+      "description": "寵物的點心，每一種寵物都愛。",
+      "price": 15
+    },
+    {
+      "id": "net_basic",
+      "name": "捕捉網",
+      "emoji": "🥅",
+      "category": "net",
+      "description": "點野生寵物丟出去。成功率 = 寵物的捕捉率 × 1。",
+      "net": {"power": 1},
+      "price": 10
+    },
+    {
+      "id": "net_silk",
+      "name": "絲綢捕捉網",
+      "emoji": "🎐",
+      "category": "net",
+      "description": "輕又韌。成功率 ×1.8。",
+      "net": {"power": 1.8},
+      "price": 40
+    }
+  ],
+  "species": {
+    "dog": {
+      "name": "柴犬",
+      "emoji": "🐕",
+      "description": "精力旺盛，看到地上有東西就會衝過去。",
+      "sprite": {
+        "src": "assets/pets/dog-walk.png",
+        "faces": "right",
+        "sheet": {"frameWidth": 73, "frameHeight": 60, "frames": 3, "walk": [0, 1, 2, 1], "idle": 2, "fps": 7}
+      },
+      "shop": {"price": {"coin": 800}},
+      "diet": [
+        {"item": "pet_food", "satiety": 60},
+        {"item": "pet_treat", "satiety": 30},
+        {"category": "fish", "satiety": 25}
+      ],
+      "satietyDecay": 4,
+      "speed": 3.4,
+      "skill": {
+        "kind": "auto_pickup",
+        "name": "撿東西",
+        "radius": 9,
+        "perDay": 3,
+        "description": "地圖上有掉落物時，牠會自己跑過去撿回來；畫面關著的日子，每天也會幫你撿回 3 個。"
+      }
+    },
+    "cat": {
+      "name": "橘貓",
+      "emoji": "🐈",
+      "description": "愛睡覺，但烏鴉一靠近就會跳起來。",
+      "sprite": {
+        "src": "assets/pets/cat-walk.png",
+        "faces": "right",
+        "sheet": {"frameWidth": 77, "frameHeight": 60, "frames": 4, "walk": [0, 1, 2, 3], "idle": 1, "fps": 7}
+      },
+      "shop": {"price": {"coin": 600}},
+      "diet": [
+        {"item": "pet_food", "satiety": 60},
+        {"item": "pet_treat", "satiety": 40},
+        {"category": "fish", "satiety": 35}
+      ],
+      "satietyDecay": 3.5,
+      "speed": 2.4,
+      "skill": {"kind": "crow_guard", "name": "趕烏鴉", "crowMult": 0.3, "description": "烏鴉來啄田時，七成會被牠趕跑；好感越高趕得越乾淨。"}
+    },
+    "jellyfish": {
+      "name": "水母",
+      "emoji": "🪼",
+      "description": "下雨天才會漂到海邊。身上的光會把稀有的魚引過來。",
+      "sprite": {"src": "assets/pets/jellyfish.png", "float": true, "scale": 0.1667},
+      "wild": {"scenes": ["beach"], "weather": ["rainy"], "weight": 10, "catchRate": 0.35, "flee": 0.4},
+      "diet": [{"item": "pet_treat", "satiety": 40}, {"category": "fish", "satiety": 30}],
+      "satietyDecay": 3,
+      "speed": 1.6,
+      "skill": {
+        "kind": "fishing_luck",
+        "name": "幸運微光",
+        "rare": {"epic": 1.25, "legendary": 1.4},
+        "description": "釣魚時史詩魚 ×1.25、傳說魚 ×1.4（好感越高越多）。"
+      }
+    },
+    "fairy": {
+      "name": "小精靈",
+      "emoji": "🧚",
+      "description": "傍晚和晚上在花園的花叢裡飛來飛去。",
+      "sprite": {"src": "assets/pets/fairy.png", "float": true, "scale": 0.1667},
+      "wild": {"scenes": ["garden"], "phases": ["evening", "night"], "weight": 10, "catchRate": 0.3, "flee": 0.5},
+      "diet": [
+        {"item": "forage_flower", "satiety": 50},
+        {"item": "forage_berry", "satiety": 35},
+        {"category": "crop", "satiety": 25},
+        {"item": "pet_treat", "satiety": 30}
+      ],
+      "satietyDecay": 3,
+      "speed": 2.8,
+      "skill": {"kind": "water_plots", "name": "晨露", "plots": 2, "description": "每天早上幫你澆 2 塊還乾著的田（好感越高澆越多）。"}
+    },
+    "mole": {
+      "name": "鼴鼠",
+      "emoji": "🐹",
+      "description": "白天常在礦洞外面探頭。鼻子能聞到地底的寶石。",
+      "sprite": {"src": "assets/pets/mole.png", "scale": 0.1667},
+      "wild": {"scenes": ["town"], "phases": ["morning", "afternoon"], "weight": 10, "catchRate": 0.45, "flee": 0.3},
+      "diet": [
+        {"item": "forage_mushroom", "satiety": 45},
+        {"item": "pet_food", "satiety": 50},
+        {"category": "crop", "satiety": 25},
+        {"item": "pet_treat", "satiety": 30}
+      ],
+      "satietyDecay": 4,
+      "speed": 2.0,
+      "skill": {
+        "kind": "mine_luck",
+        "name": "挖寶鼻",
+        "rare": {"epic": 1.3, "legendary": 1.3},
+        "description": "派她下礦洞時，稀有礦石和寶石 ×1.3（好感越高越多）。"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+# ⚠ 格式依社群插件的寫法（insert 一列，設定放在 config: 底下）；請對照你安裝的 DSH 版本確認。
+# 注意：設定一定要放在 config: 底下，寫在 name: 旁邊會被忽略。
+- insert:
+    - id: dsh-whale-valley
+      name: dsh-whale-valley
+      config:
+        initialScene: room
+        # storageDir: /自訂/存檔/路徑

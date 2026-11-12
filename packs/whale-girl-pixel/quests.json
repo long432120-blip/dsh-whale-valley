@@ -1,0 +1,106 @@
+{
+  "version": 1,
+  "nagEverySec": 60,
+  "chains": [
+    {
+      "id": "tutorial",
+      "name": "新手引導",
+      "steps": [
+        {
+          "id": "fish",
+          "task": "去花園的池塘釣一條魚",
+          "say": ["我們去花園的池塘釣條魚吧！"],
+          "nag": ["主人，我們先去釣魚好不好嘛～", "池塘就在花園裡喔！點池塘就能釣魚～", "肚子咕嚕咕嚕叫了……去釣魚嘛！"],
+          "target": {"scene": "garden", "object": "pond"},
+          "done": {"event": "caught", "category": "fish"},
+          "reward": {"bait_worm": 5}
+        },
+        {
+          "id": "sell",
+          "task": "去小鎮找老陳賣魚",
+          "say": ["釣到了！肚子餓了，去鎮上找老陳賣魚換點金幣吧！", "小鎮在花園右邊、經過牧場再往右走～"],
+          "nag": ["主人～老陳在小鎮等我們賣魚喔！", "賣了魚就有錢買好吃的了！"],
+          "target": {"scene": "town", "object": "fisher"},
+          "done": {"event": "sold", "shop": "fishmonger", "category": "fish"},
+          "reward": {"coin": 30}
+        },
+        {
+          "id": "seeds",
+          "task": "去花店找小葵買種子",
+          "say": ["去花店找小葵買些種子，我們自己種菜！"],
+          "nag": ["小葵的花店就在小鎮左邊喔～", "買種子、種菜菜！"],
+          "target": {"scene": "town", "object": "florist"},
+          "done": {"event": "traded", "shop": "florist", "category": "seed", "have": {"category": "seed"}}
+        },
+        {
+          "id": "plant",
+          "task": "回花園把種子種下去",
+          "say": ["種子買好了！回花園把它種進田裡吧～", "種好之後再點一次田，記得澆水喔！"],
+          "nag": ["田在花園的池塘下面～", "主人，種子要種進土裡才會長大啦！"],
+          "target": {"scene": "garden", "object": "plot-1"},
+          "done": {"event": "planted"}
+        },
+        {
+          "id": "sleep",
+          "task": "回房間睡一覺（快轉時間）",
+          "say": ["好累呀，我們回房間休息（快轉時間）吧！", "睡前記得幫田澆水喔，這樣明天就長大了～"],
+          "nag": ["呼啊……好睏……我們回房間睡覺嘛～", "床在房間左邊喔！"],
+          "target": {"scene": "room", "object": "bed"},
+          "done": {"event": "slept"}
+        },
+        {
+          "id": "harvest",
+          "task": "去花園收成",
+          "say": ["早安！我們的菜長大了嗎？去花園看看吧～"],
+          "nag": ["還沒成熟的話，記得澆水，等一下再來看！", "收成之後就可以煮好吃的了～"],
+          "target": {"scene": "garden", "object": "plot-1"},
+          "done": {"event": "harvested"},
+          "reward": {"coin": 100}
+        }
+      ],
+      "doneSay": ["新手教學完成！主人好厲害～", "以後想去哪裡、想做什麼，我都跟著主人！"]
+    },
+    {
+      "id": "town-life",
+      "name": "小鎮生活",
+      "requires": "tutorial",
+      "steps": [
+        {
+          "id": "smith",
+          "task": "去鐵匠舖跟阿綱打招呼",
+          "say": ["小鎮還有一位鐵匠阿綱，我們去打個招呼吧！"],
+          "nag": ["阿綱的鐵匠舖在小鎮中間喔～"],
+          "target": {"scene": "town", "object": "smith"},
+          "done": {"event": "talked", "npc": "smith"}
+        },
+        {
+          "id": "beach",
+          "task": "去海邊看看",
+          "say": ["聽說花園下面有一片海！我想去看看～"],
+          "nag": ["海邊在花園的最下面喔！"],
+          "target": {"scene": "beach"},
+          "done": {"event": "enter", "scene": "beach"}
+        },
+        {
+          "id": "epic",
+          "task": "釣到一條史詩以上的魚",
+          "say": ["老陳說，用好一點的魚餌，比較容易釣到稀有的魚喔！", "下雨天稀有的魚也會變多～"],
+          "nag": ["稀有的魚……好想看看！", "魚餌球、魔法魚餌在老陳那裡買得到～"],
+          "target": {"scene": "beach", "object": "sea"},
+          "done": {"event": "caught", "rarity": "epic"},
+          "reward": {"bait_magic": 3}
+        },
+        {
+          "id": "dish",
+          "task": "做一道料理餵她",
+          "say": ["主人～我想吃你做的料理！房間的桌子可以做喔～"],
+          "nag": ["料理台在房間右邊的桌子～"],
+          "target": {"scene": "room", "object": "kitchen"},
+          "done": {"event": "fed", "category": "dish"},
+          "reward": {"coin": 200}
+        }
+      ],
+      "doneSay": ["嘿嘿，跟主人一起生活好開心～"]
+    }
+  ]
+}
